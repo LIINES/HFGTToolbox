@@ -8,6 +8,6 @@ The toolbox contains two principal modules: XML2LFES() and raw2FullLFES() that a
 structure. Then, the raw2Full() module makes the HFGT calculations necessary to convert the myLFES data structure to the “full" state.
 <img src="Images/HFGTToolbox_overview.png">
 
-The input XML file - "Example_Network.xml" provided in this repository depicts a simplistic 4-Node Smart City Network. The topology of this example network and some of the associated graphs of the HFGT mathematical models are presented below.
+The input XML file - "Example_Network.xml" provided in this repository depicts a simplistic 4-Node Smart City Network. The topology of this example network and some of the associated graphs of the HFGT mathematical models are presented below. An input XML file for any engineering system can be generated along the same lines and run using this toolbox.
+
 <img src="Images/Example_Network_Graphs.png">
-An input XML file for any engineering system can be generated along the same lines and run using this toolbox.
