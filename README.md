@@ -10,3 +10,4 @@ structure. Then, the raw2Full() module makes the HFGT calculations necessary to 
 
 The input XML file - "Example_Network.xml" provided in this repository depicts a simplistic 4-Node Smart City Network. The topology of this example network and some of the associated graphs of the HFGT mathematical models are presented below.
 <img src="Images/Example_Network_Graphs.png">
+An input XML file for any engineering system can be generated along the same lines and run using this toolbox.
