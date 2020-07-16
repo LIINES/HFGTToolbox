@@ -1,6 +1,8 @@
 close all
 clear all
 clc 
+addpath(genpath('raw2FullLFES'));
+addpath(genpath('XML2LFES'));
 
 XMLFile='Example_Network.xml';
 % XMLFile='Trimetrica-3layer-Data-v9.xml';
