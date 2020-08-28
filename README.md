@@ -8,6 +8,10 @@ The toolbox contains two principal modules: XML2LFES() and raw2FullLFES() that a
 structure. Then, the raw2Full() module makes the HFGT calculations necessary to convert the myLFES data structure to the “full" state.
 <img src="Images/HFGTToolbox_overview.png">
 
-The input XML file - "Example_Network.xml" provided in this repository depicts a simplistic 4-Node Smart City Network. The topology of this example network and some of the associated graphs of the HFGT mathematical models are presented below. An input XML file for any engineering system can be generated along the same lines and the engineering system's HFGT models can becomputed using this toolbox.
+The input XML file - "Example_Network.xml" provided in this repository depicts a simplistic 4-Node Smart City Network. The topology of this example network and some of the associated graphs of the HFGT mathematical models are presented below. An input XML file for any engineering system can be generated along the same lines and the engineering system's HFGT models can be computed using this toolbox.
 
 <img src="Images/Example_Network_Graphs.png">
+
+The HFGT toolbox modules XML2LFES() and raw2FullLFES() are used in the Petri net Graphical User Interface (GUI) with an updated XML input file -"Example_Network_PN.xml" and scheduled event list CSV input file - "exampleEventList.csv".   The GUI visualizes the flow of operands through the Hetero-functional graph system as degrees of freedom are fired.
+
+<img src"Images/Example_Network_GUI.png">
