@@ -3,32 +3,32 @@
 	<Operand name="electric power at 132kV"></Operand>
 	<Operand name="potable water"></Operand>
     <Operand name="EV"></Operand>
-	<Machine name="Water Treatment Facility" gpsX="0" gpsY="1" controller="Water Utility">
-		<MethodxForm name="treat water" status="true" operand="electric power at 132kV" output="potable water"/>
+	<Machine name="Water Treatment Facility" gpsX="0" gpsY="4" controller="Water Utility" initToken="0,0,0">
+		<MethodxForm name="treat water" status="true" operand="electric power at 132kV" output="potable water" gpsOffSetX="-1" gpsOffSetY="1" initToken="0" dT="1"/>
 	</Machine>
-	<Machine name="Solar PV" gpsX="0" gpsY="0" controller="Electric Power Utility">
-		<MethodxForm name="generate electric power" status="true" operand="" output="electric power at 132kV"/>
+	<Machine name="Solar PV" gpsX="0" gpsY="0" controller="Electric Power Utility" initToken="0,0,0">
+		<MethodxForm name="generate electric power" status="true" operand="" output="electric power at 132kV" gpsOffSetX="-1" gpsOffSetY="1" initToken="0" dT="0"/>
 	</Machine>
-	<Machine name="House" gpsX="1" gpsY="1" controller="End User">
-		<MethodxForm name="consume water" status="true" operand="electric power at 132kV, potable water" output=""/>
-		<MethodxPort name="store" status="true" origin="House" dest="House" ref="park EV" operand="EV" output="EV"/>
-		<MethodxPort name="store" status="true" origin="House" dest="House" ref="charge EV" operand="EV, electric power at 132kV" output="EV"/>
+	<Machine name="House" gpsX="4" gpsY="4" controller="End User" initToken="0,0,1">
+		<MethodxForm name="consume water" status="true" operand="electric power at 132kV, potable water" output="" gpsOffSetX="-1" gpsOffSetY="1" initToken="0" dT="1"/>
+		<MethodxPort name="store" status="true" origin="House" dest="House" ref="park EV" operand="EV" output="EV" gpsOffSetX="1" gpsOffSetY="1" initToken="0" dT="1"/>
+		<MethodxPort name="store" status="true" origin="House" dest="House" ref="charge EV" operand="EV, electric power at 132kV" output="EV" gpsOffSetX="1" gpsOffSetY="-1" initToken="0" dT="1"/>
 	</Machine>
-	<IndBuffer name="Work Location" gpsX="1" gpsY="0" controller="End User">
-		<MethodxPort name="store" status="true" origin="Work Location" dest="Work Location" ref="park EV" operand="EV" output="EV"/>
+	<IndBuffer name="Work Location" gpsX="4" gpsY="0" controller="End User" initToken="0,0,0">
+		<MethodxPort name="store" status="true" origin="Work Location" dest="Work Location" ref="park EV" operand="EV" output="EV" gpsOffSetX="1" gpsOffSetY="1" initToken="0" dT="1"/>
 	</IndBuffer>
 	<Transporter name="Water Pipeline" controller="Water Utility">
-		<MethodxPort name="transport" status="true" origin="Water Treatment Facility" dest="House" ref="potable water" operand="potable water" output="potable water"/>
+		<MethodxPort name="transport" status="true" origin="Water Treatment Facility" dest="House" ref="potable water" operand="potable water" output="potable water" gpsOffSetX="0" gpsOffSetY="0" initToken="0" dT="1"/>
 	</Transporter>
 	<Transporter name="Power Line 1" controller="Electric Power Utility">
-		<MethodxPort name="transport" status="true" origin="Solar PV" dest="Water Treatment Facility" ref="electric power at 132kV" operand="electric power at 132kV" output="electric power at 132kV"/>
+		<MethodxPort name="transport" status="true" origin="Solar PV" dest="Water Treatment Facility" ref="electric power at 132kV" operand="electric power at 132kV" output="electric power at 132kV" gpsOffSetX="0" gpsOffSetY="0" initToken="0" dT="0"/>
 	</Transporter>
 	<Transporter name="Power Line 2" controller="Electric Power Utility">
-		<MethodxPort name="transport" status="true" origin="Solar PV" dest="House" ref="electric power at 132kV" operand="electric power at 132kV" output="electric power at 132kV"/>
+		<MethodxPort name="transport" status="true" origin="Solar PV" dest="House" ref="electric power at 132kV" operand="electric power at 132kV" output="electric power at 132kV" gpsOffSetX="0" gpsOffSetY="0" initToken="0" dT="0"/>
 	</Transporter>
 	<Transporter name="Road" controller="End User">
-		<MethodxPort name="transport" status="true" origin="Work Location" dest="House" ref="disCharge EV" operand="EV" output="EV"/>
-		<MethodxPort name="transport" status="true" origin="House" dest="Work Location" ref="disCharge EV" operand="EV" output="EV"/>
+		<MethodxPort name="transport" status="true" origin="Work Location" dest="House" ref="disCharge EV" operand="EV" output="EV" gpsOffSetX="0" gpsOffSetY="0" initToken="0" dT="2"/>
+		<MethodxPort name="transport" status="true" origin="House" dest="Work Location" ref="disCharge EV" operand="EV" output="EV" gpsOffSetX="0" gpsOffSetY="0" initToken="0" dT="2"/>
 	</Transporter>
 	<Controller name="Water Utility" status="true">
 		<PeerRecipient name="Water Utility"/>
