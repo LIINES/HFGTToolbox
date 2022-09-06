@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="Example Network" numBuffers="4" type="Smart City" dataState="raw">
+	<Operand name="0"></Operand>
+	<Operand name="1"></Operand>
+    <Operand name="2"></Operand>
+	<MethodxForm resource="0" gpsX="0" gpsY="1" name="treat water" status="true" operand="0" output="1" idxProc="0" controller="Water Utility"/>
+	<MethodxForm resource="1" gpsX="0" gpsY="0" name="generate electric power" status="true" operand="" output="0" idxProc="1" controller="Electric Power Utility"/>
+	<MethodxForm resource="2" gpsX="1" gpsY="1" name="consume water" status="true" operand="0, 1" output="" idxProc="2" controller="End User"/>
+	<MethodxPort resource="2" gpsX="1" gpsY="1" name="store" status="true" origin="2" dest="2" ref="4" operand="2" output="2" controller="End User"/>
+	<MethodxPort resource="2" gpsX="1" gpsY="1" name="store" status="true" origin="2" dest="2" ref="2" operand="2, 0" output="2" controller="End User"/>
+	<MethodxPort resource="3" gpsX="1" gpsY="0" name="store" status="true" origin="3" dest="3" ref="4" operand="2" output="2" controller="End User"/>
+	<MethodxPort resource="4" name="transport" status="true" origin="0" dest="2" ref="1" operand="1" output="1" controller="Water Utility"/>
+	<MethodxPort resource="5" name="transport" status="true" origin="1" dest="0" ref="0" operand="0" output="0" controller="Electric Power Utility"/>
+	<MethodxPort resource="6" name="transport" status="true" origin="1" dest="2" ref="0" operand="0" output="0" controller="Electric Power Utility"/>
+	<MethodxPort resource="7" name="transport" status="true" origin="3" dest="2" ref="3" operand="2" output="2" controller="End User"/>
+	<MethodxPort resource="7" name="transport" status="true" origin="2" dest="3" ref="3" operand="2" output="2" controller="End User"/>
+	
+	<Controller name="Water Utility" status="true">
+		<PeerRecipient name="Water Utility"/>
+		<PeerRecipient name="Electric Power Utility"/>
+		<PeerRecipient name="End User"/>
+	</Controller>
+	<Controller name="Electric Power Utility" status="true">
+		<PeerRecipient name="Electric Power Utility"/>
+		<PeerRecipient name="Water Utility"/>
+		<PeerRecipient name="End User"/>
+	</Controller>
+	<Controller name="End User" status="true">
+		<PeerRecipient name="End User"/>
+		<PeerRecipient name="Water Utility"/>
+		<PeerRecipient name="Electric Power Utility"/>
+	</Controller>
+	<Service name="deliverWater" status="true">
+		<ServicePlace name="potable water"/>
+		<ServiceTransition name="treat water" preset="" postset="potable water" methodLinkName="treat water" methodLinkRef=""/>
+		<ServiceTransition name="continuing water" preset="potable water" postset="potable water" methodLinkName="transport" methodLinkRef="1"/>
+		<ServiceTransition name="consume water" preset="potable water" postset="" methodLinkName="consume water" methodLinkRef=""/>
+	</Service>
+	<Service name="deliverElectricity" status="true">
+		<ServicePlace name="electric power"/>
+		<ServiceTransition name="generate electric power" preset="" postset="electric power" methodLinkName="generate electric power" methodLinkRef=""/>
+		<ServiceTransition name="continuing electric power" preset="electric power" postset="electric power" methodLinkName="transport" methodLinkRef="0"/>
+		<ServiceTransition name="treat water" preset="electric power" postset="" methodLinkName="treat water" methodLinkRef=""/>
+		<ServiceTransition name="consume water" preset="electric power" postset="" methodLinkName="consume water" methodLinkRef=""/>
+		<ServiceTransition name="charge EV" preset="electric power" postset="" methodLinkName="store" methodLinkRef="2"/>
+	</Service>
+	<Service name="deliverEV" status="true">
+		<ServicePlace name="state of charge"/>
+		<ServiceTransition name="charge battery" preset="" postset="state of charge" methodLinkName="store" methodLinkRef="2"/>
+		<ServiceTransition name="continuing battery" preset="state of charge" postset="state of charge" methodLinkName="store" methodLinkRef="4"/>
+		<ServiceTransition name="discharge battery" preset="state of charge" postset="" methodLinkName="transport" methodLinkRef="3"/>
+	</Service>
+	
+	<Abstractions>
+		<MethodxPort name="transport" ref="0" operand="0" output="0"/>
+		<MethodxPort name="transport" ref="1" operand="1" output="1"/>
+		<MethodxPort name="transport" ref="2" operand="2, 0" output="2"/>
+		<MethodxPort name="transport" ref="3" operand="2" output="2"/>
+		<MethodxPort name="transport" ref="4" operand="2" output="2"/>
+		<MethodPair name1="0" ref1="" name2="transport" ref2="1"/>
+		<MethodPair name1="transport" ref1="1" name2="2" ref2=""/>
+		<MethodPair name1="transport" ref1="0" name2="0" ref2=""/>
+		<MethodPair name1="transport" ref1="0" name2="transport" ref2="2"/>
+		<MethodPair name1="transport" ref1="0" name2="2" ref2=""/>
+		<MethodPair name1="1" ref1="" name2="transport" ref2="0"/>
+		<MethodPair name1="transport" ref1="4" name2="transport" ref2="2"/>
+		<MethodPair name1="transport" ref1="4" name2="transport" ref2="4"/>
+		<MethodPair name1="transport" ref1="4" name2="transport" ref2="3"/>
+		<MethodPair name1="transport" ref1="3" name2="transport" ref2="4"/>
+		<MethodPair name1="transport" ref1="3" name2="transport" ref2="3"/>
+		<MethodPair name1="transport" ref1="3" name2="transport" ref2="2"/>
+		<MethodPair name1="transport" ref1="2" name2="transport" ref2="4"/>
+		<MethodPair name1="transport" ref1="2" name2="transport" ref2="2"/>
+		<MethodPair name1="transport" ref1="2" name2="transport" ref2="3"/>
+	</Abstractions>
+</LFES>
