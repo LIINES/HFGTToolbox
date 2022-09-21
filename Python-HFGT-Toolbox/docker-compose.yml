@@ -1,0 +1,37 @@
+# Builds a single image from our source code, and creates two containers, one for deployment, the other for running unit tests.
+
+# To build and run:
+#     docker-compose build
+# To run for testing:
+#     docker-compose up
+# To run in the background (detached):
+#     docker-compose up -d
+# To Troubleshoot:
+#     docker-compose run --entrypoint /bin/bash --rm python_hfgt_toolbox
+
+version: '3.9'
+
+services:
+
+  run:
+    image: python_hfgt_toolbox
+    environment:
+      TZ: "Australia/Sydney" # Set the container's timezone, otherwise it defaults to UTC
+    build:
+      context: .
+    restart: 'no'
+    entrypoint: poetry run /scripts/run.sh
+    volumes:
+      - ./data:/usr/src/app/python_hfgt_toolbox/data
+      - ./output:/usr/src/app/python_hfgt_toolbox/output
+      - ./src/config:/usr/src/app/python_hfgt_toolbox/config
+
+  test:
+    image: python_hfgt_toolbox
+    entrypoint: poetry run ./scripts/test.sh
+    restart: 'no'
+    # Mount local data and output dirs into container
+    volumes:
+      - ./data:/usr/src/app/python_hfgt_toolbox/data
+      - ./output:/usr/src/app/python_hfgt_toolbox/output
+      - ./src/config:/usr/src/app/python_hfgt_toolbox/config

@@ -1,0 +1,18 @@
+#  Template python-build
+
+#  This template allows you to validate your python code.
+#  The workflow allows running tests and code linting on the default branch.
+
+image: python:3.9
+
+pipelines:
+  default:
+    - step:
+        name: Test & build
+        script:
+          - curl -sSL https://install.python-poetry.org | python3 - --version 1.2.0
+          - export PATH="/root/.local/bin:$PATH" # Add poetry to PATH
+          - poetry install --no-interaction --no-root --sync # install dependencies
+          - chmod +x scripts/*.sh # make scripts executable
+          - poetry run scripts/test.sh # run unit tests
+          - poetry build # build package
