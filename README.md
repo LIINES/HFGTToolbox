@@ -9,22 +9,18 @@ A paper that serves as a user guide on how to use this toolbox has currently bee
 
 The toolbox contains two principal modules: XML2LFES() and raw2FullLFES() that are executed in sequence. In brief, the XML2LFES() module serves to import the input XML file and create the myLFES data structure in a “raw"
 structure. Then, the raw2Full() module makes the HFGT calculations necessary to convert the myLFES data structure to the “full" state.
-
 <img src="Images/HFGTToolbox_overview.png">
 
 The input XML file - "Example_Network.xml" provided in this repository depicts a simplistic 4-Node Smart City Network. The topology of this example network and some of the associated graphs of the HFGT mathematical models are presented below. An input XML file for any engineering system can be generated along the same lines and the engineering system's HFGT models can be computed using this toolbox.
-
 <img src="Images/Example_Network_Graphs.png">
 
 
-## Quickstart (currently under development)
+## Quickstart
 To install as a package, run the following command:
 
-``` poetry add git@github.com:LIINES/HFGTToolbox.git ``` or
+``` poetry add git@github.com:LIINES/HFGTToolbox.git#master ```
 
-``` pip install git@github.com:LIINES/HFGTToolbox.git ``` 
-
-TODO: publish this package somewhere that allows installation like this (eg Pypi, public github etc).
+TODO: publish this package somewhere that allows installation via pip this (eg Pypi, public github etc).
 
 ## Installation
 

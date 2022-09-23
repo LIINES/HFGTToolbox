@@ -60,6 +60,6 @@ jobs:
 
       # run test suite
       - name: Run tests
-        run: poetry run pytest --cov-report term-missing --cov-report html -m static_data --cov=src/wpf --durations=0 --durations-min=0.5 --tb=native
+        run: poetry run pytest --cov-report term-missing --cov-report html --cov=src --durations=0 --durations-min=5.0 --tb=auto
           
 

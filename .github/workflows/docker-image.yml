@@ -1,18 +1,6 @@
-# For PRs, build the docker container, run tests, coverage and build doc and wheel.
+# For PRs, build the docker container, run tests, coverage etc.
 name: Docker Unit Tests
 on: [ push, workflow_dispatch ]
-
-
-env:
-  # Make sure these secrets are set in this git repo or organisation settings:
-
-  # Private package index credentials, for installing and publishing to
-  PUBLISH_URL: ${{secrets.PUBLISH_URL}}
-  PUBLISH_USER: ${{secrets.PUBLISH_USER}}
-  PUBLISH_PASSWORD: ${{secrets.PUBLISH_PASSWORD}}
-
-  # URL with UN and PW for postgres database
-  DB_URL: ${{ secrets.DB_URL }}
 
 jobs:
   test:

@@ -182,4 +182,4 @@ license-check.txt
 output/*.pkl
 /data/ARJulia
 /data/ARPar
-htmlcov/
+*.pkl
