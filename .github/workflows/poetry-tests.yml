@@ -1,0 +1,65 @@
+# On push to branches (but not PRs) Build poetry env with caching and run tests
+# Based on https://github.com/marketplace/actions/install-poetry-action
+
+name: Unit Tests
+on: [ push, workflow_dispatch ]
+
+env:
+  # Make sure these secrets are set in this git repo or organisation settings:
+  PYTHON_VERSION: 3.9.13
+  POETRY_VERSION: 1.2.0
+  JULIA_VERSION: 1.8.1
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, windows-latest ] # macOS-latest - mac costs 10x more to run!
+
+    steps:
+      # check-out repo and set-up python
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up python
+        id: setup-python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{env.PYTHON_VERSION}}
+
+      # install & configure poetry
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: ${{env.POETRY_VERSION}}
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+
+      # Install Julia
+      - name: Install Julia
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: ${{env.JULIA_VERSION}}
+
+      # load cached venv if cache exists
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v2
+        if: runner.os != 'Windows' # caching breaks on windows, known bug
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+
+      # install dependencies if cache does not exist
+      - name: Install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true' || runner.os == 'Windows' # install if cache miss or on windows (never caches)
+        run: poetry install --no-interaction --no-root --remove-untracked
+
+      # run test suite
+      - name: Run tests
+        run: poetry run pytest --cov-report term-missing --cov-report html -m static_data --cov=src/wpf --durations=0 --durations-min=0.5 --tb=native
+          
+
