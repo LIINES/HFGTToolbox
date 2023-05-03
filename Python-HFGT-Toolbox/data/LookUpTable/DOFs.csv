@@ -1,0 +1,12 @@
+ProjectedIndex,Index,DOF
+0,0,Water Treatment Facility: treat water
+1,84,Solar PV: generate electric power
+2,168,House: consume water
+3,179,House: store @ House - charge EV -
+4,195,House: store @ House - park EV -
+5,283,Work Location: store @ Work Location - park EV -
+6,369,Water Pipeline: transport f. Water Treatment Facility t. House - potable water -
+7,470,Power Line 1: transport f. Solar PV t. Water Treatment Facility - electric power at 132kV -
+8,555,Power Line 2: transport f. Solar PV t. House - electric power at 132kV -
+9,659,Road: transport f. House t. Work Location - disCharge EV -
+10,662,Road: transport f. Work Location t. House - disCharge EV -
