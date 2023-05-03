@@ -15,7 +15,8 @@ TODO: publish this package somewhere that allows installation like this (eg Pypi
 To just install this package into an existing virtual environment with python 3.9 follow these steps inside your Terminal or Command Window:
 
 1) run:
-	```cd <System path to Toolbox>/HFGTToolbox-master/Python-HFGT-Toolbox
+	```
+        cd <System path to Toolbox>/HFGTToolbox-master/Python-HFGT-Toolbox
        pip install poetry
        poetry add pyproject.toml
        poetry install
