@@ -651,7 +651,7 @@ def calcControllerJS(LFES):
                         if active > 0:
                             break
                     if active > 0:
-                        break
+                        breakprint(myLFES.__dict__)
                 LFES.AS[w, v] = active
     print("I am exiting calcControllerJS.py")
 

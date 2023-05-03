@@ -12,20 +12,27 @@ TODO: publish this package somewhere that allows installation like this (eg Pypi
 
 ## Installation
 
-To just install this package into an existing environment Follow these steps:
+To just install this package into an existing virtual environment with python 3.9 follow these steps inside your Terminal or Command Window:
 
 1) run:
-	```shell
-	poetry add pyproject.toml
+	```cd <System path to Toolbox>/HFGTToolbox-master/Python-HFGT-Toolbox
+       pip install poetry
+       poetry add pyproject.toml
+       poetry install
 	```
 2) Install Julia into existing environment's path:
 	- Install Julia into your current working environment (https://julialang.org/downloads/). 
-	- Once Julia is installed install the following packages to your Julia install using the following commands in a Julia shell:
-	```Julia shell
+	- Once Julia is installed, install the following packages to your Julia using the following commands from the Julia shell:
+	```
 	using Pkg
 	Pkg.add("CSV")
 	Pkg.add("DataFrames")
 	```
+3) To test that everything is set up correctly try runnning the following two lines:
+```
+python src/python_hfgt_toolbox/PyHFGTToolbox_Analysis.py "data/XMLs/Example_Network.xml" 0
+python src/python_hfgt_toolbox/PyHFGTToolbox_Analysis.py "data/XMLs/Example_Network_DOFs_Idx.xml" 3
+```
 
 ## Setup
 To develop using this source code, follow these steps:
@@ -65,7 +72,7 @@ II) Example_Network_DOFs_Idx.xml - The example network from Chapter 4 of the HFG
 III) AMES_NY_Elec_NG_Oil_Coal.xml - The AMES HFGT compliant XML of the American Multimodal Energy System's region of NY.
 IV) AMES_NY_Elec_NG_Oil_Coal.xml - The AMES HFGT compliant XML of the American Multimodal Energy System's region of NY in the DOF index based format to running the Julia verboseMode(3).
 
-NOTE : The assignment of values to parameters in the LFES class structure happens within the functions.
+NOTE : The assignment of values to parameters in the LFES class structure happens within the functions in XML2LFES and raw2FullLFES.
 
 Also NOTE : This version of the toolbox is work in progress. 
 ********************************************************************************

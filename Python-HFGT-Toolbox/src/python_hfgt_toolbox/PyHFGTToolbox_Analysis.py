@@ -1,8 +1,8 @@
 import sys
 import pickle
 import time
+import numpy as np
 from pathlib import Path
-
 from loguru import logger
 
 from python_hfgt_toolbox.XML2LFES import XML2LFES
@@ -34,6 +34,17 @@ def run_analysis(xml_file: str, verbose_mode: int, out_dir = 'output'):
     output_pkl.parent.mkdir(parents=True, exist_ok=True)
     with open(output_pkl, 'wb') as afile:
         pickle.dump(myLFES, afile)
+
+    save_dir = Path("data/IncidenceMatrices")
+    save_dir.mkdir(parents=True, exist_ok=True)
+    if myLFES.MRT != 0:
+        np.savetxt(f"{save_dir}/MRT.csv", np.transpose(np.append(myLFES.MRT.coords,[myLFES.MRT.data], axis=0)), delimiter=",", header="Operand,Buffer,DOF,Value",comments='')
+    np.savetxt(f"{save_dir}/MRT_neg.csv", np.transpose(np.append(myLFES.MRT_neg.coords,[myLFES.MRT_neg.data], axis=0)), delimiter=",", header="Operand,Buffer,DOF,Value",comments='')
+    np.savetxt(f"{save_dir}/MRT_pos.csv", np.transpose(np.append(myLFES.MRT_pos.coords,[myLFES.MRT_pos.data], axis=0)), delimiter=",", header="Operand,Buffer,DOF,Value",comments='')
+    if myLFES.MRTproj != 0:
+        np.savetxt(f"{save_dir}/MRTproj.csv", np.transpose(np.append(myLFES.MRTproj.coords,[myLFES.MRTproj.data], axis=0)), delimiter=",", header="Operand,Buffer,DOF,Value",comments='')
+        np.savetxt(f"{save_dir}/MRTproj_neg.csv", np.transpose(np.append(myLFES.MRTproj_neg.coords,[myLFES.MRTproj_neg.data], axis=0)), delimiter=",", header="Operand,Buffer,DOF,Value",comments='')
+        np.savetxt(f"{save_dir}/MRTproj_pos.csv", np.transpose(np.append(myLFES.MRTproj_pos.coords,[myLFES.MRTproj_pos.data], axis=0)), delimiter=",", header="Operand,Buffer,DOF,Value",comments='')
 
     return output_pkl.absolute()
 

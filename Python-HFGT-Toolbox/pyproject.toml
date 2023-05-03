@@ -15,7 +15,7 @@ loguru = "^0.5.3"
 numpy = "^1.23.2"
 pandas = "^1.4.4"
 scipy = "^1.9.1"
-numba = "^0.56.2"
+numba = "^0.57.0"
 sparse= "^0.13.0"
 pyproject-toml = "^0.0.11"
 
