@@ -73,7 +73,7 @@ def raw2FullLFES(LFES,verboseMode):
         # Updates Cyber matrices
         if LFES.numControllers > 0:
             # Calculate Cyber Physical Resource Agency Matrix Updates: CPRAM, CAM
-            makeCPRAM(LFES)
+            makeCPRAM(LFES,verboseMode)
             # # Calculate Cyber Physical Process Agregation Matrix Updates: CPPAM
             # makeCPPAM(LFES)
             # # Calculate Cyber Physical JS  to Update: AS
@@ -111,6 +111,16 @@ def raw2FullLFES(LFES,verboseMode):
         #   DOFS, numTransformProcess, numTransportProcess, numHoldingProcesses,
         #   numTransportRefProcess, numProcesses, numResources, MRT_neg, MRT_pos, AS
         methodsToInc(LFES)
+
+        # Updates Cyber matrices
+        if LFES.numControllers > 0:
+            initializeControl(LFES)
+            # Calculate Cyber Physical Resource Agency Matrix Updates: CPRAM, CAM
+            makeCPRAM(LFES, verboseMode)
+            # # Calculate Cyber Physical Process Agregation Matrix Updates: CPPAM
+            # makeCPPAM(LFES)
+            # Calculate Controller Adjacency Matrix Updates: CADM
+            makeCADM(LFES)
 
         # CalcARIncJulia Updates: MR_neg, MR_pos, idxAR
         print('Entering calcAR')

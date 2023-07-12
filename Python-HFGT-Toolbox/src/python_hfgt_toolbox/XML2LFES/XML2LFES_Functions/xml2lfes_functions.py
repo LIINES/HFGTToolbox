@@ -325,6 +325,7 @@ def setupControllers(LFES, root):
             else:
                 PR = object()
             LFES.controllers.peerRecipients.append(PR)
+            LFES.numControllers += 1
     print("I am exiting setupControllers.py")
 
 def setupOperands(LFES, root):

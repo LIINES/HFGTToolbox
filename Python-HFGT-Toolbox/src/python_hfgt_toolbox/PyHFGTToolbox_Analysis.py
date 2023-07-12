@@ -48,7 +48,7 @@ def run_analysis(xml_file: str, verbose_mode: int, out_dir = 'output'):
 
     if verbose_mode < 3:
         np.savetxt(f"{save_dir}/LookUpTable/Operands.csv",np.transpose([range(myLFES.numOperands), myLFES.setOperands]), delimiter=",", header="Index,Operands",comments='', fmt="%s")
-        np.savetxt(f"{save_dir}/LookUpTable/Buffers.csv",np.transpose([range(myLFES.numBuffers), np.append(myLFES.machines.name,myLFES.indBuffers.name)]), delimiter=",", header="Index,Operands",comments='', fmt="%s")
+        np.savetxt(f"{save_dir}/LookUpTable/Buffers.csv",np.transpose([range(myLFES.numBuffers), np.append(myLFES.machines.name,myLFES.indBuffers.name)]), delimiter=",", header="Index,Buffers",comments='', fmt="%s")
 
         idxAS = np.nonzero(myLFES.AS.T)
         DOFs = []

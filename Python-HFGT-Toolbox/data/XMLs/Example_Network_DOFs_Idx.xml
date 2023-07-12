@@ -3,33 +3,34 @@
 	<Operand name="0"></Operand>
 	<Operand name="1"></Operand>
     <Operand name="2"></Operand>
-	<MethodxForm resource="0" gpsX="0" gpsY="1" name="treat water" status="true" operand="0" output="1" idxProc="0" controller="Water Utility"/>
-	<MethodxForm resource="1" gpsX="0" gpsY="0" name="generate electric power" status="true" operand="" output="0" idxProc="1" controller="Electric Power Utility"/>
-	<MethodxForm resource="2" gpsX="1" gpsY="1" name="consume water" status="true" operand="0, 1" output="" idxProc="2" controller="End User"/>
-	<MethodxPort resource="2" gpsX="1" gpsY="1" name="store" status="true" origin="2" dest="2" ref="1" operand="2" output="2" controller="End User"/>
-	<MethodxPort resource="2" gpsX="1" gpsY="1" name="store" status="true" origin="2" dest="2" ref="0" operand="2, 0" output="2" controller="End User"/>
-	<MethodxPort resource="3" gpsX="1" gpsY="0" name="store" status="true" origin="3" dest="3" ref="1" operand="2" output="2" controller="End User"/>
-	<MethodxPort resource="4" name="transport" status="true" origin="0" dest="2" ref="2" operand="1" output="1" controller="Water Utility"/>
-	<MethodxPort resource="5" name="transport" status="true" origin="1" dest="0" ref="3" operand="0" output="0" controller="Electric Power Utility"/>
-	<MethodxPort resource="6" name="transport" status="true" origin="1" dest="2" ref="3" operand="0" output="0" controller="Electric Power Utility"/>
-	<MethodxPort resource="7" name="transport" status="true" origin="3" dest="2" ref="4" operand="2" output="2" controller="End User"/>
-	<MethodxPort resource="7" name="transport" status="true" origin="2" dest="3" ref="4" operand="2" output="2" controller="End User"/>
+	<MethodxForm resource="0" gpsX="0" gpsY="1" name="treat water" status="true" operand="0" output="1" idxProc="0" controller="0"/>
+	<MethodxForm resource="1" gpsX="0" gpsY="0" name="generate electric power" status="true" operand="" output="0" idxProc="1" controller="1"/>
+	<MethodxForm resource="2" gpsX="1" gpsY="1" name="consume water" status="true" operand="0, 1" output="" idxProc="2" controller="2"/>
+	<MethodxPort resource="2" gpsX="1" gpsY="1" name="store" status="true" origin="2" dest="2" ref="1" operand="2" output="2" controller="2"/>
+	<MethodxPort resource="2" gpsX="1" gpsY="1" name="store" status="true" origin="2" dest="2" ref="0" operand="2, 0" output="2" controller="2"/>
+	<MethodxPort resource="3" gpsX="1" gpsY="0" name="store" status="true" origin="3" dest="3" ref="1" operand="2" output="2" controller="2"/>
+	<MethodxPort resource="4" name="transport" status="true" origin="0" dest="2" ref="2" operand="1" output="1" controller="0"/>
+	<MethodxPort resource="5" name="transport" status="true" origin="1" dest="0" ref="3" operand="0" output="0" controller="1"/>
+	<MethodxPort resource="6" name="transport" status="true" origin="1" dest="2" ref="3" operand="0" output="0" controller="1"/>
+	<MethodxPort resource="7" name="transport" status="true" origin="3" dest="2" ref="4" operand="2" output="2" controller="2"/>
+	<MethodxPort resource="7" name="transport" status="true" origin="2" dest="3" ref="4" operand="2" output="2" controller="2"/>
 	
-	<Controller name="Water Utility" status="true">
-		<PeerRecipient name="Water Utility"/>
-		<PeerRecipient name="Electric Power Utility"/>
-		<PeerRecipient name="End User"/>
+	<Controller name="0" nameStr="Water Utility" status="true">
+		<PeerRecipient name="0"/>
+		<PeerRecipient name="1"/>
+		<PeerRecipient name="2"/>
 	</Controller>
-	<Controller name="Electric Power Utility" status="true">
-		<PeerRecipient name="Electric Power Utility"/>
-		<PeerRecipient name="Water Utility"/>
-		<PeerRecipient name="End User"/>
+	<Controller name="1" nameStr="Electric Power Utility" status="true">
+		<PeerRecipient name="1"/>
+		<PeerRecipient name="0"/>
+		<PeerRecipient name="2"/>
 	</Controller>
-	<Controller name="End User" status="true">
-		<PeerRecipient name="End User"/>
-		<PeerRecipient name="Water Utility"/>
-		<PeerRecipient name="Electric Power Utility"/>
+	<Controller name="2" nameStr="End User" status="true">
+		<PeerRecipient name="2"/>
+		<PeerRecipient name="0"/>
+		<PeerRecipient name="1"/>
 	</Controller>
+	
 	<Service name="deliverWater" status="true">
 		<ServicePlace name="potable water"/>
 		<ServiceTransition name="treat water" preset="" postset="potable water" methodLinkName="treat water" methodLinkRef=""/>

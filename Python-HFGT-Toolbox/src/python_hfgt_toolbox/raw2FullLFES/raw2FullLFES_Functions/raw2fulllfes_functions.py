@@ -540,7 +540,48 @@ def initializeControl(LFES):
     print("I am exiting initializeControl.py")
 
 
-def makeCPRAM(LFES):
+# def makeCPRAM(LFES):
+#     '''
+#     This function calculates the Cyber Physical Resource Agency Matrix CPRAM.
+#     :param LFES:
+#     :return:
+#     '''
+#     print("I am entering makeCPRAM.py")
+#     resourceControl = []
+#     resourceAutonomous = []
+#     if LFES.numMachines > 0:
+#         resourceControl = resourceControl + LFES.machines.controller
+#         if LFES.machines.autonomous:
+#             resourceAutonomous = np.hstack((resourceAutonomous, LFES.machines.autonomous))
+#         else:
+#             resourceAutonomous = np.hstack((resourceAutonomous, np.tile(['true'], LFES.numMachines)))
+#     if LFES.numIndBuffers > 0:
+#         resourceControl = resourceControl + LFES.indBuffers.controller
+#         if LFES.indBuffers.autonomous:
+#             resourceAutonomous = np.hstack((resourceAutonomous, LFES.indBuffers.autonomous))
+#         else:
+#             resourceAutonomous = np.hstack((resourceAutonomous, np.tile(['true'], LFES.numIndBuffers)))
+#     if LFES.numTransporters > 0:
+#         resourceControl = resourceControl + LFES.transporters.controller
+#         if LFES.transporters.autonomous:
+#             resourceAutonomous = np.hstack((resourceAutonomous, LFES.transporters.autonomous))
+#         else:
+#             resourceAutonomous = np.hstack((resourceAutonomous, np.tile(['true'], LFES.numTransporters)))
+#     LFES.CPRAM = LFES.CPRAM.tolil()
+#     LFES.CAM = LFES.CAM.tolil()
+#     for k1 in range(LFES.numControllers):
+#         for k2 in range(LFES.numResources):
+#             if LFES.controllers.name[k1] in resourceControl[k2]:
+#                 LFES.CPRAM[k2, LFES.numResources + k1] = 1
+#                 LFES.CAM[k2, k1] = 1
+#
+#     resourceAutonomous = np.array([x == 'true' for x in resourceAutonomous]).reshape((LFES.numResources, 1))
+#     diagMat = np.zeros((LFES.numResources, LFES.numResources), dtype=int)
+#     np.fill_diagonal(diagMat, 1)
+#     LFES.CPRAM[:, 0:LFES.numResources] = np.multiply(diagMat, resourceAutonomous)
+#     print("I am exiting makeCPRAM.py")
+
+def makeCPRAM(LFES, verboseMode):
     '''
     This function calculates the Cyber Physical Resource Agency Matrix CPRAM.
     :param LFES:
@@ -549,37 +590,58 @@ def makeCPRAM(LFES):
     print("I am entering makeCPRAM.py")
     resourceControl = []
     resourceAutonomous = []
-    if LFES.numMachines > 0:
-        resourceControl = resourceControl + LFES.machines.controller
-        if LFES.machines.autonomous:
-            resourceAutonomous = np.hstack((resourceAutonomous, LFES.machines.autonomous))
-        else:
-            resourceAutonomous = np.hstack((resourceAutonomous, np.tile(['true'], LFES.numMachines)))
-    if LFES.numIndBuffers > 0:
-        resourceControl = resourceControl + LFES.indBuffers.controller
-        if LFES.indBuffers.autonomous:
-            resourceAutonomous = np.hstack((resourceAutonomous, LFES.indBuffers.autonomous))
-        else:
-            resourceAutonomous = np.hstack((resourceAutonomous, np.tile(['true'], LFES.numIndBuffers)))
-    if LFES.numTransporters > 0:
-        resourceControl = resourceControl + LFES.transporters.controller
-        if LFES.transporters.autonomous:
-            resourceAutonomous = np.hstack((resourceAutonomous, LFES.transporters.autonomous))
-        else:
-            resourceAutonomous = np.hstack((resourceAutonomous, np.tile(['true'], LFES.numTransporters)))
     LFES.CPRAM = LFES.CPRAM.tolil()
     LFES.CAM = LFES.CAM.tolil()
-    for k1 in range(LFES.numControllers):
-        for k2 in range(LFES.numResources):
-            if LFES.controllers.name[k1] in resourceControl[k2]:
-                LFES.CPRAM[k2, LFES.numResources + k1] = 1
-                LFES.CAM[k2, k1] = 1
+    if verboseMode <=2 :
+        if LFES.numMachines > 0:
+            resourceControl = resourceControl + LFES.machines.controller
+            if LFES.machines.autonomous:
+                resourceAutonomous = np.hstack((resourceAutonomous, LFES.machines.autonomous))
+            else:
+                resourceAutonomous = np.hstack((resourceAutonomous, np.tile(['true'], LFES.numMachines)))
+        if LFES.numIndBuffers > 0:
+            resourceControl = resourceControl + LFES.indBuffers.controller
+            if LFES.indBuffers.autonomous:
+                resourceAutonomous = np.hstack((resourceAutonomous, LFES.indBuffers.autonomous))
+            else:
+                resourceAutonomous = np.hstack((resourceAutonomous, np.tile(['true'], LFES.numIndBuffers)))
+        if LFES.numTransporters > 0:
+            resourceControl = resourceControl + LFES.transporters.controller
+            if LFES.transporters.autonomous:
+                resourceAutonomous = np.hstack((resourceAutonomous, LFES.transporters.autonomous))
+            else:
+                resourceAutonomous = np.hstack((resourceAutonomous, np.tile(['true'], LFES.numTransporters)))
+        for k1 in range(LFES.numControllers):
+            for k2 in range(LFES.numResources):
+                if LFES.controllers.name[k1] in resourceControl[k2]:
+                    LFES.CPRAM[k2, LFES.numResources + k1] = 1
+                    LFES.CAM[k2, k1] = 1
+        resourceAutonomous = np.array([x == 'true' for x in resourceAutonomous]).reshape((LFES.numResources, 1))
+        diagMat = np.zeros((LFES.numResources, LFES.numResources), dtype=int)
+        np.fill_diagonal(diagMat, 1)
+        LFES.CPRAM[:, 0:LFES.numResources] = np.multiply(diagMat, resourceAutonomous)
 
-    resourceAutonomous = np.array([x == 'true' for x in resourceAutonomous]).reshape((LFES.numResources, 1))
-    diagMat = np.zeros((LFES.numResources, LFES.numResources), dtype=int)
-    np.fill_diagonal(diagMat, 1)
-    LFES.CPRAM[:, 0:LFES.numResources] = np.multiply(diagMat, resourceAutonomous)
+    else:
+        LFES.methodsxPort.resource = np.array(LFES.methodsxPort.resource)
+        LFES.methodsxForm.resource = np.array(LFES.methodsxForm.resource)
+        for k1 in range(len(LFES.methodsxPort.resource)):
+            for k2 in LFES.methodsxPort.controller[k1]:
+                try:
+                    LFES.CPRAM[LFES.methodsxPort.resource[k1], LFES.numResources + int(k2)] = 1
+                    LFES.CAM[LFES.methodsxPort.resource[k1], int(k2)] = 1
+                except:
+                    continue
+        for k1 in range(len(LFES.methodsxForm.resource)):
+            for k2 in LFES.methodsxForm.controller[k1]:
+                LFES.CPRAM[LFES.methodsxForm.resource[k1], LFES.numResources + int(k2)] = 1
+                LFES.CAM[LFES.methodsxForm.resource[k1], int(k2)] = 1
+        diagMat = np.zeros((LFES.numResources, LFES.numResources), dtype=int)
+        np.fill_diagonal(diagMat, 1)
+        LFES.CPRAM[:, 0:LFES.numResources] = diagMat
+
     print("I am exiting makeCPRAM.py")
+
+
 
 
 def makeCPPAM(LFES):
