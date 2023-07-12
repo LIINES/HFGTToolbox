@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="Example Network">
+	<Operand name="electric power at 132kV"></Operand>
+	<Operand name="potable water"></Operand>
+    <Operand name="EV"></Operand>
+	
+	<Machine name="Water Treatment Facility" gpsX="0" gpsY="1" controller="Water Utility">
+		<MethodxForm name="treat water" status="true" operand="electric power at 132kV" output="potable water"/>
+	</Machine>
+	<Machine name="Solar PV" gpsX="0" gpsY="0" controller="Electric Power Utility">
+		<MethodxForm name="generate electric power" status="true" operand="" output="electric power at 132kV"/>
+	</Machine>
+	<Machine name="House" gpsX="1" gpsY="1" controller="End User">
+		<MethodxForm name="consume water" status="true" operand="electric power at 132kV, potable water" output=""/>
+		<MethodxPort name="store" status="true" origin="House" dest="House" ref="park EV" operand="EV" output="EV"/>
+		<MethodxPort name="store" status="true" origin="House" dest="House" ref="charge EV" operand="EV, electric power at 132kV" output="EV"/>
+	</Machine>
+	
+	<IndBuffer name="Work Location" gpsX="1" gpsY="0" controller="End User">
+		<MethodxPort name="store" status="true" origin="Work Location" dest="Work Location" ref="park EV" operand="EV" output="EV"/>
+	</IndBuffer>
+	
+	<Transporter name="Water Pipeline" controller="Water Utility">
+		<MethodxPort name="transport" status="true" origin="Water Treatment Facility" dest="House" ref="potable water" operand="potable water" output="potable water"/>
+	</Transporter>
+	<Transporter name="Power Line 1" controller="Electric Power Utility">
+		<MethodxPort name="transport" status="true" origin="Solar PV" dest="Water Treatment Facility" ref="electric power at 132kV" operand="electric power at 132kV" output="electric power at 132kV"/>
+	</Transporter>
+	<Transporter name="Power Line 2" controller="Electric Power Utility">
+		<MethodxPort name="transport" status="true" origin="Solar PV" dest="House" ref="electric power at 132kV" operand="electric power at 132kV" output="electric power at 132kV"/>
+	</Transporter>
+	<Transporter name="Road" controller="End User">
+		<MethodxPort name="transport" status="true" origin="Work Location" dest="House" ref="disCharge EV" operand="EV" output="EV"/>
+		<MethodxPort name="transport" status="true" origin="House" dest="Work Location" ref="disCharge EV" operand="EV" output="EV"/>
+	</Transporter>
+	
+	<Controller name="Water Utility" status="true">
+		<PeerRecipient name="Water Utility"/>
+		<PeerRecipient name="Electric Power Utility"/>
+		<PeerRecipient name="End User"/>
+	</Controller>
+	<Controller name="Electric Power Utility" status="true">
+		<PeerRecipient name="Electric Power Utility"/>
+		<PeerRecipient name="Water Utility"/>
+		<PeerRecipient name="End User"/>
+	</Controller>
+	<Controller name="End User" status="true">
+		<PeerRecipient name="End User"/>
+		<PeerRecipient name="Water Utility"/>
+		<PeerRecipient name="Electric Power Utility"/>
+	</Controller>
+
+	<Service name="deliverWater" status="true">
+		<ServicePlace name="potable water"/>
+		<ServiceTransition name="treat water" preset="" postset="potable water" methodLinkName="treat water" methodLinkRef=""/>
+		<ServiceTransition name="continuing water" preset="potable water" postset="potable water" methodLinkName="transport" methodLinkRef="potable water"/>
+		<ServiceTransition name="consume water" preset="potable water" postset="" methodLinkName="consume water" methodLinkRef=""/>
+	</Service>
+	<Service name="deliverElectricity" status="true">
+		<ServicePlace name="electric power"/>
+		<ServiceTransition name="generate electric power" preset="" postset="electric power" methodLinkName="generate electric power" methodLinkRef=""/>
+		<ServiceTransition name="continuing electric power" preset="electric power" postset="electric power" methodLinkName="transport" methodLinkRef="electric power at 132kV"/>
+		<ServiceTransition name="treat water" preset="electric power" postset="" methodLinkName="treat water" methodLinkRef=""/>
+		<ServiceTransition name="consume water" preset="electric power" postset="" methodLinkName="consume water" methodLinkRef=""/>
+		<ServiceTransition name="charge EV" preset="electric power" postset="" methodLinkName="store" methodLinkRef="charge EV"/>
+	</Service>
+	<Service name="deliverEV" status="true">
+		<ServicePlace name="state of charge"/>
+		<ServiceTransition name="charge battery" preset="" postset="state of charge" methodLinkName="store" methodLinkRef="charge EV"/>
+		<ServiceTransition name="continuing battery" preset="state of charge" postset="state of charge" methodLinkName="store" methodLinkRef="park EV"/>
+		<ServiceTransition name="discharge battery" preset="state of charge" postset="" methodLinkName="transport" methodLinkRef="disCharge EV"/>
+	</Service>
+	
+	<Abstractions>
+		<MethodxPort name="transport" ref="charge EV" operand="EV, electric power at 132kV" output="EV"/>
+		<MethodxPort name="transport" ref="park EV" operand="EV" output="EV"/>
+		<MethodxPort name="transport" ref="potable water" operand="potable water" output="potable water"/>
+		<MethodxPort name="transport" ref="electric power at 132kV" operand="electric power at 132kV" output="electric power at 132kV"/>
+		<MethodxPort name="transport" ref="disCharge EV" operand="EV" output="EV"/>
+		<MethodPair name1="treat water" ref1="" name2="transport" ref2="potable water"/>
+		<MethodPair name1="transport" ref1="potable water" name2="consume water" ref2=""/>
+		<MethodPair name1="transport" ref1="electric power at 132kV" name2="treat water" ref2=""/>
+		<MethodPair name1="transport" ref1="electric power at 132kV" name2="transport" ref2="charge EV"/>
+		<MethodPair name1="transport" ref1="electric power at 132kV" name2="consume water" ref2=""/>
+		<MethodPair name1="generate electric power" ref1="" name2="transport" ref2="electric power at 132kV"/>
+		<MethodPair name1="transport" ref1="park EV" name2="transport" ref2="charge EV"/>
+		<MethodPair name1="transport" ref1="park EV" name2="transport" ref2="park EV"/>
+		<MethodPair name1="transport" ref1="park EV" name2="transport" ref2="disCharge EV"/>
+		<MethodPair name1="transport" ref1="disCharge EV" name2="transport" ref2="park EV"/>
+		<MethodPair name1="transport" ref1="disCharge EV" name2="transport" ref2="disCharge EV"/>
+		<MethodPair name1="transport" ref1="disCharge EV" name2="transport" ref2="charge EV"/>
+		<MethodPair name1="transport" ref1="charge EV" name2="transport" ref2="park EV"/>
+		<MethodPair name1="transport" ref1="charge EV" name2="transport" ref2="charge EV"/>
+		<MethodPair name1="transport" ref1="charge EV" name2="transport" ref2="disCharge EV"/>
+	</Abstractions>
+</LFES>
