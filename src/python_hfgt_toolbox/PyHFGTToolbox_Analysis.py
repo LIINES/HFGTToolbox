@@ -5,11 +5,14 @@ import numpy as np
 from pathlib import Path
 from loguru import logger
 
+import json
+import copy
+
 from python_hfgt_toolbox.XML2LFES import XML2LFES
 from python_hfgt_toolbox.raw2FullLFES import raw2FullLFES
 
 
-def run_analysis(xml_file: str, verbose_mode: int, out_dir = 'output'):
+def run_analysis(xml_file: str, verbose_mode: int, out_dir = 'data/Pickles/myLFES.pkl'):
     """
     Runs HFGT analysis using the provided XML file.
 
@@ -30,10 +33,18 @@ def run_analysis(xml_file: str, verbose_mode: int, out_dir = 'output'):
     end_t = time.time()
     print('total time taken: %f' % (end_t - start_t))
 
-    output_pkl = Path(f'{out_dir}/Pickles/myLFES.pkl')
+    output_pkl = Path(out_dir)
     output_pkl.parent.mkdir(parents=True, exist_ok=True)
     with open(output_pkl, 'wb') as afile:
         pickle.dump(myLFES, afile)
+
+    outputLFES = copy.deepcopy(myLFES)
+    output_json = open('data/Pickles/myLFES.json', 'w')
+    json.dump(outputLFES.returnJSON(), output_json)
+    output_json.close()
+
+
+    ### Additional matrix outputs saved to CSV files puled from the LFES object ###
 
     save_dir = Path("data/")
     save_dir.mkdir(parents=True, exist_ok=True)

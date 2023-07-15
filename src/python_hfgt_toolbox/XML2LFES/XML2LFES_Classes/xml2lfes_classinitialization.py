@@ -17,6 +17,13 @@ class Machines():
         self.idxMachine = []
         self.idxResource = []
         self.autonomous = []
+    def __repr__(self):
+        output = self.__dict__
+        for k1 in range(len(self.methodsxForm)):
+            output['methodsxForm'][k1] = self.methodsxForm[k1].__repr__()
+        for k2 in range(len(self.methodsxPort)):
+            output['methodsxPort'][k2] = self.methodsxPort[k2].__repr__()
+        return output
 
 
 class IndBuffers():
@@ -29,6 +36,11 @@ class IndBuffers():
         self.idxBuffers = []
         self.idxResource = []
         self.autonomous = []
+    def __repr__(self):
+        output = self.__dict__
+        for k2 in range(len(self.methodsxPort)):
+            output['methodsxPort'][k2] = self.methodsxPort[k2].__repr__()
+        return output
 
 
 class Transporters():
@@ -39,6 +51,11 @@ class Transporters():
         self.idxTransporters = []
         self.idxResource = []
         self.autonomous = []
+    def __repr__(self):
+        output = self.__dict__
+        for k2 in range(len(self.methodsxPort)):
+            output['methodsxPort'][k2] = self.methodsxPort[k2].__repr__()
+        return output
 
 
 class Controllers():
@@ -47,6 +64,13 @@ class Controllers():
         self.name = []
         self.peerRecipients = []
         self.methodsxCtrl = []
+    def __repr__(self):
+        output = self.__dict__
+        for k1 in range(len(self.peerRecipients)):
+            output['peerRecipients'][k1] = self.peerRecipients[k1].__repr__()
+        for k2 in range(len(self.methodsxCtrl)):
+            output['methodsxCtrl'][k2] = self.methodsxCtrl[k2].__repr__()
+        return output
 
 
 class Services():
@@ -72,11 +96,52 @@ class Services():
         self.xPortLambda_pos = []
         self.Mneg = []
         self.Mpos = []
+    def __repr__(self):
+        output = self.__dict__
+        for k1 in range(len(self.servicePlaces)):
+            output['servicePlaces'][k1] = self.servicePlaces[k1].__repr__()
+        for k2 in range(len(self.serviceTransitions)):
+            output['serviceTransitions'][k2] = self.serviceTransitions[k2].__repr__()
+        for k3 in range(len(self.serviceNets)):
+            output['serviceNets'][k3] = self.serviceNets[k3].__repr__()
+        for k4 in range(len(self.dualAdjacency)):
+            output['dualAdjacency'][k4] = self.dualAdjacency[k4].__dict__
+            output['dualAdjacency'][k4]['indices'] = output['dualAdjacency'][k4]['indices'].tolist()
+            output['dualAdjacency'][k4]['indptr'] = output['dualAdjacency'][k4]['indptr'].tolist()
+            output['dualAdjacency'][k4]['data'] = output['dualAdjacency'][k4]['data'].tolist()
+        for k5 in range(len(self.Mneg)):
+            output['Mneg'][k5] = self.Mneg[k5].__dict__
+            output['Mneg'][k5]['indices'] = output['Mneg'][k5]['indices'].tolist()
+            output['Mneg'][k5]['indptr'] = output['Mneg'][k5]['indptr'].tolist()
+            output['Mneg'][k5]['data'] = output['Mneg'][k5]['data'].tolist()
+        for k6 in range(len(self.Mpos)):
+            output['Mpos'][k6] = self.Mpos[k6].__dict__
+            output['Mpos'][k6]['indices'] = output['Mpos'][k6]['indices'].tolist()
+            output['Mpos'][k6]['indptr'] = output['Mpos'][k6]['indptr'].tolist()
+            output['Mpos'][k6]['data'] = output['Mpos'][k6]['data'].tolist()
+        for k7 in range(len(self.RawLambda)):
+            output['RawLambda'][k7] = self.RawLambda[k7].tolist()
+            output['RawLambda_neg'][k7] = self.RawLambda_neg[k7].tolist()
+            output['RawLambda_pos'][k7] = self.RawLambda_pos[k7].tolist()
+            output['Lambda'][k7] = self.Lambda[k7].tolist()
+            output['RawxFormLambda'][k7] = self.RawxFormLambda[k7].tolist()
+            output['RawxFormLambda_pos'][k7] = self.RawxFormLambda_pos[k7].tolist()
+            output['RawxFormLambda_neg'][k7] = self.RawxFormLambda_neg[k7].tolist()
+            output['xFormLambda'][k7] = self.xFormLambda[k7].tolist()
+            output['xPortLambda'][k7] = self.xPortLambda[k7].tolist()
+            output['xPortLambda_neg'][k7] = self.xPortLambda_neg[k7].tolist()
+            output['xPortLambda_pos'][k7] = self.xPortLambda_pos[k7].tolist()
+
+
+        return output
 
         
 class servicePlace():
     def __init__(self):
         self.name = []
+    def __repr__(self):
+        output = self.__dict__
+        return output
 
 
 class serviceTransition():
@@ -87,11 +152,17 @@ class serviceTransition():
         self.methodLinkName = []
         self.methodLinkRef = []
         self.methodLinkIdx = []
+    def __repr__(self):
+        output = self.__dict__
+        return output
 
 
 class serviceNet():
     def __init__(self):
         self.name = []
+    def __repr__(self):
+        output = self.__dict__
+        return output
 
 
 class Abstractions():
@@ -99,12 +170,21 @@ class Abstractions():
         self.methodsxPort = methodxPort()
         self.methodsxForm = methodxForm()
         self.methodPair = methodPair()
+    def __repr__(self):
+        output = self.__dict__
+        output['methodsxForm'] = self.methodsxForm.__repr__()
+        output['methodsxPort'] = self.methodsxPort.__repr__()
+        output['methodPair'] = self.methodPair.__repr__()
+        return output
 
 
 class Resources():
     def __init__(self):
         self.names = []
         self.idx = []
+    def __repr__(self):
+        output = self.__dict__
+        return output
 
 
 class methodxForm():
@@ -114,6 +194,9 @@ class methodxForm():
         self.output = []
         self.status = []
         self.idxForm = []
+    def __repr__(self):
+        output = self.__dict__
+        return output
 
 
 class methodxPort():
@@ -132,6 +215,9 @@ class methodxPort():
         self.idxHold = []
         self.idxPort = []
         self.idxPortRef = []
+    def __repr__(self):
+        output = self.__dict__
+        return output
 
 
 class methodxCtrl():
@@ -141,6 +227,9 @@ class methodxCtrl():
         self.output = []
         self.status = []
         self.ref = []
+    def __repr__(self):
+        output = self.__dict__
+        return output
 
 
 class methodPair():
@@ -151,11 +240,19 @@ class methodPair():
         self.ref2 = []
         self.idxProc1 = []
         self.idxProc2 = []
+    def __repr__(self):
+        output = self.__dict__
+        output['idxProc1'] = list(map(str,self.idxProc1))
+        output['idxProc2'] = list(map(str,self.idxProc2))
+        return output
 
 
 class peerRecipient():
     def __init__(self):
         self.name = []
+    def __repr__(self):
+        output = self.__dict__
+        return output
 
 
 class PetriNetwork():
@@ -172,13 +269,18 @@ class PetriNetwork():
             self.token = 0
             self.state = 0
         print('I am exiting PetriNetwork.py')
-
     def importPetriNetwork(self, myLFES):
         self.name = myLFES.name
         self.place = Place(myLFES)
         self.transition = Transition(myLFES)
         self.arc = Arc(myLFES)
         self.state = 0
+    def __repr__(self):
+        output = self.__dict__
+        output['place'] = self.place.__repr__()
+        output['transition'] = self.transition.__repr__()
+        output['arc'] = self.arc.__repr__()
+        return output
 
 
 class Place():
@@ -194,9 +296,11 @@ class Place():
         if args and len(args) == 1:
             self.importPlace(args[0])
         print('I am exiting Place.py')
-
     def importPlace(self, myLFES):
         pass
+    def __repr__(self):
+        output = self.__dict__
+        return output
 
 
 class Transition():
@@ -216,9 +320,11 @@ class Transition():
         if args and len(args) == 1:
             self.importTransition(args[0])
         print('I am exiting Transition.py')
-
     def importTransition(self, myLFES):
         pass
+    def __repr__(self):
+        output = self.__dict__
+        return output
 
 
 class Arc():
@@ -233,7 +339,6 @@ class Arc():
         if args and len(args) == 1:
             self.importArc(args[0])
         print('I am exiting Arc.py')
-
     def importArc(self, myPetriNetwork):
         if myPetriNetwork.transition.origin:
             for t1 in range(len(myPetriNetwork.transition.index)):
@@ -255,6 +360,9 @@ class Arc():
                                 [myPetriNetwork.transition.gpsX[t1], myPetriNetwork.transition.gpsY[t1]])
                             self.arcTPTo.append([myPetriNetwork.place.gpsX[self.arcTPidx[-1][0]],
                                                  myPetriNetwork.place.gpsY[self.arcTPidx[-1][1]]])
+    def __repr__(self):
+        output = self.__dict__
+        return output
 
 
 class LFES:
@@ -345,4 +453,66 @@ class LFES:
         self.DOFR3 = 0
         self.DOFR4 = 0
         self.DOFR5 = 0
+
+    # def __repr__(self):
+    def returnJSON(self):
+        output = self.__dict__
+
+        output['machines'] = output['machines'].__repr__()
+        output['indBuffers'] = output['indBuffers'].__repr__()
+        output['transporters'] = output['transporters'].__repr__()
+        output['services'] = output['services'].__repr__()
+        output['abstract'] = output['abstract'].__repr__()
+        output['resources'] = output['resources'].__repr__()
+        output['controllers'] = output['controllers'].__repr__()
+
+        outputValues = list(output.values())
+        outputKeys = list(output.keys())
+        for k1 in range(len(outputValues)):
+            if 'coo_matrix' in str(type(outputValues[k1])):
+                output[outputKeys[k1]] = outputValues[k1].__dict__
+                output[outputKeys[k1]]['row'] = output[outputKeys[k1]]['row'].tolist()
+                output[outputKeys[k1]]['col'] = output[outputKeys[k1]]['col'].tolist()
+                output[outputKeys[k1]]['data'] = output[outputKeys[k1]]['data'].tolist()
+            elif 'ndarray' in str(type(outputValues[k1])):
+                output[outputKeys[k1]] = outputValues[k1].tolist()
+            elif 'csr_matrix' in str(type(outputValues[k1])):
+                output[outputKeys[k1]] = outputValues[k1].__dict__
+                output[outputKeys[k1]]['indices'] = output[outputKeys[k1]]['indices'].tolist()
+                output[outputKeys[k1]]['indptr'] = output[outputKeys[k1]]['indptr'].tolist()
+                output[outputKeys[k1]]['data'] = output[outputKeys[k1]]['data'].tolist()
+            elif 'COO' in str(type(outputValues[k1])):
+                output[outputKeys[k1]] = outputValues[k1].__dict__
+                output[outputKeys[k1]]['coords'] = output[outputKeys[k1]]['coords'].tolist()
+                output[outputKeys[k1]]['data'] = output[outputKeys[k1]]['data'].tolist()
+                output[outputKeys[k1]]['shape'] = list(map(str,list(output[outputKeys[k1]]['shape'])))
+                output[outputKeys[k1]]['fill_value'] = str(output[outputKeys[k1]]['fill_value'])
+            elif 'lil_matrix' in str(type(outputValues[k1])):
+                output[outputKeys[k1]] = outputValues[k1].tocoo().__dict__
+                output[outputKeys[k1]]['row'] = output[outputKeys[k1]]['row'].tolist()
+                output[outputKeys[k1]]['col'] = output[outputKeys[k1]]['col'].tolist()
+                output[outputKeys[k1]]['data'] = output[outputKeys[k1]]['data'].tolist()
+            elif 'DOF' in outputKeys[k1]:
+                output[outputKeys[k1]] = str(output[outputKeys[k1]])
+            elif 'dok_matrix' in str(type(outputValues[k1])):
+                output[outputKeys[k1]] = output[outputKeys[k1]].tocoo().__dict__
+                output[outputKeys[k1]]['row'] = output[outputKeys[k1]]['row'].tolist()
+                output[outputKeys[k1]]['col'] = output[outputKeys[k1]]['col'].tolist()
+                output[outputKeys[k1]]['data'] = output[outputKeys[k1]]['data'].tolist()
+            elif 'idxAR' in outputKeys[k1]:
+                if 'tuple' in str(type(output[outputKeys[k1]])):
+                    output[outputKeys[k1]] = list(output[outputKeys[k1]])
+                    output[outputKeys[k1]][0] = output[outputKeys[k1]][0].tolist()
+                    output[outputKeys[k1]][1] = output[outputKeys[k1]][1].tolist()
+                elif 'DataFrame' in str(type(output[outputKeys[k1]])):
+                    output[outputKeys[k1]] = output[outputKeys[k1]].to_json()
+            elif 'methodsxForm' in outputKeys[k1]:
+                output['methodsxForm'] = output['methodsxForm'].__repr__()
+                output['methodsxForm']['resource'] = output['methodsxForm']['resource'].tolist()
+            elif 'methodsxPort' in outputKeys[k1]:
+                output['methodsxPort'] = output['methodsxPort'].__repr__()
+                output['methodsxPort']['resource'] = output['methodsxPort']['resource'].tolist()
+                output['methodsxPort']['idxProc'] = output['methodsxPort']['idxProc'].tolist()
+
+        return output
 
