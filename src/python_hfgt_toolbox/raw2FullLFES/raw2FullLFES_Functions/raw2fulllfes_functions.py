@@ -622,22 +622,26 @@ def makeCPRAM(LFES, verboseMode):
         LFES.CPRAM[:, 0:LFES.numResources] = np.multiply(diagMat, resourceAutonomous)
 
     else:
+        print('Filling in values of CPRAM and CAM')
         LFES.methodsxPort.resource = np.array(LFES.methodsxPort.resource)
         LFES.methodsxForm.resource = np.array(LFES.methodsxForm.resource)
+        print('filling methodxPorts')
         for k1 in range(len(LFES.methodsxPort.resource)):
+            LFES.CPRAM[LFES.methodsxPort.resource[k1], LFES.methodsxPort.resource[k1]] = 1
             for k2 in LFES.methodsxPort.controller[k1]:
                 try:
                     LFES.CPRAM[LFES.methodsxPort.resource[k1], LFES.numResources + int(k2)] = 1
                     LFES.CAM[LFES.methodsxPort.resource[k1], int(k2)] = 1
                 except:
+                    print('exception methodsxPort Controller: ')
+                    print(LFES.methodsxPort.controller[k1])
                     continue
+        print('filling methodxForms')
         for k1 in range(len(LFES.methodsxForm.resource)):
+            LFES.CPRAM[LFES.methodsxForm.resource[k1], LFES.methodsxForm.resource[k1]] = 1
             for k2 in LFES.methodsxForm.controller[k1]:
                 LFES.CPRAM[LFES.methodsxForm.resource[k1], LFES.numResources + int(k2)] = 1
                 LFES.CAM[LFES.methodsxForm.resource[k1], int(k2)] = 1
-        diagMat = np.zeros((LFES.numResources, LFES.numResources), dtype=int)
-        np.fill_diagonal(diagMat, 1)
-        LFES.CPRAM[:, 0:LFES.numResources] = diagMat
 
     print("I am exiting makeCPRAM.py")
 
