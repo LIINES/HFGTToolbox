@@ -1,10 +1,11 @@
 """
-Copyright 2020 LIINES
-@company: Thayer School of Engineering at Dartmouth
-@lab: LIINES Lab
-@Modified: 01/28/2022
-
+Copyright (c) 2018-2023 Laboratory for Intelligent Integrated Networks of Engineering Systems
+@author: Dakota J. Thompson, Wester C. H. Shoonenberg, Amro M. Farid
+@lab: Laboratory for Intelligent Integrated Networks of Engineering Systems
+@Modified: 09/29/2023
 """
+
+import json
 
 class Machines():
     def __init__(self):
@@ -194,8 +195,14 @@ class methodxForm():
         self.output = []
         self.status = []
         self.idxForm = []
-    def __repr__(self):
+    def returnJSON(self):
         output = self.__dict__
+        outputValues = list(output.values())
+        outputKeys = list(output.keys())
+        for k1 in range(len(outputValues)):
+            if 'ndarray' in str(type(outputValues[k1])):
+                output[outputKeys[k1]] = outputValues[k1].tolist()
+
         return output
 
 
@@ -215,8 +222,14 @@ class methodxPort():
         self.idxHold = []
         self.idxPort = []
         self.idxPortRef = []
-    def __repr__(self):
+    def returnJSON(self):
         output = self.__dict__
+        outputValues = list(output.values())
+        outputKeys = list(output.keys())
+        for k1 in range(len(outputValues)):
+            if 'ndarray' in str(type(outputValues[k1])):
+                output[outputKeys[k1]] = outputValues[k1].tolist()
+
         return output
 
 
@@ -466,6 +479,7 @@ class LFES:
         output['resources'] = output['resources'].__repr__()
         output['controllers'] = output['controllers'].__repr__()
 
+
         outputValues = list(output.values())
         outputKeys = list(output.keys())
         for k1 in range(len(outputValues)):
@@ -507,12 +521,18 @@ class LFES:
                 elif 'DataFrame' in str(type(output[outputKeys[k1]])):
                     output[outputKeys[k1]] = output[outputKeys[k1]].to_json()
             elif 'methodsxForm' in outputKeys[k1]:
-                output['methodsxForm'] = output['methodsxForm'].__repr__()
-                output['methodsxForm']['resource'] = output['methodsxForm']['resource'].tolist()
+                output['methodsxForm'] = output['methodsxForm'].returnJSON()
+                # output['methodsxForm']['resource'] = output['methodsxForm']['resource']
             elif 'methodsxPort' in outputKeys[k1]:
-                output['methodsxPort'] = output['methodsxPort'].__repr__()
-                output['methodsxPort']['resource'] = output['methodsxPort']['resource'].tolist()
-                output['methodsxPort']['idxProc'] = output['methodsxPort']['idxProc'].tolist()
+                output['methodsxPort'] = output['methodsxPort'].returnJSON()
+                # output['methodsxPort']['resource'] = output['methodsxPort']['resource'].tolist()
+                # output['methodsxPort']['idxProc'] = output['methodsxPort']['idxProc'].tolist()
+
+            # print(output[outputKeys[k1]])
+            # print(outputKeys[k1])
+            # output_json = open('data/Pickles/myLFES.json', 'w')
+            # json.dump(output[outputKeys[k1]], output_json)
+            # output_json.close()
 
         return output
 

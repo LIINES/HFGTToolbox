@@ -1,10 +1,8 @@
 """
-Copyright 2020 LIINES
-@author: Dakota Thompson
-@company: Thayer School of Engineering at Dartmouth
-@lab: LIINES Lab
-@Modified: 08/31/2022
-
+Copyright (c) 2018-2023 Laboratory for Intelligent Integrated Networks of Engineering Systems
+@author: Dakota J. Thompson, Wester C. H. Shoonenberg, Amro M. Farid
+@lab: Laboratory for Intelligent Integrated Networks of Engineering Systems
+@Modified: 09/29/2023
 """
 
 import glob
@@ -646,8 +644,6 @@ def makeCPRAM(LFES, verboseMode):
     print("I am exiting makeCPRAM.py")
 
 
-
-
 def makeCPPAM(LFES):
     '''
     This function calculates the Cyber Physical Process Agregation Matrix CPPAM.
@@ -1260,7 +1256,7 @@ def resolveProcessIndexVec(w, sPM, sPH):
     idxW2 = [idx for idx, val in enumerate(w) if val > sPM]
     j[idxW1] = np.array(w)[idxW1]
     rho[idxW2] = np.array(w)[idxW2] - sPM
-    g[idxW2] = np.vectorize(math.floor, otypes=[np.float])((rho[idxW2] - 1) / sPH) + 1 + sPM
+    g[idxW2] = np.vectorize(math.floor, otypes=[np.float64])((rho[idxW2] - 1) / sPH) + 1 + sPM
     u[idxW2] = ((rho[idxW2] - 1) % sPH) + 1
     print("I am exiting resolveProcessIndexVec.py")
     return j, g, u
@@ -1533,7 +1529,13 @@ def methodsToInc(myLFES):
         if myLFES.methodsxForm.operand[k1] != "":
             for k2 in myLFES.methodsxForm.operand[k1].split(', '):
                 dof = myLFES.methodsxForm.resource[k1] * myLFES.numProcesses + myLFES.methodsxForm.idxProc[k1]
-                MRT_neg[int(k2), myLFES.methodsxForm.resource[k1], dof] = 1
+                if hasattr(myLFES.methodsxForm,'weightIn'):
+                    if myLFES.methodsxForm.weightIn[k1] != "":
+                        MRT_neg[int(k2), myLFES.methodsxForm.resource[k1], dof] = float(myLFES.methodsxForm.weightIn[k1])
+                    else:
+                        MRT_neg[int(k2), myLFES.methodsxForm.resource[k1], dof] = 1
+                else:
+                    MRT_neg[int(k2), myLFES.methodsxForm.resource[k1], dof] = 1
                 # MRTproj_neg[int(k2), int(myLFES.methodsxForm.resource[k1]), k1] = 1
         if myLFES.methodsxForm.output[k1] != "":
             for k2 in myLFES.methodsxForm.output[k1].split(', '):
@@ -1555,17 +1557,20 @@ def methodsToInc(myLFES):
                 MRT_pos[int(k4), myLFES.methodsxPort.dest[k3], dof] = 1
                 # MRTproj_pos[int(k4), int(myLFES.methodsxPort.dest[k3]), k3 + len(myLFES.methodsxForm.idxProc)] = 1
 
-    coords_neg = np.ndarray(shape=(3, MRT_neg.nnz), dtype=np.int64)
+    coords_neg = np.ndarray(shape=(4, MRT_neg.nnz), dtype=np.int64)
+    vals_neg = list(MRT_neg.data.values())
     iter = 0
     for k5 in MRT_neg.data.keys():
         coords_neg[0, iter] = k5[0]
         coords_neg[1, iter] = k5[1]
         coords_neg[2, iter] = k5[2]
+        coords_neg[3, iter] = vals_neg[iter]
         iter += 1
     myLFES.MRT_neg = COO([[0], [0], [0]], 1, shape=(1, 1, 1))
     myLFES.MRT_neg.shape = (myLFES.numOperands, myLFES.numBuffers, myLFES.numResources * myLFES.numProcesses)
-    myLFES.MRT_neg.coords = coords_neg
-    myLFES.MRT_neg.data = np.ones((1, MRT_neg.nnz), dtype=int)[0]
+    myLFES.MRT_neg.coords = coords_neg[0:3,:]
+    # myLFES.MRT_neg.data = np.ones((1, MRT_neg.nnz), dtype=int)[0]
+    myLFES.MRT_neg.data = coords_neg[3,:]
     # myLFES.MRT_neg4 = tensorize(myLFES.MRT_neg,[myLFES.numOperands, myLFES.numBuffers, myLFES.numProcesses, myLFES.numResources],[0, 1, 2], [3])
 
     coords_pos = np.ndarray(shape=(3, MRT_pos.nnz), dtype=np.int64)

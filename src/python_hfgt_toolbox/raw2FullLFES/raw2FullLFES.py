@@ -1,3 +1,10 @@
+"""
+Copyright (c) 2018-2023 Laboratory for Intelligent Integrated Networks of Engineering Systems
+@author: Dakota J. Thompson, Wester C. H. Shoonenberg, Amro M. Farid
+@lab: Laboratory for Intelligent Integrated Networks of Engineering Systems
+@Modified: 09/29/2023
+"""
+
 from .raw2FullLFES_Functions import *
 
 def raw2FullLFES(LFES,verboseMode):

@@ -1,10 +1,10 @@
 """
-Copyright 2020 LIINES
-@company: Thayer School of Engineering at Dartmouth
-@lab: LIINES Lab
-@Modified: 01/20/2022
-
+Copyright (c) 2018-2023 Laboratory for Intelligent Integrated Networks of Engineering Systems
+@author: Dakota J. Thompson, Wester C. H. Shoonenberg, Amro M. Farid
+@lab: Laboratory for Intelligent Integrated Networks of Engineering Systems
+@Modified: 09/29/2023
 """
+
 from python_hfgt_toolbox.XML2LFES.XML2LFES_Classes import LFES
 from python_hfgt_toolbox.XML2LFES.XML2LFES_Functions import *
 
@@ -46,7 +46,7 @@ def XML2LFES(xmlfile, verboseMode):
             myLFES.transporters.name = []
     else:
         setupMethodIndicies(myLFES, S[1])
-        
+
     # Setup Services
     if 'Service' in S[2]:
         setupServices(myLFES, S[1])

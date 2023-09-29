@@ -1,10 +1,8 @@
 """
-Copyright 2020 LIINES
-@author: Dakota Thompson
-@company: Thayer School of Engineering at Dartmouth
-@lab: LIINES Lab
-@Modified: 01/25/2022
-
+Copyright (c) 2018-2023 Laboratory for Intelligent Integrated Networks of Engineering Systems
+@author: Dakota J. Thompson, Wester C. H. Shoonenberg, Amro M. Farid
+@lab: Laboratory for Intelligent Integrated Networks of Engineering Systems
+@Modified: 09/29/2023
 """
 
 import xml.etree.ElementTree as ET
@@ -74,10 +72,11 @@ def getResourceAttributes(objA, root, resourceType):
     '''
     # print("I am entering getResourceAttributes.py")
     attlist = []
+    objattrib = []
     for child in root:
         if child.tag == resourceType:
             attlist.append(child.attrib)
-    objattrib = attlist[0].keys()
+            objattrib = list(set(objattrib + list(child.attrib.keys())))
     attdict = {x: [i.get(x, '') for i in attlist] for x in objattrib}
     for key in attdict:
         if key == 'controller':
