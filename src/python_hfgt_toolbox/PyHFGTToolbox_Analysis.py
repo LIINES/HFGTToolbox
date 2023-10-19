@@ -2,7 +2,7 @@
 Copyright (c) 2018-2023 Laboratory for Intelligent Integrated Networks of Engineering Systems
 @author: Dakota J. Thompson, Wester C. H. Shoonenberg, Amro M. Farid
 @lab: Laboratory for Intelligent Integrated Networks of Engineering Systems
-@Modified: 09/29/2023
+@Modified: 10/19/2023
 """
 
 import sys
@@ -91,7 +91,7 @@ def run_analysis(xml_file: str, verbose_mode: int, out_dir = 'data/Pickles/myLFE
 
         np.savetxt(f"{save_dir}/LookUpTable/DOFs.csv",np.transpose([idxDOFsProj, idxDOFs, DOFs]), delimiter=",", header="ProjectedIndex,Index,DOF",comments='', fmt="%s")
 
-    return output_pkl.absolute()
+    return output_pkl.absolute(), myLFES
 
 
 
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 3:
         xml_file = sys.argv[1]
         verbose_mode = int(sys.argv[2])
-        run_analysis(xml_file, verbose_mode)
+        [_,myLFES] = run_analysis(xml_file, verbose_mode)
     else:
         print('Usage: python.exe src/python_hfgt_toolbox/PyHFGTToolbox_Analysis.py <input_xml_path> <verbose_mode_(0, 1, 2, or 3)')
 

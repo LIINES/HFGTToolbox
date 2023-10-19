@@ -17,18 +17,10 @@ The input XML file - "Example_Network.xml" provided in this repository depicts a
 # Python Hetero-Functional Graph Toolbox
 This recently developed Hetero-functional Graph Theory Toolbox facilitates the computation of HFGT mathematical models including the hetero-functional adjacency matrix, hetero-functional incidence tensors and the associated knowledge basis.  It is written in the programming language python version 3.9 and when handling large computation is ported to the language Julia. It is openly available on GitHub with sample input files for straightforward re-use.
 
-## Quickstart (currently under development)
-To install as a package, run the following command:
-
-``` poetry add <git clone URL> ``` or
-
-``` pip install <git clone URL> ``` 
-
-TODO: publish this package somewhere that allows installation like this (eg Pypi, public github etc).
 
 ## Installation
 
-To install this package into an existing virtual environment with python 3.9 follow these steps inside your Terminal or Command Window:
+To install this package into an existing virtual environment with python 3.9 follow the steps below inside your Terminal or Command Window.  We Recommend using Anaconda to provide a virtual environment to set up the toolbox in.
 
 1) run:
 	```
@@ -51,24 +43,11 @@ python src/python_hfgt_toolbox/PyHFGTToolbox_Analysis.py "data/XMLs/Example_Netw
 python src/python_hfgt_toolbox/PyHFGTToolbox_Analysis.py "data/XMLs/Example_Network_DOFs_Idx.xml" 3
 ```
 
-## Setup
-To develop using this source code, follow these steps:
-
-To get started quickly, install a few prerequisites:
-- [Git](https://gitforwindows.org) (latest version)
-- [Poetry](https://python-poetry.org/docs/#installation) (1.1.13 recommended, avoid 1.2.0 for now.)
-- [Pyenv](https://github.com/pyenv/pyenv) (Linux/Mac) or [Pyenv-win](https://github.com/pyenv-win/pyenv-win) (Windows) for installing/activating multiple python versions
-
-```shell
-# We recommend using `pyenv` to manage multiple python versions. If pyenv is installed, just run:
-pyenv install 3.9.13
-pyenv shell 3.9.13
-poetry install # install all dependencies (direct and transitive) listed in project.toml
-poetry shell # activate virtual environment
-scripts\test # (Windows) run unit tests
-scripts/test # (Mac/Linux) run unit tests
-python src/python_hfgt_toolbox/PyHFGTToolbox_Analysis.py "data/XMLs/Example_Network.xml" 0 # Analyze an example network
+4) To run the toolbox in your terminal window and retain access to the overarching LFES object that contains the HFG in a python environment within the  terminal run the line:
 ```
+python -i src/python_hfgt_toolbox/PyHFGTToolbox_Analysis.py "data/XMLs/Example_Network.xml" 0
+```
+
 
 ## Usage
 The HFGT toolbox repository contains the following directories:
