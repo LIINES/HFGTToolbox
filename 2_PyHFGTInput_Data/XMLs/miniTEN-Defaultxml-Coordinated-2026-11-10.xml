@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Demand & Supply: attributes for transitions: demand="true" or "false", supply="true" or "false" - when true, there is an accompanying CSV file that contains the time series data. When false: ignored.
+     For this test case's initial debugging: 2 week length with day resolution. Use only 1 or 2 days process length.
+     inputOperand="4.468-water, 1.989-natural gas" outputOperand="1-hydrogen, 5.457-co2" 
+     Set "export CO2" process cost of steel mill to $0.25 ($250 / ton CO2) for a realistic and impactful carbon-tax -->
+<LFES name="miniTEN" scenario="coordinated" refArchitecture="Transportation-Electricity-Nexus" dataState="raw" inputDataFormat="defaultXML" verboseMode="true" analysisMethod="default" outputFileType="json"
+      optimizer="Gurobi" simHorizon="100" deltaT="1"
+      hasESN_STF1="true" hasESN_STF2="true" hasESN_Duration="true" hasESNEnablingConstraint="false"
+      hasBufferUpperBound="false" hasBufferLowerBound="false" hasBufferInitCond="false" hasBufferFinalCond="false" hasBufferLinearCost="false" hasBufferQuadCost="false"
+      hasProcessUpperBoundFlowNeg="false" hasProcessUpperBoundFlowPos="false" hasProcessUpperBoundStock="false"
+      hasProcessLowerBoundFlowNeg="false" hasProcessLowerBoundFlowPos="false" hasProcessLowerBoundStock="false"
+      hasProcessInitCond="false" hasProcessFinalCond="false" hasProcessDuration="false" hasProcessValues="false"
+      hasProcessLinearCostFlowNeg="false" hasProcessLinearCostFlowPos="false" hasProcessLinearCostStock="false"
+      hasProcessQuadCostFlowNeg="false" hasProcessQuadCostFlowPos="false" hasProcessQuadCostStock="false"
+      hasProcessLowerBoundRamp="false" hasProcessUpperBoundRamp="false">
+    <Operand operandName="electric current" operandType="energy" operandNetName="deliver electric current" status="true"
+         hasOperandNet_Duration="false" hasOperandNet_STF1="false" hasOperandNet_STF2="false" hasOperandNetEnablingConstraint="false"
+             hasSyncMatNeg="false" hasSyncMatPos="false"
+         hasPlaceLinearCost="false" hasPlaceQuadCost="false" hasPlaceUpperBound="false" hasPlaceLowerBound = "false" hasPlaceFinalConds="false" hasPlaceInitConds="false"
+         hasTransitionLinearCostFlowNeg="false" hasTransitionLinearCostFlowPos="false" hasTransitionLinearCostStock="false"
+         hasTransitionQuadCostFlowNeg="false" hasTransitionQuadCostFlowPos="false" hasTransitionQuadCostStock="false"
+         hasTransitionUpperBoundFlowNeg="false" hasTransitionUpperBoundFlowPos="false" hasTransitionUpperBoundStock="false"
+         hasTransitionLowerBoundFlowNeg="false" hasTransitionLowerBoundFlowPos="false" hasTransitionLowerBoundStock="false"
+         hasTransitionDurationConds="false" hasTransitionFinalConds="false" hasTransitionInitConds="false"/>
+    <Operand operandName="EV" operandType="matter" operandNetName="manage EV state" status="true"
+         hasOperandNet_Duration="false" hasOperandNet_STF1="false" hasOperandNet_STF2="false" hasOperandNetEnablingConstraint="false"
+             hasSyncMatNeg="false" hasSyncMatPos="false"
+         hasPlaceLinearCost="false" hasPlaceQuadCost="false" hasPlaceUpperBound="false" hasPlaceLowerBound = "false" hasPlaceFinalConds="false" hasPlaceInitConds="false"
+         hasTransitionLinearCostFlowNeg="false" hasTransitionLinearCostFlowPos="false" hasTransitionLinearCostStock="false"
+         hasTransitionQuadCostFlowNeg="false" hasTransitionQuadCostFlowPos="false" hasTransitionQuadCostStock="false"
+         hasTransitionUpperBoundFlowNeg="false" hasTransitionUpperBoundFlowPos="false" hasTransitionUpperBoundStock="false"
+         hasTransitionLowerBoundFlowNeg="false" hasTransitionLowerBoundFlowPos="false" hasTransitionLowerBoundStock="false"
+         hasTransitionDurationConds="false" hasTransitionFinalConds="false" hasTransitionInitConds="false"/>
+   <TransformationResource transformationResourceName="1" gpsX="0" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="1" destination="1" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="1" destination="1" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="2" gpsX="1" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="2" destination="2" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="2" destination="2" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="3" gpsX="2" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="3" destination="3" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="3" destination="3" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="4" gpsX="3" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="4" destination="4" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="4" destination="4" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="5" gpsX="4" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="5" destination="5" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="5" destination="5" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="6" gpsX="0" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="6" destination="6" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="6" destination="6" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="7" gpsX="4" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="7" destination="7" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="7" destination="7" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="8" gpsX="0" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="8" destination="8" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="8" destination="8" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="9" gpsX="4" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="9" destination="9" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="9" destination="9" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="10" gpsX="0" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="10" destination="10" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="10" destination="10" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="11" gpsX="4" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="11" destination="11" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="11" destination="11" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="12" gpsX="0" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="12" destination="12" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="12" destination="12" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="13" gpsX="1" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="13" destination="13" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="13" destination="13" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="14" gpsX="2" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="14" destination="14" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="14" destination="14" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="15" gpsX="3" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="15" destination="15" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="15" destination="15" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="16" gpsX="4" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="16" destination="16" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="16" destination="16" ref="wire charge EV home" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="50"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="21" gpsX="2" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+      <TransportationProcess name="store" status="true" origin="21" destination="21" ref="park EV" inputOperand="EV" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="1000"/>
+      <TransportationProcess name="store" status="true" origin="21" destination="21" ref="wire charge EV work" inputOperand="EV, electric current" outputOperand="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="10"/>
+   </TransformationResource>
+   <!--road intersection-->
+   <TransformationResource transformationResourceName="17" gpsX="1" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="18" gpsX="2" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="19" gpsX="3" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="20" gpsX="1" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="22" gpsX="3" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="23" gpsX="1" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="24" gpsX="2" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="25" gpsX="3" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <!--generator-->
+   <TransformationResource transformationResourceName="G" gpsX="2" gpsY="-1" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="cheap generate electricity" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="6" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="160"/>
+      <TransformationProcess name="exp generate electricity" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="160"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S1" gpsX="0" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S2" gpsX="1" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S3" gpsX="2" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S4" gpsX="3" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S5" gpsX="4" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S6" gpsX="0" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S7" gpsX="4" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S8" gpsX="0" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S9" gpsX="4" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S10" gpsX="0" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S11" gpsX="4" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S12" gpsX="0" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S13" gpsX="1" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S14" gpsX="2" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S15" gpsX="3" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S16" gpsX="4" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="S21" gpsX="2" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="solar generator" status="true" inputOperand="" outputOperand="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <!--load-->
+   <TransformationResource transformationResourceName="L1" gpsX="0" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L2" gpsX="1" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L3" gpsX="2" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L4" gpsX="3" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L5" gpsX="4" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L6" gpsX="0" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L7" gpsX="4" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L8" gpsX="0" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L9" gpsX="4" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L10" gpsX="0" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L11" gpsX="4" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L12" gpsX="0" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L13" gpsX="1" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L14" gpsX="2" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L15" gpsX="3" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L16" gpsX="4" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+  </TransformationResource>
+   <TransformationResource transformationResourceName="L21" gpsX="2" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L17" gpsX="1" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L18" gpsX="2" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L19" gpsX="3" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L20" gpsX="1" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L22" gpsX="3" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L23" gpsX="1" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L24" gpsX="2" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+   <TransformationResource transformationResourceName="L25" gpsX="3" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0" decisionMaker="miniTEN" autonomous="true">
+      <TransformationProcess name="consume electricity" status="true" inputOperand="electric current" outputOperand="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="2000"/>
+   </TransformationResource>
+
+   <!--IndBuffer/-->
+   <!--horizontal/-->
+   <TransportationResource transportationResourceName="1-2" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="1" destination="2" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="2" destination="1" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="2-3" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="2" destination="3" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="3" destination="2" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="3-4" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="3" destination="4" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="4" destination="3" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="4-5" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="4" destination="5" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="5" destination="4" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="6-17" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="6" destination="17" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="17" destination="6" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="17-18" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="17" destination="18" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="18" destination="17" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="18-19" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="18" destination="19" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="19" destination="18" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="19-7" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="19" destination="7" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="7" destination="19" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="8-20" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="8" destination="20" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="20" destination="8" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="Wireless20-21" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="20" destination="21" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+      <TransportationProcess name="transport" status="true" origin="21" destination="20" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+      <TransportationProcess name="transport" status="true" origin="20" destination="21" ref="wireless charge EV" inputOperand="EV, electric current" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+      <TransportationProcess name="transport" status="true" origin="21" destination="20" ref="wireless charge EV" inputOperand="EV, electric current" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="Wireless21-22" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="21" destination="22" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+      <TransportationProcess name="transport" status="true" origin="22" destination="21" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+      <TransportationProcess name="transport" status="true" origin="21" destination="22" ref="wireless charge EV" inputOperand="EV, electric current" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+      <TransportationProcess name="transport" status="true" origin="22" destination="21" ref="wireless charge EV" inputOperand="EV, electric current" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="22-9" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="22" destination="9" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="9" destination="22" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="10-23" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="10" destination="23" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="23" destination="10" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="23-24" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="23" destination="24" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="24" destination="23" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="24-25" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="24" destination="25" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="25" destination="24" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="25-11" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="25" destination="11" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="11" destination="25" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="12-13" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="12" destination="13" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="13" destination="12" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="13-14" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="13" destination="14" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="14" destination="13" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="14-15" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="14" destination="15" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="15" destination="14" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="15-16" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="15" destination="16" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="16" destination="15" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <!--vertical/-->
+   <TransportationResource transportationResourceName="1-6" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="1" destination="6" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="6" destination="1" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="6-8" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="6" destination="8" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="8" destination="6" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="8-10" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="8" destination="10" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="10" destination="8" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="10-12" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="10" destination="12" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="12" destination="10" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="2-17" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="2" destination="17" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="17" destination="2" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="17-20" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="17" destination="20" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="20" destination="17" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="20-23" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="20" destination="23" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="23" destination="20" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="23-13" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="23" destination="13" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="13" destination="23" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="3-18" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="3" destination="18" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="18" destination="3" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="Wireless18-21" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="18" destination="21" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+      <TransportationProcess name="transport" status="true" origin="21" destination="18" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+      <TransportationProcess name="transport" status="true" origin="18" destination="21" ref="wireless charge EV" inputOperand="EV, electric current" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+      <TransportationProcess name="transport" status="true" origin="21" destination="18" ref="wireless charge EV" inputOperand="EV, electric current" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="Wireless21-24" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="21" destination="24" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+      <TransportationProcess name="transport" status="true" origin="24" destination="21" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+      <TransportationProcess name="transport" status="true" origin="21" destination="24" ref="wireless charge EV" inputOperand="EV, electric current" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+      <TransportationProcess name="transport" status="true" origin="24" destination="21" ref="wireless charge EV" inputOperand="EV, electric current" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="4"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="24-14" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="24" destination="14" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="14" destination="24" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="4-19" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="4" destination="19" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="19" destination="4" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="19-22" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="19" destination="22" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="22" destination="19" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="22-25" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="22" destination="25" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="25" destination="22" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="25-15" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="25" destination="15" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="15" destination="25" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="5-7" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="5" destination="7" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="7" destination="5" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="7-9" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="7" destination="9" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="9" destination="7" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="9-11" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="9" destination="11" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="11" destination="9" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="11-16" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="11" destination="16" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+      <TransportationProcess name="transport" status="true" origin="16" destination="11" ref="discharge EV" inputOperand="EV" outputOperand="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" varDomain="real" upperBoundFlowNeg="3"/>
+   </TransportationResource>
+   <!--lead line/-->
+   <TransportationResource transportationResourceName="G-3" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="G" destination="3" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <!--stage 1/-->
+   <TransportationResource transportationResourceName="W3-2" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="3" destination="2" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W3-4" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="3" destination="4" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W3-17" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="3" destination="17" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W3-18" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="3" destination="18" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <!--stage 2/-->
+   <TransportationResource transportationResourceName="W2-1" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="2" destination="1" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W4-5" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="4" destination="5" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W4-19" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="4" destination="19" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W17-20" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="17" destination="20" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W18-21" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="18" destination="21" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <!--stage 3/-->
+   <TransportationResource transportationResourceName="W1-6" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="1" destination="6" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W5-7" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="5" destination="7" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W19-22" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="19" destination="22" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W20-23" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="20" destination="23" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <!--stage 4/-->
+   <TransportationResource transportationResourceName="W6-8" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="6" destination="8" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W7-9" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="7" destination="9" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W22-25" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="22" destination="25" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W23-13" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="23" destination="13" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W23-24" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="23" destination="24" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <!--stage 5/-->
+   <TransportationResource transportationResourceName="W8-10" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="8" destination="10" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W9-11" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="9" destination="11" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W24-14" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="24" destination="14" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W25-15" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="25" destination="15" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <!--stage 6/-->
+   <TransportationResource transportationResourceName="W10-12" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="10" destination="12" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+   <TransportationResource transportationResourceName="W15-16" decisionMaker="miniTEN" autonomous="true">
+      <TransportationProcess name="transport" status="true" origin="15" destination="16" ref="electricity" inputOperand="electric current" outputOperand="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" varDomain="real" upperBoundFlowNeg="20000"/>
+   </TransportationResource>
+</LFES>

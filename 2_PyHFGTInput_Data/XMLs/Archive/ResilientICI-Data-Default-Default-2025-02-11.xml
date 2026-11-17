@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="ResilientICI-Data" scenario="default" refArchitecture="HEWRA" dataState="raw" version="4.0" inputDataFormat="default" verboseMode="false" ARhoMethod="default" analyzeSoS="true" outputFileType="allasdf">
+	<Operand operandName="seawater" operandType="matter">
+		<OperandNet operandNetName="regulate seawater" status="true">
+            <OperandPlace name="seawater" type="source"/>
+            <OperandTransition name="consume seawater by electricity generation from natural gas" preset="seawater" postset="" processLinkName="generate electricity from natural gas" processLinkRef=""/>
+			<OperandTransition name="consume seawater by thermal desalination" preset="seawater" postset="" processLinkName="thermally desalinate seawater" processLinkRef=""/>
+			<OperandTransition name="consume seawater by electrical desalination" preset="seawater" postset="" processLinkName="electrically desalinate seawater" processLinkRef=""/>
+			<OperandTransition name="maintain seawater" preset="seawater" postset="seawater" processLinkName="transport seawater" processLinkRef="hold seawater"/>
+        </OperandNet>
+	</Operand>
+	<Operand operandName="freshwater" operandType="matter">
+		<OperandNet operandNetName="regulate freshwater" status="true">
+			<OperandPlace name="freshwater" type="source"/>
+			<OperandTransition name="consume freshwater by electricity generation from natural gas" preset="freshwater" postset="" processLinkName="generate electricity from natural gas" processLinkRef=""/>
+			<OperandTransition name="consume freshwater by freshwater treatment" preset="freshwater" postset="" processLinkName="extract and treat freshwater" processLinkRef=""/>
+			<OperandTransition name="consume freshwater by agricultural production" preset="freshwater" postset="" processLinkName="produce agricultural products" processLinkRef=""/>
+			<OperandTransition name="maintain freshwater by electricity generation from freshwater" preset="freshwater" postset="freshwater" processLinkName="generate electricity from freshwater" processLinkRef=""/>
+			<OperandTransition name="maintain freshwater by freshwater pumping" preset="freshwater" postset="freshwater" processLinkName="pump freshwater from electricity" processLinkRef=""/>
+			<OperandTransition name="maintain freshwater by transportation" preset="freshwater" postset="freshwater" processLinkName="transport freshwater" processLinkRef="hold freshwater" />
+		</OperandNet>
+	</Operand>
+	<Operand operandName="potable water" operandType="matter">
+		<OperandNet operandNetName="regulate potable water" status="true">
+			<OperandPlace name="potable water" type="internal"/>
+			<OperandTransition name="produce potable water by wastewater treatment" preset="" postset="potable water" processLinkName="treat wastewater" processLinkRef=""/>
+			<OperandTransition name="consume potable water by industrial production" preset="potable water" postset="" processLinkName="produce manufactured products" processLinkRef=""/>
+			<OperandTransition name="produce potable water by thermal desalination" preset="" postset="potable water" processLinkName="thermally desalinate seawater" processLinkRef=""/>
+			<OperandTransition name="produce potable water by electrical desalination" preset="" postset="potable water" processLinkName="electrically desalinate seawater" processLinkRef=""/>
+			<OperandTransition name="consume potable water by domestic consumption" preset="potable water" postset="" processLinkName="consume domestically" processLinkRef=""/>
+			<OperandTransition name="consume potable water by commercial production" preset="potable water" postset="" processLinkName="produce commercial products" processLinkRef=""/>
+			<OperandTransition name="produce potable water by freshwater treatment" preset="" postset="potable water" processLinkName="extract and treat freshwater" processLinkRef="" />
+			<OperandTransition name="maintain potable water" preset="potable water" postset="potable water" processLinkName="transport potable water" processLinkRef="hold potable water"/>
+			<OperandTransition name="pressurize potable water" preset="potable water" postset="potable water" processLinkName="transport potable water" processLinkRef="pressurize potable water"/>
+		</OperandNet>
+	</Operand>
+	<Operand operandName="wastewater" operandType="matter">
+		<OperandNet operandNetName="regulate wastewater" status="true">
+			<OperandPlace name="wastewater" type="internal"/>
+			<OperandTransition name="treat wastewater" preset="wastewater" postset="" processLinkName="treat wastewater" processLinkRef=""/>
+			<OperandTransition name="produce wastewater by industrial production" preset="" postset="wastewater" processLinkName="produce manufactured products" processLinkRef=""/>
+			<OperandTransition name="produce wastewater by electricity generation from natural gas" preset="" postset="wastewater" processLinkName="generate electricity from natural gas" processLinkRef="" />
+			<OperandTransition name="produce wastewater by thermal desalination" preset="" postset="wastewater" processLinkName="thermally desalinate seawater" processLinkRef=""/>
+			<OperandTransition name="produce wastewater by electrical desalination" preset="" postset="wastewater" processLinkName="electrically desalinate seawater" processLinkRef=""/>
+			<OperandTransition name="produce wastewater by domestic consumption" preset="" postset="wastewater" processLinkName="consume domestically" processLinkRef=""/>
+			<OperandTransition name="produce wastewater by commercial production" preset="" postset="wastewater" processLinkName="produce commercial products" processLinkRef=""/>
+			<OperandTransition name="produce wastewater by agricultural production" preset="" postset="wastewater" processLinkName="produce agricultural products" processLinkRef=""/>
+			<OperandTransition name="maintain wastewater" preset="wastewater" postset="wastewater" processLinkName="transport wastewater" processLinkRef="hold wastewater"/>
+		</OperandNet>
+	</Operand>
+	<Operand operandName="treated wastewater" operandType="matter">
+		<OperandNet operandNetName="regulate treated wastewater" status="true">
+			<OperandPlace name="treated wastewater" type="must produce"/>
+			<OperandTransition name="produce treated wastewater by wastewater treatment" preset="" postset="treated wastewater" processLinkName="treat wastewater" processLinkRef=""/>
+			<OperandTransition name="maintain treated wastewater" preset="treated wastewater" postset="treated wastewater" processLinkName="transport treated wastewater" processLinkRef="hold treated wastewater"/>
+		</OperandNet>
+	</Operand>
+	<Operand operandName="solar irradiance" operandType="energy">
+		<OperandNet operandNetName="provide solar irradiance" status="true">
+			<OperandPlace name="solar irradiance" type="source"/>
+			<OperandTransition name="consume solar irradiance" preset="solar irradiance" postset="" processLinkName="photovoltaically generate electricity from solar irradiance" processLinkRef=""/>
+		</OperandNet>
+	</Operand>
+	<Operand operandName="wind energy" operandType="energy">
+		<OperandNet operandNetName="provide wind energy" status="true">
+			<OperandPlace name="wind energy" type="source"/>
+			<OperandTransition name="consume wind energy" preset="wind energy" postset="" processLinkName="generate electricity from wind" processLinkRef=""/>
+		</OperandNet>
+	</Operand>
+	<Operand operandName="natural gas" operandType="matter">
+		<OperandNet operandNetName="deliver natural gas" status="true">
+			<OperandPlace name="natural gas" type="internal"/>
+			<OperandTransition name="produce natural gas by wastewater treatment" preset="" postset="natural gas" processLinkName="treat wastewater" processLinkRef=""/>
+			<OperandTransition name="consume natural gas by electricity generation" preset="natural gas" postset="" processLinkName="generate electricity from natural gas" processLinkRef=""/>
+		</OperandNet>
+	</Operand>
+	<Operand operandName="electricity" operandType="energy">
+		<OperandNet operandNetName="deliver electricity" status="true">
+			<OperandPlace name="electricity" type="internal"/>
+			<OperandTransition name="consume electricity by wastewater treatment" preset="electricity" postset="" processLinkName="treat wastewater" processLinkRef=""/>
+			<OperandTransition name="consume electricity by industrial production " preset="electricity" postset="" processLinkName="produce manufactured products" processLinkRef=""/>
+			<OperandTransition name="produce electricity by electricity generation from natural gas" preset="" postset="electricity" processLinkName="generate electricity from natural gas" processLinkRef="" />
+			<OperandTransition name="consume electricity by electrical desalination" preset="electricity" postset="" processLinkName="electrically desalinate seawater" processLinkRef=""/>
+			<OperandTransition name="consume electricity by domestic consumption" preset="electricity" postset="" processLinkName="consume domestically" processLinkRef=""/>
+			<OperandTransition name="maintain electricity by transformation" preset="electricity" postset="electricity" processLinkName="transform electricity" processLinkRef=""/>
+			<OperandTransition name="consume electricity by commercial production" preset="electricity" postset="" processLinkName="produce commercial products" processLinkRef=""/>
+			<OperandTransition name="consume electricity by freshwater treatment" preset="electricity" postset="" processLinkName="extract and treat freshwater" processLinkRef=""/>
+			<OperandTransition name="consume electricity by agricultural production" preset="electricity" postset="" processLinkName="produce agricultural products" processLinkRef=""/>
+			<OperandTransition name="produce electricity by electricity generation from freshwater" preset="" postset="electricity" processLinkName="generate electricity from freshwater" processLinkRef=""/>
+			<OperandTransition name="consume electricity by freshwater pumping" preset="electricity" postset="" processLinkName="pump freshwater from electricity" processLinkRef="" />
+			<OperandTransition name="produce electricity by electricity generation from wind" preset="" postset="electricity" processLinkName="generate electricity from wind" processLinkRef="" />
+			<OperandTransition name="maintain electricity by storage" preset="electricity" postset="electricity" processLinkName="store electricity" processLinkRef="" />
+			<OperandTransition name="produce electricity by electricity generation from solar" preset="" postset="electricity" processLinkName="photovoltaically generate electricity from solar irradiance" processLinkRef=""/>
+			<OperandTransition name="maintain electricity by transportation" preset="electricity" postset="electricity" processLinkName="transport electricity" processLinkRef="hold electricity"/>
+		</OperandNet>
+	</Operand>
+	<Operand operandName="raw materials" operandType="matter">
+		<OperandNet operandNetName="provide raw materials" status="true">
+			<OperandPlace name="raw materials" type="source"/>
+			<OperandTransition name="consume raw materials by industrial production" preset="raw materials" postset="" processLinkName="produce manufactured products" processLinkRef=""/>
+			<OperandTransition name="consume raw materials by agricultural production" preset="raw materials" postset="" processLinkName="produce agricultural products" processLinkRef=""/>
+		</OperandNet>
+	</Operand>
+	<Operand operandName="agricultural products" operandType="matter">
+		<OperandNet operandNetName="deliver agricultural products" status="true">
+			<OperandPlace name="agricultural products" type="must produce"/>
+			<OperandTransition name="produce agricultural products" preset="" postset="agricultural products" processLinkName="produce agricultural products" processLinkRef=""/>
+		</OperandNet>
+	</Operand>
+	<Operand operandName="commercial products" operandType="matter">
+		<OperandNet operandNetName="deliver commercial products" status="true">
+			<OperandPlace name="commercial products" type="must produce"/>
+			<OperandTransition name="produce commercial products" preset="" postset="commercial products" processLinkName="produce commercial products" processLinkRef=""/>
+		</OperandNet>
+	</Operand>
+	<Operand operandName="manufactured products" operandType="matter">
+		<OperandNet operandNetName="deliver manufactured products" status="true">
+			<OperandPlace name="manufactured products" type="must produce"/>
+			<OperandTransition name="produce manufactured products" preset="" postset="manufactured products" processLinkName="produce manufactured products" processLinkRef=""/>
+		</OperandNet>
+	</Operand>
+	<Operand operandName="water vapor loss" operandType="matter">
+		<OperandNet operandNetName="accept water vapor loss" status="true">
+			<OperandPlace name="water vapor loss" type="sink"/>
+			<OperandTransition name="produce water vapor loss by electricity generation from natural gas" preset="" postset="water vapor loss" processLinkName="generate electricity from natural gas" processLinkRef=""/>
+		</OperandNet>
+	</Operand>
+	<Operand operandName="process steam" operandType="matter">
+		<OperandNet operandNetName="deliver process steam" status="true">
+			<OperandPlace name="process steam" type="internal"/>
+			<OperandTransition name="produce process steam from electricity generation from natural gas" preset="" postset="process steam" processLinkName="generate electricity from natural gas" processLinkRef=""/>
+			<OperandTransition name="consume process steam by thermal desalination" preset="" postset="process steam" processLinkName="thermally desalinate seawater" processLinkRef=""/>
+		</OperandNet>
+	</Operand>
+	<Operand operandName="heat loss" operandType="energy">
+		<OperandNet operandNetName="accept heat loss" status="true">
+			<OperandPlace name="heat loss" type="sink"/>
+			<OperandTransition name="produce heat loss by wastewater treatment" preset="" postset="heat loss" processLinkName="treat wastewater" processLinkRef=""/>
+			<OperandTransition name="produce heat loss by industrial production" preset="" postset="heat loss" processLinkName="produce manufactured products" processLinkRef=""/>
+			<OperandTransition name="produce heat loss by electricity generation from natural gas" preset="" postset="heat loss" processLinkName="generate electricity from natural gas" processLinkRef=""/>
+			<OperandTransition name="produce heat loss by thermal desalination" preset="" postset="heat loss" processLinkName="thermally desalinate seawater" processLinkRef="" />
+			<OperandTransition name="produce heat loss by electrical desalination" preset="" postset="heat loss" processLinkName="electrically desalinate seawater" processLinkRef=""/>
+			<OperandTransition name="produce heat loss by domestic consumption" preset="" postset="heat loss" processLinkName="consume domestically" processLinkRef=""/>
+			<OperandTransition name="produce heat loss by electrical transformation" preset="" postset="heat loss" processLinkName="transform electricity" processLinkRef="" />
+			<OperandTransition name="produce heat loss by commercial production" preset="" postset="heat loss" processLinkName="produce commercial products" processLinkRef=""/>
+			<OperandTransition name="produce heat loss by freshwater treatment" preset="" postset="heat loss" processLinkName="extract and treat freshwater" processLinkRef=""/>
+			<OperandTransition name="produce heat loss by agricultural production" preset="" postset="heat loss" processLinkName="produce agricultural products" processLinkRef=""/>
+			<OperandTransition name="produce heat loss by electrical generation from freshwater" preset="" postset="heat loss" processLinkName="generate electricity from freshwater" processLinkRef=""/>
+			<OperandTransition name="produce heat loss by freshwater pumping" preset="" postset="heat loss" processLinkName="pump freshwater from electricity" processLinkRef=""/>
+			<OperandTransition name="produce heat loss by electricity generation from wind" preset="" postset="heat loss" processLinkName="generate electricity from wind" processLinkRef="" />
+			<OperandTransition name="produce heat loss by electricity storage" preset="" postset="heat loss" processLinkName="store electricity" processLinkRef=""/>
+			<OperandTransition name="produce heat loss by electricity generation from solar" preset="" postset="heat loss" processLinkName="photovoltaically generate electricity from solar irradiance" processLinkRef="" />
+		</OperandNet>
+	</Operand>
+	<Operand operandName="carbon dioxide" operandType="matter">
+		<OperandNet operandNetName="accumuluate carbon dioxide" status="true">
+			<OperandPlace name="carbon dioxide" type="sink"/>
+			<OperandTransition name="produce carbon dioxide by electricity generation from natural gas" preset="" postset="carbon dioxide" processLinkName="generate electricity from natural gas" processLinkRef=""/>
+		</OperandNet>
+	</Operand>
+	<TransformationResource transformationResourceName="Wastewater Treatment Plant" gpsX="1" gpsY="0" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="treat wastewater" status="true" inputOperand="electricity, wastewater" inputOperandWeight="" outputOperand="heat loss, natural gas, treated wastewater" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Industrial Facility" gpsX="1" gpsY="1" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="produce manufactured products" status="true" inputOperand="raw materials, electricity, potable water" inputOperandWeight="" outputOperand="manufactured products, heat loss, wastewater" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Natural Gas Power Plant" gpsX="1" gpsY="2" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="generate electricity from natural gas" status="true" inputOperand="natural gas, freshwater, seawater" inputOperandWeight="" outputOperand="heat loss, carbon dioxide, process steam, water vapor loss, wastewater, electricity" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Thermal Desalination Plant" gpsX="1" gpsY="3" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="thermally desalinate seawater" status="true" inputOperand="process steam, seawater" inputOperandWeight="" outputOperand="potable water, wastewater, heat loss" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Membrane Desalination Plant" gpsX="1" gpsY="4" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="electrically desalinate seawater" status="true" inputOperand="seawater, electricity" inputOperandWeight="" outputOperand="potable water, wastewater, heat loss" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Residential Building A" gpsX="2" gpsY="1" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="consume domestically" status="true" inputOperand="electricity, potable water" inputOperandWeight="" outputOperand="heat loss, wastewater" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Substation 1" gpsX="2" gpsY="2" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="transform electricity" status="true" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity, heat loss" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Commercial Building A" gpsX="3" gpsY="1" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="produce commercial products" status="true" inputOperand="electricity, potable water" inputOperandWeight="" outputOperand="commercial products,heat loss, wastewater" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Commercial Building B" gpsX="3" gpsY="2" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="produce commercial products" status="true" inputOperand="electricity, potable water" inputOperandWeight="" outputOperand="commercial products,heat loss, wastewater" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Surface Water Treatment Plant" gpsX="3" gpsY="3" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="extract and treat freshwater" status="true" inputOperand="electricity, freshwater" inputOperandWeight="" outputOperand="potable water, heat loss" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Residential Building B" gpsX="4" gpsY="1" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="consume domestically" status="true" inputOperand="electricity, potable water" inputOperandWeight="" outputOperand="heat loss, wastewater" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Substation 3" gpsX="4" gpsY="4" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="transform electricity" status="true" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity, heat loss" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Agricultural Facility 1" gpsX="5" gpsY="0" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="produce agricultural products" status="true" inputOperand="raw materials, electricity, freshwater" inputOperandWeight="" outputOperand="agricultural products, heat loss, wastewater" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Agricultural Facility 2" gpsX="5" gpsY="1" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="produce agricultural products" status="true" inputOperand="raw materials, electricity, freshwater" inputOperandWeight="" outputOperand="agricultural products, heat loss, wastewater" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Substation 2" gpsX="5" gpsY="2" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="transform electricity" status="true" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity, heat loss" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Pumped Hydro Storage" gpsX="5" gpsY="4" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="generate electricity from freshwater" status="true" inputOperand="freshwater" inputOperandWeight="" outputOperand="freshwater, electricity, heat loss" outputOperandWeight=""/>
+		<TransformationProcess name="pump freshwater from electricity" status="true" inputOperand="freshwater, electricity" inputOperandWeight="" outputOperand="freshwater, heat loss" outputOperandWeight=""/>
+		<TransportationProcess name="store freshwater" status="true" origin="Pumped Hydro Storage" destination="Pumped Hydro Storage" ref="hold freshwater" inputOperand="freshwater" inputOperandWeight="" outputOperand="freshwater" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Wind Power Plant" gpsX="6" gpsY="0" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="generate electricity from wind" status="true" inputOperand="wind energy" inputOperandWeight="" outputOperand="electricity, heat loss" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Battery" gpsX="6" gpsY="1" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="store electricity" status="true" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity,heat loss" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Solar Power Plant" gpsX="6" gpsY="2" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="photovoltaically generate electricity from solar irradiance" status="true" inputOperand="solar irradiance" inputOperandWeight="" outputOperand="electricity, heat loss" outputOperandWeight=""/>
+	</TransformationResource>
+	<TransformationResource transformationResourceName="Hydro Electric Power Plant" gpsX="6" gpsY="4" decisionMaker="Multi-Utility" autonomous="true">
+		<TransformationProcess name="generate electricity from freshwater" status="true" inputOperand="freshwater" inputOperandWeight="" outputOperand="heat loss, electricity, freshwater" outputOperandWeight=""/>
+	</TransformationResource>
+	<IndependentBuffer independentBufferName="Potable Water Tank" gpsX="2" gpsY="3" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="store potable water" status="true" origin="Potable Water Tank" destination="Potable Water Tank" ref="hold potable water" inputOperand="potable water" inputOperandWeight="" outputOperand="potable water" outputOperandWeight=""/>
+	</IndependentBuffer>
+	<IndependentBuffer independentBufferName="Reservoir Lake B" gpsX="4" gpsY="3" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="store freshwater" status="true" origin="Reservoir Lake B" destination="Reservoir Lake B" ref="hold freshwater" inputOperand="freshwater" inputOperandWeight="" outputOperand="freshwater" outputOperandWeight=""/>
+	</IndependentBuffer>
+	<IndependentBuffer independentBufferName="Reservoir Lake A" gpsX="6" gpsY="5" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="store freshwater" status="true" origin="Reservoir Lake A" destination="Reservoir Lake A" ref="hold freshwater" inputOperand="freshwater" inputOperandWeight="" outputOperand="freshwater" outputOperandWeight=""/>
+	</IndependentBuffer>
+	<IndependentBuffer independentBufferName="Ocean" gpsX="0" gpsY="3" decisionMaker="Multi-Utility" autonomous="true">
+        <TransportationProcess name="store seawater" status="true" origin="Ocean" destination="Ocean" ref="hold seawater" inputOperand="seawater" inputOperandWeight="" outputOperand="seawater" outputOperandWeight=""/>
+	</IndependentBuffer>
+	<TransportationResource transportationResourceName="Power Line 1" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Industrial Facility" destination="Wastewater Treatment Plant" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 2" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Industrial Facility" destination="Residential Building A" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 3" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Natural Gas Power Plant" destination="Substation 1" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 4" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Thermal Desalination Plant" destination="Substation 1" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+		<TransportationProcess name="transport electricity" status="true" origin="Substation 1" destination="Thermal Desalination Plant" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 5" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Thermal Desalination Plant" destination="Membrane Desalination Plant" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 6" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Residential Building A" destination="Commercial Building A" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 7" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Substation 1" destination="Potable Water Tank" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 8" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Substation 1" destination="Industrial Facility" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 9" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Commercial Building A" destination="Residential Building B" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 10" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Commercial Building A" destination="Commercial Building B" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 11" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Commercial Building B" destination="Substation 2" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 12" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Commercial Building B" destination="Surface Water Treatment Plant" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+		<TransportationProcess name="transport electricity" status="true" origin="Surface Water Treatment Plant" destination="Commercial Building B" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 13" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Surface Water Treatment Plant" destination="Substation 3" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+		<TransportationProcess name="transport electricity" status="true" origin="Substation 3" destination="Surface Water Treatment Plant" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 14" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Residential Building B" destination="Agricultural Facility 2" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 15" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Substation 3" destination="Pumped Hydro Storage" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+		<TransportationProcess name="transport electricity" status="true" origin="Pumped Hydro Storage" destination="Substation 3" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 16" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Substation 3" destination="Potable Water Tank" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 17" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Agricultural Facility 2" destination="Agricultural Facility 1" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 18" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Substation 2" destination="Commercial Building A" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 19" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Substation 2" destination="Residential Building B" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 20" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Substation 2" destination="Battery" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+		<TransportationProcess name="transport electricity" status="true" origin="Battery" destination="Substation 2" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 21" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Wind Power Plant" destination="Substation 2" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 22" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Solar Power Plant" destination="Substation 2" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Power Line 23" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport electricity" status="true" origin="Hydro Electric Power Plant" destination="Substation 3" ref="hold electricity" inputOperand="electricity" inputOperandWeight="" outputOperand="electricity" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Seawater Pipe 1" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport seawater" status="true" origin="Ocean" destination="Membrane Desalination Plant" ref="hold seawater" inputOperand="seawater" inputOperandWeight="" outputOperand="seawater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Seawater Pipe 2" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport seawater" status="true" origin="Ocean" destination="Thermal Desalination Plant" ref="hold seawater" inputOperand="seawater" inputOperandWeight="" outputOperand="seawater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Seawater Pipe 3" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport seawater" status="true" origin="Ocean" destination="Natural Gas Power Plant" ref="hold seawater" inputOperand="seawater" inputOperandWeight="" outputOperand="seawater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Freshwater Pipe 1" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport freshwater" status="true" origin="Reservoir Lake A" destination="Hydro Electric Power Plant" ref="hold freshwater" inputOperand="freshwater" inputOperandWeight="" outputOperand="freshwater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Freshwater Pipe 2" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport freshwater" status="true" origin="Hydro Electric Power Plant" destination="Reservoir Lake B" ref="hold freshwater" inputOperand="freshwater" inputOperandWeight="" outputOperand="freshwater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Freshwater Pipe 3" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport freshwater" status="true" origin="Pumped Hydro Storage" destination="Reservoir Lake B" ref="hold freshwater" inputOperand="freshwater" inputOperandWeight="" outputOperand="freshwater" outputOperandWeight=""/>
+		<TransportationProcess name="transport freshwater" status="true" origin="Reservoir Lake B" destination="Pumped Hydro Storage" ref="hold freshwater" inputOperand="freshwater" inputOperandWeight="" outputOperand="freshwater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Freshwater Pipe 4" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport freshwater" status="true" origin="Agricultural Facility 2" destination="Agricultural Facility 1" ref="hold freshwater" inputOperand="freshwater" inputOperandWeight="" outputOperand="freshwater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Freshwater Pipe 5" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport freshwater" status="true" origin="Reservoir Lake B" destination="Agricultural Facility 2" ref="hold freshwater" inputOperand="freshwater" inputOperandWeight="" outputOperand="freshwater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Freshwater Pipe 6" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport freshwater" status="true" origin="Reservoir Lake B" destination="Surface Water Treatment Plant" ref="hold freshwater" inputOperand="freshwater" inputOperandWeight="" outputOperand="freshwater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Potable Water Pipe 1" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport potable water" status="true" origin="Potable Water Tank" destination="Commercial Building B" ref="hold potable water" inputOperand="potable water" inputOperandWeight="" outputOperand="potable water" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Potable Water Pipe 2" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport potable water" status="true" origin="Commercial Building B" destination="Commercial Building A" ref="hold potable water" inputOperand="potable water" inputOperandWeight="" outputOperand="potable water" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Potable Water Pipe 3" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport potable water" status="true" origin="Commercial Building A" destination="Residential Building B" ref="hold potable water" inputOperand="potable water" inputOperandWeight="" outputOperand="potable water" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Potable Water Pipe 4" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport potable water" status="true" origin="Commercial Building A" destination="Residential Building A" ref="hold potable water" inputOperand="potable water" inputOperandWeight="" outputOperand="potable water" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Potable Water Pipe 5" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport potable water" status="true" origin="Residential Building A" destination="Industrial Facility" ref="hold potable water" inputOperand="potable water" inputOperandWeight="" outputOperand="potable water" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Potable Water Pipe 6" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport potable water" status="true" origin="Wastewater Treatment Plant" destination="Industrial Facility" ref="hold potable water" inputOperand="potable water" inputOperandWeight="" outputOperand="potable water" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Pumped Water Pipe 1" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport potable water" status="true" origin="Membrane Desalination Plant" destination="Potable Water Tank" ref="pressurize potable water" inputOperand="potable water,electricity" inputOperandWeight="" outputOperand="potable water,heat loss" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Pumped Water Pipe 2" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport potable water" status="true" origin="Thermal Desalination Plant" destination="Potable Water Tank" ref="pressurize potable water" inputOperand="potable water,electricity" inputOperandWeight="" outputOperand="potable water,heat loss" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Pumped Water Pipe 3" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport potable water" status="true" origin="Surface Water Treatment Plant" destination="Potable Water Tank" ref="pressurize potable water" inputOperand="potable water,electricity" inputOperandWeight="" outputOperand="potable water,heat loss" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Treated Wastewater Pipe" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport treated wastewater" status="true" origin="Wastewater Treatment Plant" destination="Ocean" ref="hold treated wastewater" inputOperand="treated wastewater" inputOperandWeight="" outputOperand="treated wastewater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Wastewater Pipe 1" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport wastewater" status="true" origin="Wastewater Treatment Plant" destination="Agricultural Facility 1" ref="hold wastewater" inputOperand="wastewater" inputOperandWeight="" outputOperand="wastewater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Wastewater Pipe 2" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport wastewater" status="true" origin="Natural Gas Power Plant" destination="Ocean" ref="hold wastewater" inputOperand="wastewater" inputOperandWeight="" outputOperand="wastewater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Wastewater Pipe 3" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport wastewater" status="true" origin="Thermal Desalination Plant" destination="Ocean" ref="hold wastewater" inputOperand="wastewater" inputOperandWeight="" outputOperand="wastewater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Wastewater Pipe 4" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport wastewater" status="true" origin="Membrane Desalination Plant" destination="Ocean" ref="hold wastewater" inputOperand="wastewater" inputOperandWeight="" outputOperand="wastewater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Wastewater Pipe 5" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport wastewater" status="true" origin="Residential Building A" destination="Wastewater Treatment Plant" ref="hold wastewater" inputOperand="wastewater" inputOperandWeight="" outputOperand="wastewater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Wastewater Pipe 6" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport wastewater" status="true" origin="Commercial Building A" destination="Residential Building A" ref="hold wastewater" inputOperand="wastewater" inputOperandWeight="" outputOperand="wastewater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Wastewater Pipe 7" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport wastewater" status="true" origin="Commercial Building B" destination="Commercial Building A" ref="hold wastewater" inputOperand="wastewater" inputOperandWeight="" outputOperand="wastewater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Wastewater Pipe 8" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport wastewater" status="true" origin="Surface Water Treatment Plant" destination="Commercial Building B" ref="hold wastewater" inputOperand="wastewater" inputOperandWeight="" outputOperand="wastewater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Wastewater Pipe 9" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport wastewater" status="true" origin="Surface Water Treatment Plant" destination="Commercial Building B" ref="hold wastewater" inputOperand="wastewater" inputOperandWeight="" outputOperand="wastewater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Wastewater Pipe 10" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport wastewater" status="true" origin="Residential Building B" destination="Wastewater Treatment Plant" ref="hold wastewater" inputOperand="wastewater" inputOperandWeight="" outputOperand="wastewater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Wastewater Pipe 11" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport wastewater" status="true" origin="Agricultural Facility 1" destination="Residential Building B" ref="hold wastewater" inputOperand="wastewater" inputOperandWeight="" outputOperand="wastewater" outputOperandWeight=""/>
+	</TransportationResource>
+	<TransportationResource transportationResourceName="Wastewater Pipe 12" decisionMaker="Multi-Utility" autonomous="true">
+		<TransportationProcess name="transport wastewater" status="true" origin="Agricultural Facility 2" destination="Residential Building B" ref="hold wastewater" inputOperand="wastewater" inputOperandWeight="" outputOperand="wastewater" outputOperandWeight=""/>
+	</TransportationResource>
+    <DecisionMaker name="Multi-Utility" status="true" peerRecipient=""/>
+</LFES>

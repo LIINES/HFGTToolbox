@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="TransportationNetwork" scenario="base" refArchitecture="Transportation System" dataState="raw" inputDataFormat="defaultXML" verboseMode="true" analysisMethod="HFNMCF" outputFileType="json"
+      optimizer="CPLEX" simHorizon="2" deltaT="1"
+      hasESN_STF1="true" hasESN_STF2="true" hasESN_Duration="true"
+      hasBufferCapacityCond="true" hasBufferInitCond="true" hasBufferFinalCond="true" hasBufferCost="true"
+      hasProcessCapacityCond="true" hasProcessInitCond="false" hasProcessFinalCond="false" hasProcessCost="true" hasProcessDuration="true">
+    <Operand operandName="widget" operandType="matter" operandNetName="deliver widget" status="true" hasOperandNet_Duration="false" hasOperandNet_STF1="false" hasOperandNet_STF2="false"
+    hasPlaceCapacity="false" hasPlaceCost="false" hasPlaceFinalConds="false" hasPlaceInitConds="false" hasTransitionCapacityConds="false" hasTransitionCost="false" hasTransitionDurationConds="false"
+    hasTransitionFinalConds="false" hasTransitionInitConds="false"/>
+    <IndependentBuffer independentBufferName="A-Factory" gpsX="0" gpsY="2" decisionMaker="Scheduler" autonomous="true" varDomain = "real" cost="0" capacity="1000" initCond="50" finalCond="0"/>
+    <IndependentBuffer independentBufferName="B-Factory" gpsX="0" gpsY="0" decisionMaker="Scheduler" autonomous="true" varDomain = "real" cost="0" capacity="1000" initCond="40" finalCond="0"/>
+    <IndependentBuffer independentBufferName="C-Distribution" gpsX="1" gpsY="1" decisionMaker="Scheduler" autonomous="true" varDomain = "real" cost="0" capacity="1000" initCond="0" finalCond="0"/>
+    <IndependentBuffer independentBufferName="D-Warehouse" gpsX="2" gpsY="2" decisionMaker="Scheduler" autonomous="true" varDomain = "real" cost="0" capacity="1000" initCond="0" finalCond="30"/>
+    <IndependentBuffer independentBufferName="E-Warehouse" gpsX="0" gpsY="2" decisionMaker="Scheduler" autonomous="true" varDomain = "real" cost="0" capacity="1000" initCond="0" finalCond="60"/>
+    <TransportationResource transportationResourceName="AB-Route" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport widget" status="true" varDomain = "real" origin="A-Factory" destination="B-Factory" ref="hold widget" inputOperand="widget" inputOperandWeight="1"
+                               outputOperand="widget" outputOperandWeight="1" cost="2" capacity="10" duration="0"/>
+    </TransportationResource>
+     <TransportationResource transportationResourceName="AC-Route" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport widget" status="true" varDomain = "real" origin="A-Factory" destination="C-Distribution" ref="hold widget" inputOperand="widget" inputOperandWeight="1"
+                               outputOperand="widget" outputOperandWeight="1" cost="4" capacity="1000" duration="0"/>
+    </TransportationResource>
+     <TransportationResource transportationResourceName="AD-Route" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport widget" status="true" varDomain = "real" origin="A-Factory" destination="D-Warehouse" ref="hold widget" inputOperand="widget" inputOperandWeight="1"
+                               outputOperand="widget" outputOperandWeight="1" cost="9" capacity="1000" duration="0"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="BC-Route" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport widget" status="true" varDomain = "real" origin="B-Factory" destination="C-Distribution" ref="hold widget" inputOperand="widget" inputOperandWeight="1"
+                               outputOperand="widget" outputOperandWeight="1" cost="3" capacity="1000" duration="0"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="CE-Route" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport widget" status="true" varDomain = "real" origin="C-Distribution" destination="E-Warehouse" ref="hold widget" inputOperand="widget" inputOperandWeight="1"
+                               outputOperand="widget" outputOperandWeight="1" cost="1" capacity="80" duration="0"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="DE-Route" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport widget" status="true" varDomain = "real" origin="D-Warehouse" destination="E-Warehouse" ref="hold widget" inputOperand="widget" inputOperandWeight="1"
+                               outputOperand="widget" outputOperandWeight="1" cost="3" capacity="1000" duration="0"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="ED-Route" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport widget" status="true" varDomain = "real" origin="E-Warehouse" destination="D-Warehouse" ref="hold widget" inputOperand="widget" inputOperandWeight="1"
+                               outputOperand="widget" outputOperandWeight="1" cost="2" capacity="1000" duration="0"/>
+    </TransportationResource>
+</LFES>

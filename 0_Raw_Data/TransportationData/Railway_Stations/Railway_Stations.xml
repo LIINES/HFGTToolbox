@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><MD_Metadata xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:xalan="http://xml.apache.org/xalan" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml" xmlns="http://www.isotc211.org/2005/gmd">
+    <fileIdentifier>
+        <gco:CharacterString>791a1e0b4b8447aa819c708389d37994</gco:CharacterString>
+    </fileIdentifier>
+    <language>
+        <LanguageCode codeList="http://www.loc.gov/standards/iso639-2/php/code_list.php" codeListValue="eng" codeSpace="ISO639-2">eng</LanguageCode>
+    </language>
+    <characterSet>
+        <MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" codeSpace="ISOTC211/19115">utf8</MD_CharacterSetCode>
+    </characterSet>
+    <hierarchyLevel>
+        <MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset" codeSpace="ISOTC211/19115">dataset</MD_ScopeCode>
+    </hierarchyLevel>
+    <hierarchyLevelName>
+        <gco:CharacterString>dataset</gco:CharacterString>
+    </hierarchyLevelName>
+    <contact>
+        <CI_ResponsibleParty>
+            <organisationName>
+                <gco:CharacterString>Geoscience Australia</gco:CharacterString>
+            </organisationName>
+            <role>
+                <CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact" codeSpace="ISOTC211/19115">pointOfContact</CI_RoleCode>
+            </role>
+        </CI_ResponsibleParty>
+    </contact>
+    <dateStamp gco:nilReason="missing"/>
+    <metadataStandardName>
+        <gco:CharacterString>ISO 19139 Geographic Information - Metadata - Implementation Specification</gco:CharacterString>
+    </metadataStandardName>
+    <metadataStandardVersion>
+        <gco:CharacterString>2007</gco:CharacterString>
+    </metadataStandardVersion>
+    <identificationInfo>
+        <MD_DataIdentification>
+            <citation>
+                <CI_Citation>
+                    <title>
+                        <gco:CharacterString>Railway Stations</gco:CharacterString>
+                    </title>
+                    <date>
+                        <CI_Date>
+                            <date>
+                                <gco:Date>2024-06-06</gco:Date>
+                            </date>
+                            <dateType>
+                                <CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="revision" codeSpace="ISOTC211/19115">revision</CI_DateTypeCode>
+                            </dateType>
+                        </CI_Date>
+                    </date>
+                    <citedResponsibleParty>
+                        <CI_ResponsibleParty>
+                            <organisationName>
+                                <gco:CharacterString>Geoscience Australia</gco:CharacterString>
+                            </organisationName>
+                            <role>
+                                <CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="custodian" codeSpace="ISOTC211/19115">custodian</CI_RoleCode>
+                            </role>
+                        </CI_ResponsibleParty>
+                    </citedResponsibleParty>
+                </CI_Citation>
+            </citation>
+            <abstract>
+                <gco:CharacterString>﻿DefinitionFor the purposes of this dataset,Railway Station is defined as: A recognised stopping place for trains where passengers may board or alight or freight is loaded or unloaded. There may or may not be a platform or a building. The railway station may not be in use.AbstractThe Foundation Rail Infrastructure feature dataset is part of the Foundation Spatial Data Framework theme for Transport. This feature class represents a national aggregation of the spatial locations and attributes of point features, of publicly available data for Railway Stations. Rail Infrastructure information has been derived from various sources provided by data custodians including Spatial Services (NSW), Department of Natural Resources, Mines and Energy (QLD), Department of Environment, Land, Water and Planning (VIC), Land Tasmania (TAS) and Department of Infrastructure and Transport (SA).The coverage is across all states and territories however due to restrictive licensing, Geoscience Australia data was used as the source data for Western Australia (lines and points), the Northern Territory (lines and points) and South Australia (points). Data published by Victoria falling within South Australia has been included (points).Further information on datasets provided by State and Territory custodians can be found under Source Information in this metadata statement.CurrencyDate modified: 7 June 2021Modification frequency: As neededData extentSpatial extentNorth: -12.472439°South: -43.454506°East: 153.611576°West: 114.694061°This data was captured by the providers in various datums and then transformed to GDA2020 by Geoscience Australia.Source informationeCat published version at https://ecat.ga.gov.au/geonetwork/srv/eng/catalog.search#/metadata/145400Lineage statementData supplied to Geoscience Australia from the custodians was processed to perform geometry validation (checks to remove corrupt geometries) and transform the attribute values to the national schema.Minor spatial modifications have taken place to update attribute information in the source data for the national specification.The Digital Atlas data team have consumed the existing Railway Stations service for use in Digital Atlas of Australia platform.Data dictionaryRailway StationsAttribute nameDescriptionOBJECTIDAutomatically generated system IDFEATURESUBTYPEAn identifier for the type of feature represented:Railway StationNAMEThe name of the featureFEATURE_DATEDate of the source material used to capture this feature or the latest edit date of the source data.FEATURE_SOURCEThis is the name of the latest source used to add, update or verify a features existence or position. In most cases, this would be imagery (satellite, orthophotograhy, World Imagery).ATTRIBUTE_DATEDate of the source material used to capture the feature"s attributeATTRIBUTE_SOURCEThis is the name of the latest source material used to populate the attribute field/s of a feature.SOURCE_UFIThe unique identifier of the feature as represented in the source.SOURCE_JURISDICTIONThe jurisdiction of the feature sourceCUSTODIAN_AGENCYThe agency or organisation for the source of this featureCUSTODIAN_LICENCINGSpecific licensing relating to this featureLOADING_DATEDate of data loaded into national modelOPERATIONALSTATUSA description of the feature"s status:Operational — Fully capable of operationNon-Operational — The feature is not currently operatingDecommissioned — The infrastructure has been removed from service and has been or will be dismantledAbandoned — Not in operation due to it being non-functional and operation is not scheduled to be restored.Disused — Temporarily not in operation due to it being non-functional and operation is scheduled to be restored.Other — The attribute value is known, but is not currently a valid member of the attribute range.Unknown — There is no information specified regarding the attribute value.Proposed — Proposed InfrastructureUnder Construction — The feature is currently being builtN/A — Not ApplicableSTATEThe state where this feature is locatedSOURCE_SUPPLY_DATEDate of source supply to Geoscience Australia for loading into the national schema, usually the date the data is downloaded from the custodian siteReference SystemGDA2020 (EPSG:7844)Known Limitations of the DataThese data have some known issues. The content and quality of the data varies on the state provider.ContactGeoscience Australia, clientservices@ga.gov.au</gco:CharacterString>
+            </abstract>
+            <purpose>
+                <gco:CharacterString>Foundation Rail Infrastructure contains point features for railway stations, maintained by Geoscience Australia.</gco:CharacterString>
+            </purpose>
+            <credit>
+                <gco:CharacterString>© Commonwealth of Australia (Geoscience Australia)</gco:CharacterString>
+            </credit>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>Railway</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Transport</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Economy</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <resourceConstraints>
+                <MD_Constraints>
+                    <useLimitation>
+                        <gco:CharacterString>﻿License: Creative Commons Attribution 4.0.
+Access rights: Open
+Security classification: OFFICIAL</gco:CharacterString>
+                    </useLimitation>
+                </MD_Constraints>
+            </resourceConstraints>
+            <language>
+                <LanguageCode codeList="http://www.loc.gov/standards/iso639-2/php/code_list.php" codeListValue="eng" codeSpace="ISO639-2">eng</LanguageCode>
+            </language>
+            <characterSet>
+                <MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" codeSpace="ISOTC211/19115">utf8</MD_CharacterSetCode>
+            </characterSet>
+            <topicCategory>
+                <MD_TopicCategoryCode>transportation</MD_TopicCategoryCode>
+            </topicCategory>
+            <extent>
+                <EX_Extent>
+                    <geographicElement>
+                        <EX_GeographicBoundingBox>
+                            <westBoundLongitude>
+                                <gco:Decimal>114.694061</gco:Decimal>
+                            </westBoundLongitude>
+                            <eastBoundLongitude>
+                                <gco:Decimal>153.611576</gco:Decimal>
+                            </eastBoundLongitude>
+                            <southBoundLatitude>
+                                <gco:Decimal>-43.454506</gco:Decimal>
+                            </southBoundLatitude>
+                            <northBoundLatitude>
+                                <gco:Decimal>-12.472439</gco:Decimal>
+                            </northBoundLatitude>
+                        </EX_GeographicBoundingBox>
+                    </geographicElement>
+                </EX_Extent>
+            </extent>
+        </MD_DataIdentification>
+    </identificationInfo>
+    <distributionInfo>
+        <MD_Distribution>
+            <transferOptions>
+                <MD_DigitalTransferOptions>
+                    <onLine>
+                        <CI_OnlineResource>
+                            <linkage>
+                                <URL>https://services.ga.gov.au/gis/rest/services/Foundation_Rail_Infrastructure/MapServer/0</URL>
+                            </linkage>
+                        </CI_OnlineResource>
+                    </onLine>
+                </MD_DigitalTransferOptions>
+            </transferOptions>
+        </MD_Distribution>
+    </distributionInfo>
+</MD_Metadata>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="Example Network-Capability" numBuffers="4" type="Smart City" dataState="raw" version="4.0">
+	<Operand name="0"></Operand>
+	<Operand name="1"></Operand>
+    <Operand name="2"></Operand>
+	<TransformProcess resource="0" gpsX="0" gpsY="1" name="treat water" status="true" operand="0" output="1" idxProcess="0" decisionMaker="0"/>
+	<TransformProcess resource="1" gpsX="0" gpsY="0" name="generate electric power" status="true" operand="" output="0" idxProcess="1" decisionMaker="1"/>
+	<TransformProcess resource="2" gpsX="1" gpsY="1" name="consume water" status="true" operand="0, 1" output="" idxProcess="2" decisionMaker="2"/>
+	<TransportProcess resource="2" gpsX="1" gpsY="1" name="store" status="true" origin="2" dest="2" ref="1" operand="2" output="2" decisionMaker="2"/>
+	<TransportProcess resource="2" gpsX="1" gpsY="1" name="store" status="true" origin="2" dest="2" ref="0" operand="2, 0" output="2" decisionMaker="2"/>
+	<TransportProcess resource="3" gpsX="1" gpsY="0" name="store" status="true" origin="3" dest="3" ref="1" operand="2" output="2" decisionMaker="2"/>
+	<TransportProcess resource="4" name="transport" status="true" origin="0" dest="2" ref="2" operand="1" output="1" decisionMaker="0"/>
+	<TransportProcess resource="5" name="transport" status="true" origin="1" dest="0" ref="3" operand="0" output="0" decisionMaker="1"/>
+	<TransportProcess resource="6" name="transport" status="true" origin="1" dest="2" ref="3" operand="0" output="0" decisionMaker="1"/>
+	<TransportProcess resource="7" name="transport" status="true" origin="3" dest="2" ref="4" operand="2" output="2" decisionMaker="2"/>
+	<TransportProcess resource="7" name="transport" status="true" origin="2" dest="3" ref="4" operand="2" output="2" decisionMaker="2"/>
+	<DecisionMaker name="0" nameString="Water Utility" status="true">
+		<PeerRecipient name="0"/>
+		<PeerRecipient name="1"/>
+		<PeerRecipient name="2"/>
+	</DecisionMaker>
+	<DecisionMaker name="1" nameString="Electric Power Utility" status="true">
+		<PeerRecipient name="1"/>
+		<PeerRecipient name="0"/>
+		<PeerRecipient name="2"/>
+	</DecisionMaker>
+	<DecisionMaker name="2" nameString="End User" status="true">
+		<PeerRecipient name="2"/>
+		<PeerRecipient name="0"/>
+		<PeerRecipient name="1"/>
+	</DecisionMaker>
+	<Service name="deliverWater" status="true">
+		<ServicePlace name="potable water"/>
+		<ServiceTransition name="treat water" preset="" postset="potable water" processLinkName="treat water" processLinkRef=""/>
+		<ServiceTransition name="continuing water" preset="potable water" postset="potable water" processLinkName="transport" processLinkRef="2"/>
+		<ServiceTransition name="consume water" preset="potable water" postset="" processLinkName="consume water" processLinkRef=""/>
+	</Service>
+	<Service name="deliverElectricity" status="true">
+		<ServicePlace name="electric power"/>
+		<ServiceTransition name="generate electric power" preset="" postset="electric power" processLinkName="generate electric power" processLinkRef=""/>
+		<ServiceTransition name="continuing electric power" preset="electric power" postset="electric power" processLinkName="transport" processLinkRef="3"/>
+		<ServiceTransition name="treat water" preset="electric power" postset="" processLinkName="treat water" processLinkRef=""/>
+		<ServiceTransition name="consume water" preset="electric power" postset="" processLinkName="consume water" processLinkRef=""/>
+		<ServiceTransition name="charge EV" preset="electric power" postset="" processLinkName="store" processLinkRef="0"/>
+	</Service>
+	<Service name="deliverEV" status="true">
+		<ServicePlace name="state of charge"/>
+		<ServiceTransition name="charge battery" preset="" postset="state of charge" processLinkName="store" processLinkRef="0"/>
+		<ServiceTransition name="continuing battery" preset="state of charge" postset="state of charge" processLinkName="store" processLinkRef="1"/>
+		<ServiceTransition name="discharge battery" preset="state of charge" postset="" processLinkName="transport" processLinkRef="4"/>
+	</Service>
+	<ReferenceArchitecture>
+		<TransportProcess name="transport" ref="0" operand="2, 0" output="2"/>
+		<TransportProcess name="transport" ref="1" operand="2" output="2"/>
+		<TransportProcess name="transport" ref="2" operand="1" output="1"/>
+		<TransportProcess name="transport" ref="3" operand="0" output="0"/>
+		<TransportProcess name="transport" ref="4" operand="2" output="2"/>
+		<ProcessPair name1="0" ref1="" name2="transport" ref2="2"/>
+		<ProcessPair name1="transport" ref1="2" name2="2" ref2=""/>
+		<ProcessPair name1="transport" ref1="3" name2="0" ref2=""/>
+		<ProcessPair name1="transport" ref1="3" name2="transport" ref2="0"/>
+		<ProcessPair name1="transport" ref1="3" name2="2" ref2=""/>
+		<ProcessPair name1="1" ref1="" name2="transport" ref2="3"/>
+		<ProcessPair name1="transport" ref1="1" name2="transport" ref2="0"/>
+		<ProcessPair name1="transport" ref1="1" name2="transport" ref2="1"/>
+		<ProcessPair name1="transport" ref1="1" name2="transport" ref2="4"/>
+		<ProcessPair name1="transport" ref1="4" name2="transport" ref2="1"/>
+		<ProcessPair name1="transport" ref1="4" name2="transport" ref2="4"/>
+		<ProcessPair name1="transport" ref1="4" name2="transport" ref2="0"/>
+		<ProcessPair name1="transport" ref1="0" name2="transport" ref2="1"/>
+		<ProcessPair name1="transport" ref1="0" name2="transport" ref2="0"/>
+		<ProcessPair name1="transport" ref1="0" name2="transport" ref2="4"/>
+	</ReferenceArchitecture>
+</LFES>

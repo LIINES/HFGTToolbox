@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Demand and Supply: attributes for transitions: demand="true" or "false", supply="true" or "false" - when true, there is an accompanying CSV file that contains the time series data. When false: ignored.
+     Tesla model Y has 82 kWh battery capacity.
+     ProcessLinkRef can be left empty if the processLinkName links to a TransformationProcess rather than to a TransportationProcess.
+     The maximum no. of hours a driver can rest is 8 h (+1).
+     The maximum no. of hours a driver can drive is 16 h (+1).
+     TransformationResource: Initial condition is 500 km (distance to travel), final condition is 0 km.
+     Where to define the weight of arc EN Q1 -> U1?
+-->
+<LFES name="NEAC-freight"
+      scenario="base"
+      refArchitecture="NEAC Freight"
+      dataState="raw"
+      inputDataFormat="defaultXML"
+      verboseMode="true"
+      analysisMethod="HFNMCF"
+      outputFileType="json"
+      optimizer="HiGHS"
+      simHorizon="20"
+      deltaT="1"
+      hasESN_STF1="true"
+      hasESN_STF2="false"
+      hasESN_Duration="false"
+      hasBufferLinearCost="false"
+      hasBufferQuadCost="false"
+      hasBufferUpperBound="false"
+      hasBufferLowerBound = "false"
+      hasBufferInitCond="true"
+      hasBufferFinalCond="true"
+      hasProcessLinearCostFlowNeg="true" hasProcessLinearCostFlowPos="false" hasProcessLinearCostStock="false"
+      hasProcessQuadCostFlowNeg="true" hasProcessQuadCostFlowPos="false" hasProcessQuadCostStock="false"
+      hasProcessUpperBoundFlowNeg="true" hasProcessUpperBoundFlowPos="false" hasProcessUpperBoundStock="false"
+      hasProcessLowerBoundFlowNeg="false" hasProcessLowerBoundFlowPos="false" hasProcessLowerBoundStock="false"
+      hasProcessInitCond="false"
+      hasProcessFinalCond="false"
+      hasProcessDuration="true"
+      hasProcessValues="false"
+      hasProcessUpperBoundRamp="false"
+      hasProcessLowerBoundRamp="false">
+
+  <Operand operandName="ev driver"
+           operandType="matter"
+           operandNetName="ev driver"
+           status="true"
+           hasOperandNet_Duration="false"
+           hasOperandNet_STF1="true"
+           hasOperandNet_STF2="false"
+           hasSyncMatNeg="false"
+           hasSyncMatPos="false"
+           hasPlaceCost="false"
+           hasPlaceUpperBound="false"
+           hasPlaceLowerBound = "false"
+           hasPlaceInitConds="true"
+           hasPlaceFinalConds="true"
+           hasTransitionLinearCostFlowNeg="false"
+           hasTransitionLinearCostFlowPos="false"
+           hasTransitionLinearCostStock="false"
+           hasTransitionQuadCostFlowNeg="false"
+           hasTransitionQuadCostFlowPos="false"
+           hasTransitionQuadCostStock="false"
+           hasTransitionUpperBoundFlowNeg="false"
+           hasTransitionUpperBoundFlowPos="false"
+           hasTransitionUpperBoundStock="false"
+           hasTransitionLowerBoundFlowNeg="false"
+           hasTransitionLowerBoundFlowPos="false"
+           hasTransitionLowerBoundStock="false"
+           hasTransitionDurationConds="false"
+           hasTransitionFinalConds="false"
+           hasTransitionInitConds="false">
+    <OperandPlace name="state of charge"
+                  placeType="internal"
+                  initCond="82"
+                  finalCond="10"
+                  varDomain="real+"/>
+    <OperandPlace name="allowed to rest"
+                  placeType="internal"
+                  initCond="9"
+                  finalCond="9"
+                  varDomain="real+"/>
+    <OperandPlace name="allowed to drive"
+                  placeType="internal"
+                  initCond="17"
+                  finalCond="17"
+                  varDomain="real+"/>
+    <OperandTransition name="charging"
+                       preset="allowed to rest"
+                       postset="state of charge"
+                       processLinkName="reduce trip distance"
+                       processLinkRef=""
+                       varDomain="real+"/>
+    <OperandTransition name="parking"
+                       preset="allowed to rest,state of charge"
+                       postset="state of charge"
+                       processLinkName="reduce trip distance"
+                       processLinkRef=""
+                       varDomain="real+"/>
+    <OperandTransition name="driving"
+                       preset="state of charge,allowed to drive"
+                       postset=""
+                       processLinkName="reduce trip distance"
+                       processLinkRef=""
+                       varDomain="real+"/>
+    <OperandTransition name="begin driving shift"
+                       preset="allowed to rest"
+                       postset="allowed to drive"
+                       processLinkName="reduce trip distance"
+                       processLinkRef=""
+                       varDomain="real+"/>
+    <OperandTransition name="begin rest period"
+                       preset="allowed to drive"
+                       postset="allowed to rest"
+                       processLinkName="reduce trip distance"
+                       processLinkRef=""
+                       varDomain="real+"/>
+  </Operand>
+  <TransformationResource transformationResourceName="electrified transportation system" gpsX="1" gpsY="1" decisionMaker="" autonomous="true" finalCond="0" initCond="500" upperBound="500" varDomain="real+">
+    <TransformationProcess name="reduce trip distance" inputOperand="ev driver" inputOperandWeight="80" outputOperand="ev driver" outputOperandWeight="1" linearCostCoeffFlowNeg="10" quadCostCoeffFlowNeg="0" duration="20" upperBoundFlowNeg="3000" demand="false" supply="false" status="true" varDomain="real+"/>
+  </TransformationResource>
+</LFES>

@@ -1,0 +1,2 @@
+name,scenario,simHorizon,hasBufferFinalCond,hasBufferLinearCost,hasESNEnablingConstraint,subAnalysisMethod
+NEAC-Freight,Place-Specific-Fatigue-Experimental,41,true,true,true,FreightFatigue

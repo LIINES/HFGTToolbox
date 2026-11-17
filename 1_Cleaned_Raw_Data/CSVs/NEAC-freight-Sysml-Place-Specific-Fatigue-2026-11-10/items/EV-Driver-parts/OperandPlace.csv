@@ -1,0 +1,7 @@
+finalCond,initCond,linearCostCoeff,name,placeType,upperBound,varDomain
+0,10,0,state-of-charge,internal,,real+
+0,1,0,allowed-to-drive,internal,,binary
+0,11,0,driver-energy-level,internal,11,real+
+0,0,0,allowed-to-rest,internal,,binary
+0,0,0,driver-breaktime-level,internal,11,real+
+1,0,-1,signed-out,internal,,real+

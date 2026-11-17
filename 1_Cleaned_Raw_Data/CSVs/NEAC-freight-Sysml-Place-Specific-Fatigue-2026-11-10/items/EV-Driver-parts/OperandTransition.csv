@@ -1,0 +1,7 @@
+name,postset,postsetWeight,preset,presetWeight,processLinkName,processLinkRef,processLinkWeight
+charge state-of-charge,"state-of-charge,allowed-to-rest","1,1","allowed-to-rest,driver-breaktime-level","1,1","charge ev-driver","",1
+park,allowed-to-rest,1,"allowed-to-rest,driver-breaktime-level","1,1","","",
+discharge state-of-charge,allowed-to-drive,1,"state-of-charge,allowed-to-drive,driver-energy-level","1,1,1","","hold ev-driver",1
+begin rest period,"allowed-to-rest,driver-breaktime-level","1,11","allowed-to-drive,driver-energy-level","1,1","","",""
+begin driving shift,"allowed-to-drive,driver-energy-level","1,11","allowed-to-rest,driver-breaktime-level","1,1","","",""
+check out ev-driver,signed-out,1,"state-of-charge,allowed-to-drive,driver-energy-level","10,1,11","","",""

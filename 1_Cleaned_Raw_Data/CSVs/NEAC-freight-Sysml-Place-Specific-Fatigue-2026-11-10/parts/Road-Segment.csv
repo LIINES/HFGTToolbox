@@ -1,0 +1,11 @@
+autonomous,decisionMaker,transportationResourceName,origin,destination
+true,,Road Segment 1-2,Charging-Station-1,Charging-Station-2
+true,,Road Segment 2-3,Charging-Station-2,Charging-Station-3
+true,,Road Segment 3-4,Charging-Station-3,Charging-Station-4
+true,,Road Segment 4-5,Charging-Station-4,Charging-Station-5
+true,,Road Segment 5-6,Charging-Station-5,Charging-Station-6
+true,,Road Segment 6-7,Charging-Station-6,Charging-Station-7
+true,,Road Segment 7-8,Charging-Station-7,Charging-Station-8
+true,,Road Segment 8-9,Charging-Station-8,Charging-Station-9
+true,,Road Segment 9-10,Charging-Station-9,Charging-Station-10
+true,,Road Segment 10-11,Charging-Station-10,Charging-Station-11

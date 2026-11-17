@@ -1,0 +1,2 @@
+operandName,operandNetName,operandType,hasOperandNetEnablingConstraint,hasOperandNet_STF1,hasPlaceFinalConds,hasPlaceInitConds,hasPlaceLinearCost,hasPlaceUpperBound,hasSyncMatNeg
+ev-driver,ev-driver,living-being,true,true,true,true,true,true,true

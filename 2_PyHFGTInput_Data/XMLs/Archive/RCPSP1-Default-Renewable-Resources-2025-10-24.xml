@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="RCPSP1" scenario="renewable-resources" refArchitecture="Smart City" dataState="raw" inputDataFormat="defaultXML" version="4.0" verboseMode="true" analysisMethod="HFNMCF"
+      outputFileType="json"
+      optimizer="gurobi" simHorizon="2" deltaT="1"
+      hasESN_STF1="false" hasESN_STF2="false" hasESN_Duration="false"
+      hasBufferCapacityCond="false" hasBufferInitCond="false" hasBufferFinalCond="false" hasBufferCost="true"
+      hasProcessCapacityCond="false" hasProcessInitCond="true" hasProcessFinalCond="true" hasProcessCost="true" hasProcessDuration="true">
+    <Operand operandName="project" operandType="information" operandNetName="deliver project" status="true" hasOperandNet_STF1="true" hasOperandNet_STF2="true" hasOperandNet_Duration="true">
+        <OperandPlace name="Project Start" type="internal" varDomain="integer"/>
+        <OperandPlace name="Required Operands Stock" type="internal" varDomain="integer"/>
+        <OperandPlace name="Activity A Finished" type="internal" varDomain="integer"/>
+        <OperandPlace name="Activity B Finished" type="internal" varDomain="integer"/>
+        <OperandPlace name="Activity C Finished" type="internal" varDomain="integer"/>
+        <OperandPlace name="Activity D Finished" type="internal" varDomain="integer"/>
+        <OperandPlace name="Activity E Finished" type="internal" varDomain="integer"/>
+        <OperandPlace name="Activity F Finished" type="internal" varDomain="integer"/>
+        <OperandPlace name="Activity G Finished" type="internal" varDomain="integer"/>
+        <OperandPlace name="Activity H Finished" type="internal" varDomain="integer"/>
+        <OperandTransition name="Perform Activity A" preset="Project Start,Required Operands Stock" postset="Required Operands Stock,Activity A Finished" processLinkName="" processLinkRef="" varDomain="integer" duration="2"/>
+        <OperandTransition name="Perform Activity B" preset="Project Start,Required Operands Stock" postset="Required Operands Stock,Activity B Finished" processLinkName="" processLinkRef="" varDomain="integer" duration="7"/>
+        <OperandTransition name="Perform Activity C" preset="Required Operands Stock,Activity A Finished" postset="Required Operands Stock,Activity C Finished" processLinkName="" processLinkRef="" varDomain="integer" duration="3"/>
+        <OperandTransition name="Perform Activity D" preset="Project Start,Required Operands Stock" postset="Required Operands Stock,Activity D Finished" processLinkName="" processLinkRef="" varDomain="integer" duration="4"/>
+        <OperandTransition name="Perform Activity E" preset="Required Operands Stock,Activity C Finished" postset="Required Operands Stock,Activity E Finished" processLinkName="" processLinkRef="" varDomain="integer" duration="8"/>
+        <OperandTransition name="Perform Activity F" preset="Required Operands Stock,Activity D Finished" postset="Required Operands Stock,Activity F Finished" processLinkName="" processLinkRef="" varDomain="integer" duration="6"/>
+        <OperandTransition name="Perform Activity G" preset="Required Operands Stock,Activity D Finished,Activity B Finished" postset="Required Operands Stock,Activity G Finished" processLinkName="" processLinkRef="" varDomain="integer" duration="4"/>
+        <OperandTransition name="Perform Activity H" preset="Required Operands Stock,Activity G Finished" postset="Required Operands Stock,Activity H Finished" processLinkName="" processLinkRef="" varDomain="integer" duration="2"/>
+        <OperandTransition name="Finish Project" preset="Activity E Finished,Activity F Finished,Activity H Finished" postset="" processLinkName="" processLinkRef="" varDomain="integer" duration="0"/>
+    </Operand>
+</LFES>

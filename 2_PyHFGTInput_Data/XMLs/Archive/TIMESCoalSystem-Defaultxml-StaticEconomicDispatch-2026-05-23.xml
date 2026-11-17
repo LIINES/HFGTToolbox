@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="TIMESCoalSystem" scenario="StaticEconomicDispatch" refArchitecture="CoalPool" dataState="raw" inputDataFormat="defaultXML"
+      verboseMode="true" analysisMethod="HFNMCF" outputFileType="json" optimizer="Gurobi" simHorizon="2" deltaT="1"
+      hasESN_STF1="true" hasESN_STF2="false" hasESN_Duration="false" hasESNEnablingConstraint="false"
+      hasBufferUpperBound="true" hasBufferLowerBound = "false" hasBufferInitCond="false" hasBufferFinalCond="false"
+      hasBufferLinearCost="false" hasBufferQuadCost="false"
+      hasProcessUpperBoundFlowNeg="true" hasProcessUpperBoundFlowPos="false" hasProcessUpperBoundRamp="false" hasProcessUpperBoundStock="false"
+      hasProcessLowerBoundFlowNeg="false" hasProcessLowerBoundFlowPos="false" hasProcessLowerBoundRamp="false" hasProcessLowerBoundStock="false"
+      hasProcessInitCond="false" hasProcessFinalCond="false"
+      hasProcessLinearCostFlowNeg="true" hasProcessLinearCostFlowPos="false" hasProcessLinearCostStock="false"
+      hasProcessQuadCostFlowNeg="false" hasProcessQuadCostFlowPos="false" hasProcessQuadCostStock="false"
+      hasProcessDuration="false" hasProcessValues="true">
+    <Operand operandName="coal" operandType="energy" operandNetName="deliver coal" status="true" 
+             hasOperandNet_Duration="false" hasOperandNet_STF1="false" hasOperandNet_STF2="false" hasOperandNetEnablingConstraint="false"
+             hasSyncMatNeg="false" hasSyncMatPos="false" hasPlaceUpperBound="false" hasPlaceLowerBound="false"
+             hasPlaceLinearCost="false" hasPlaceQuadCost="false"
+             hasPlaceFinalConds="false" hasPlaceInitConds="false"
+             hasTransitionLowerBoundFlowNeg="false" hasTransitionLowerBoundFlowPos="false" hasTransitionLowerBoundStock="false"
+             hasTransitionUpperBoundFlowNeg="false" hasTransitionUpperBoundFlowPos="false" hasTransitionUpperBoundStock="false"
+             hasTransitionLinearCostFlowNeg="false" hasTransitionLinearCostFlowPos="false" hasTransitionLinearCostStock="false"
+             hasTransitionQuadCostFlowNeg="false" hasTransitionQuadCostFlowPos="false" hasTransitionQuadCostStock="false"
+             hasTransitionDurationConds="false" hasTransitionFinalConds="false" hasTransitionInitConds="false"/>
+    <TransformationResource transformationResourceName="CoalSystem" gpsX="0" gpsY="0" decisionMaker="Scheduler" autonomous="true" upperBound="0" varDomain="real+">
+        <TransformationProcess name="import coal" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="coal" outputOperandWeight="1" 
+                               quadCostCoeff="" linearCostCoeffFlowNeg="2.75" fixedCostCoeff="0"
+                               lowerBound="0" upperBoundFlowNeg="100000" lowerBoundRamp="0" upperBoundRamp="0"/>
+        <TransformationProcess name="mine1 coal" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="coal" outputOperandWeight="1" 
+                               quadCostCoeff="" linearCostCoeffFlowNeg="2.00" fixedCostCoeff="0"
+                               lowerBound="0" upperBoundFlowNeg="6074" lowerBoundRamp="0" upperBoundRamp="0"/>
+        <TransformationProcess name="mine2 coal" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="coal" outputOperandWeight="1" 
+                               quadCostCoeff="" linearCostCoeffFlowNeg="2.50" fixedCostCoeff="0"
+                               lowerBound="0" upperBoundFlowNeg="2025" lowerBoundRamp="0" upperBoundRamp="0"/>
+        <TransformationProcess name="mine3 coal" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="coal" outputOperandWeight="1"
+                               quadCostCoeff="" linearCostCoeffFlowNeg="3.00" fixedCostCoeff="0"
+                               lowerBound="0" upperBoundFlowNeg="100000" lowerBoundRamp="" upperBoundRamp=""/>
+        <TransformationProcess name="export coal" status="true" varDomain="real+" duration=""
+                               inputOperand="coal" inputOperandWeight="1" outputOperand="" outputOperandWeight=""
+                               quadCostCoeff="" linearCostCoeffFlowNeg="-2.76" fixedCostCoeff=""
+                               lowerBound="" upperBoundFlowNeg="1147" lowerBoundRamp="" upperBoundRamp=""/>
+        <TransformationProcess name="consume coal" status="true" varDomain="real+" duration=""
+                               inputOperand="coal" inputOperandWeight="1" outputOperand="" outputOperandWeight=""
+                               quadCostCoeff="" linearCostCoeffFlowNeg="0" fixedCostCoeff=""
+                               lowerBound="" upperBoundFlowNeg="" lowerBoundRamp="" upperBoundRamp="" value="13413.96"/>
+    </TransformationResource>
+</LFES>

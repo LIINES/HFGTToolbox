@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is the RCPSP example used in Amirreza's first quantitative paper plus the introduction of the engineering system net.  -->
+<LFES name="RCPSP1" scenario="renewable-resources-esn1" refArchitecture="Smart City" dataState="raw" inputDataFormat="defaultXML" verboseMode="true" analysisMethod="HFNMCF" outputFileType="json"
+      optimizer="gurobi" simHorizon="23" deltaT="1"
+      hasESN_STF1="true" hasESN_STF2="false" hasESN_Duration="false"
+      hasBufferUpperBound="false" hasBufferLowerBound="false" hasBufferInitCond="false" hasBufferFinalCond="false" hasBufferCost="false"
+      hasProcessUpperBound="false" hasProcessLowerBound="false" hasProcessRamp="false" hasProcessInitCond="false" hasProcessValues="false"
+      hasProcessFinalCond="false" hasProcessCost="false" hasProcessDuration="false">
+    <Operand operandName="project" operandType="information" operandNetName="deliver project" status="true"
+             hasOperandNet_STF1="true" hasOperandNet_STF2="false" hasOperandNet_Duration="true"
+             hasPlaceUpperBound="true" hasPlaceLowerBound="false" hasSyncMatNeg="true" hasSyncMatPos="true" hasPlaceCost="false"
+             hasPlaceFinalConds="true" hasPlaceInitConds="true" hasTransitionCapacityConds="false" hasTransitionCost="true"
+             hasTransitionDurationConds="true" hasTransitionFinalConds="false" hasTransitionInitConds="false">
+        <OperandPlace name="Project Start"           placeType="internal" varDomain="integer+" upperBound=""  finalCond="0" initCond="3"/>
+        <OperandPlace name="Required Operands Stock" placeType="internal" varDomain="integer+" upperBound="8" finalCond="8" initCond="8"/>
+        <OperandPlace name="Activity A Finished"     placeType="internal" varDomain="integer+" upperBound=""  finalCond="0" initCond="0"/>
+        <OperandPlace name="Activity D Finished"     placeType="internal" varDomain="integer+" upperBound=""  finalCond="0" initCond="0"/>
+        <OperandPlace name="Activity B Finished"     placeType="internal" varDomain="integer+" upperBound=""  finalCond="0" initCond="0"/>
+        <OperandPlace name="Activity C Finished"     placeType="internal" varDomain="integer+" upperBound=""  finalCond="0" initCond="0"/>
+        <OperandPlace name="Activity G Finished"     placeType="internal" varDomain="integer+" upperBound=""  finalCond="0" initCond="0"/>
+        <OperandPlace name="Activity E Finished"     placeType="internal" varDomain="integer+" upperBound=""  finalCond="0" initCond="0"/>
+        <OperandPlace name="Activity F Finished"     placeType="internal" varDomain="integer+" upperBound=""  finalCond="0" initCond="0"/>
+        <OperandPlace name="Activity H Finished"     placeType="internal" varDomain="integer+" upperBound=""  finalCond="0" initCond="0"/>
+        <OperandTransition name="Perform Activity A" preset="Project Start,Required Operands Stock" presetWeight="1,2" postset="Required Operands Stock,Activity A Finished" postsetWeight="2,1" processLinkName="Perform Activity A" processLinkRef="" varDomain="binary" duration="2" linearCostCoeff="0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0"/>
+        <OperandTransition name="Perform Activity B" preset="Project Start,Required Operands Stock" presetWeight="1,3" postset="Required Operands Stock,Activity B Finished" postsetWeight="3,1" processLinkName="Perform Activity B" processLinkRef="" varDomain="binary" duration="7" linearCostCoeff="0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0"/>
+        <OperandTransition name="Perform Activity C" preset="Required Operands Stock,Activity A Finished" presetWeight="4,1" postset="Required Operands Stock,Activity C Finished" postsetWeight="4,1" processLinkName="Perform Activity C" processLinkRef="" varDomain="binary" duration="3" linearCostCoeff="0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0"/>
+        <OperandTransition name="Perform Activity D" preset="Project Start,Required Operands Stock" presetWeight="1,4" postset="Required Operands Stock,Activity D Finished" postsetWeight="4,2" processLinkName="Perform Activity D" processLinkRef="" varDomain="binary" duration="4" linearCostCoeff="0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0"/>
+        <OperandTransition name="Perform Activity E" preset="Required Operands Stock,Activity C Finished" presetWeight="3,1" postset="Required Operands Stock,Activity E Finished" postsetWeight="3,1" processLinkName="Perform Activity E" processLinkRef="" varDomain="binary" duration="8" linearCostCoeff="0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0"/>
+        <OperandTransition name="Perform Activity F" preset="Required Operands Stock,Activity D Finished" presetWeight="2,1" postset="Required Operands Stock,Activity F Finished" postsetWeight="2,1" processLinkName="Perform Activity F" processLinkRef="" varDomain="binary" duration="6" linearCostCoeff="0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0"/>
+        <OperandTransition name="Perform Activity G" preset="Required Operands Stock,Activity D Finished,Activity B Finished" presetWeight="3,1,1" postset="Required Operands Stock,Activity G Finished" postsetWeight="3,1" processLinkName="Perform Activity G" processLinkRef="" varDomain="binary" duration="4" linearCostCoeff="0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0"/>
+        <OperandTransition name="Perform Activity H" preset="Required Operands Stock,Activity G Finished" presetWeight="4,1" postset="Required Operands Stock,Activity H Finished" postsetWeight="4,1" processLinkName="Perform Activity H" processLinkRef="" varDomain="binary" duration="2" linearCostCoeff="0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0"/>
+        <OperandTransition name="Finish Project" preset="Activity E Finished,Activity F Finished,Activity H Finished" presetWeight="1,1,1" postset="" postsetWeight="" processLinkName="Finish Project" processLinkRef="" varDomain="binary" duration="0" linearCostCoeff="1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23"/>
+    </Operand>
+    <TransformationResource transformationResourceName="Jack" gpsX="1" gpsY="1" decisionMaker="End User" autonomous="true" varDomain="integer+" linearCostCoeff="0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0">
+        <TransformationProcess name="Perform Activity A" status="true" varDomain="binary" inputOperand="project" inputOperandWeight="1" outputOperand="project" outputOperandWeight="1" duration="" finalCond="" initCond="" linearCostCoeff="0"/>
+        <TransformationProcess name="Perform Activity B" status="true" varDomain="binary" inputOperand="project" inputOperandWeight="1" outputOperand="project" outputOperandWeight="1" duration="" finalCond="" initCond="" linearCostCoeff="0"/>
+        <TransformationProcess name="Perform Activity C" status="true" varDomain="binary" inputOperand="project" inputOperandWeight="1" outputOperand="project" outputOperandWeight="1" duration="" finalCond="" initCond="" linearCostCoeff="0"/>
+        <TransformationProcess name="Perform Activity D" status="true" varDomain="binary" inputOperand="project" inputOperandWeight="1" outputOperand="project" outputOperandWeight="1" duration="" finalCond="" initCond="" linearCostCoeff="0"/>
+        <TransformationProcess name="Perform Activity E" status="true" varDomain="binary" inputOperand="project" inputOperandWeight="1" outputOperand="project" outputOperandWeight="1" duration="" finalCond="" initCond="" linearCostCoeff="0"/>
+        <TransformationProcess name="Perform Activity F" status="true" varDomain="binary" inputOperand="project" inputOperandWeight="1" outputOperand="project" outputOperandWeight="1" duration="" finalCond="" initCond="" linearCostCoeff="0"/>
+        <TransformationProcess name="Perform Activity G" status="true" varDomain="binary" inputOperand="project" inputOperandWeight="1" outputOperand="project" outputOperandWeight="1" duration="" finalCond="" initCond="" linearCostCoeff="0"/>
+        <TransformationProcess name="Perform Activity H" status="true" varDomain="binary" inputOperand="project" inputOperandWeight="1" outputOperand="project" outputOperandWeight="1" duration="" finalCond="" initCond="" linearCostCoeff="0"/>
+        <TransformationProcess name="Finish Project" status="true" varDomain="binary" inputOperand="project" inputOperandWeight="1" outputOperand="project" outputOperandWeight="1" duration="" finalCond="" initCond="" linearCostCoeff="0"/>
+    </TransformationResource>
+</LFES>

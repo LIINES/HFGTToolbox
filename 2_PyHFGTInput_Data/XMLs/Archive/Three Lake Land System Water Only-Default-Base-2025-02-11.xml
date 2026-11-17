@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<LFES name="Three Lake Land System Water Only" scenario="base" refArchitecture="Lake-Land System" dataState="raw" inputDataFormat="default" version="4.0" verboseMode="true" analyzeSoS="false" outputFileType="hdf5">
+   <!-- Define operands -->
+   <Operand operandName="water" operandType="matter"/>   
+   <!-- Transformation Resources -->
+   <TransformationResource transformationResourceName="Lake 1" gpsX="0" gpsY="0" decisionMaker="" autonomous="true" elevation="600" elevationUnits="m" QBminFlow="150" QBunits="m^3" controller="" hasQBinitCond="true" hasQBfinalCond="false" hasQBCapacityConstraint="false" QBinitCond="100" QBfinalCond="" QBmax="10000000" costCoeffQB="0">
+      <TransformationProcess name="accept water" status="true" inputOperand="" inputOperandWeight="1" outputOperand="water" outputOperandWeight="1" duration="" hasResistance="false" resistance="5000" resistanceUnits="s/m^3" hasUEMinusExoConstraint="true" hasUEPlusExoConstraint="false" hasUEMinusCapacityConstraint="false" hasUEPlusCapacityConstraint="false" CUMinus="hcat(40*ones(1, Int(100/deltaT)), 30*ones(1, Int(100/deltaT)), 20*ones(1, Int(numOptTimeSteps-200/deltaT)))" CUPlus="" UEMinusMax="" UEPlusMax="" hasQEinitCond="false" hasQEfinalCond="false" hasQECapacityConstraint="false" QEinitCond="" QEfinalCond="" QEmax="" costCoeffQE="0"/>
+   </TransformationResource>
+   
+   <TransformationResource transformationResourceName="Lake 2" gpsX="1" gpsY="0" decisionMaker="" autonomous="true" elevation="580" elevationUnits="m" QBminFlow="150" QBunits="m^3" controller="" hasQBinitCond="true" hasQBfinalCond="false" hasQBCapacityConstraint="false" QBinitCond="300" QBfinalCond="" QBmax="10000000" costCoeffQB="0">
+      <TransformationProcess name="accept water" status="true" inputOperand="" inputOperandWeight="1" outputOperand="water" outputOperandWeight="1" duration="" hasResistance="false" resistance="5000" resistanceUnits="s/m^3" hasUEMinusExoConstraint="true" hasUEPlusExoConstraint="false" hasUEMinusCapacityConstraint="false" hasUEPlusCapacityConstraint="false" CUMinus="hcat(40*ones(1, Int(100/deltaT)), 30*ones(1, Int(100/deltaT)), 20*ones(1, Int(numOptTimeSteps-200/deltaT)))" CUPlus="" UEMinusMax="" UEPlusMax="" hasQEinitCond="false" hasQEfinalCond="false" hasQECapacityConstraint="false" QEinitCond="" QEfinalCond="" QEmax="" costCoeffQE="0"/>
+   </TransformationResource>
+   
+   <TransformationResource transformationResourceName="Lake 3" gpsX="2" gpsY="0" decisionMaker="" autonomous="true" elevation="510" elevationUnits="m" QBminFlow="150" QBunits="m^3" controller="" hasQBinitCond="true" hasQBfinalCond="false" hasQBCapacityConstraint="false" QBinitCond="50" QBfinalCond="" QBmax="10000000" costCoeffQB="0">
+      <TransformationProcess name="accept water" status="true" inputOperand="" inputOperandWeight="1" outputOperand="water" outputOperandWeight="1" duration="" hasResistance="false" resistance="5000" resistanceUnits="s/m^3" hasUEMinusExoConstraint="true" hasUEPlusExoConstraint="false" hasUEMinusCapacityConstraint="false" hasUEPlusCapacityConstraint="false" CUMinus="hcat(40*ones(1, Int(100/deltaT)), 30*ones(1, Int(100/deltaT)), 20*ones(1, Int(numOptTimeSteps-200/deltaT)))" CUPlus="" UEMinusMax="" UEPlusMax="" hasQEinitCond="false" hasQEfinalCond="false" hasQECapacityConstraint="false" QEinitCond="" QEfinalCond="" QEmax="" costCoeffQE="0"/>
+   </TransformationResource>
+   
+   <TransformationResource transformationResourceName="Land 1" gpsX="1" gpsY="1" decisionMaker="" autonomous="true" elevation="510" elevationUnits="m" QBminFlow="150" QBunits="m^3"/>
+   <TransformationResource transformationResourceName="Land 2" gpsX="1" gpsY="1" decisionMaker="" autonomous="true" elevation="510" elevationUnits="m" QBminFlow="150" QBunits="m^3"/>
+   <TransformationResource transformationResourceName="Land 3" gpsX="1" gpsY="1" decisionMaker="" autonomous="true" elevation="510" elevationUnits="m" QBminFlow="150" QBunits="m^3"/>
+   
+   <!-- Independent Buffers -->
+   <IndependentBuffer independentBufferName="Point 1" gpsX="1" gpsY="0" elevation="540" elevationUnits="m" QBminFlow="0" QBmax="0"/>
+   <IndependentBuffer independentBufferName="Point 2" gpsX="2" gpsY="1" elevation="500" elevationUnits="m" QBminFlow="0" QBmax="10000000"/>
+   
+   <!-- Transportation Resources -->
+   <TransportationResource transportationResourceName="River Segment 1">
+      <TransportationProcess name="transport water" status="true" origin="Lake 1" destination="Point 1" ref="water" inputOperand="water" outputOperand="water" duration="" hasResistance="true" resistance="5000" resistanceUnits="s/m^3"/>
+   </TransportationResource>
+   
+   <TransportationResource transportationResourceName="River Segment 2">
+      <TransportationProcess name="transport water" status="true" origin="Lake 2" destination="Point 1" ref="water" inputOperand="water" outputOperand="water" duration="" hasResistance="true" resistance="5000" resistanceUnits="s/m^3"/>
+   </TransportationResource>
+   
+   <TransportationResource transportationResourceName="River Segment 3">
+      <TransportationProcess name="transport water" status="true" origin="Point 1" destination="Lake 3" ref="water" inputOperand="water" outputOperand="water" duration="" hasResistance="true" resistance="5000" resistanceUnits="s/m^3"/>
+   </TransportationResource>
+   
+   <TransportationResource transportationResourceName="River Segment 4">
+      <TransportationProcess name="transport water" status="true" origin="Lake 3" destination="Point 2" ref="water" inputOperand="water" outputOperand="water" duration="" hasResistance="true" resistance="5000" resistanceUnits="s/m^3"/>
+   </TransportationResource>
+</LFES>

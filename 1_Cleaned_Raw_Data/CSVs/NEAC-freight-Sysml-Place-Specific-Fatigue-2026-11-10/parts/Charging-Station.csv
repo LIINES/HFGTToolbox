@@ -1,0 +1,12 @@
+autonomous,decisionMaker,finalCond,gpsX,gpsY,initCond,linearCostCoeff,transformationResourceName,varDomain,varDomainEnabled
+true,,0,1,1,1,0,Charging-Station-1,binary,real+
+true,,0,1,1,0,0,Charging-Station-2,binary,real+
+true,,0,1,1,0,0,Charging-Station-3,binary,real+
+true,,0,1,1,0,0,Charging-Station-4,binary,real+
+true,,0,1,1,0,0,Charging-Station-5,binary,real+
+true,,0,1,1,0,0,Charging-Station-6,binary,real+
+true,,0,1,1,0,0,Charging-Station-7,binary,real+
+true,,0,1,1,0,0,Charging-Station-8,binary,real+
+true,,0,1,1,0,0,Charging-Station-9,binary,real+
+true,,0,1,1,0,0,Charging-Station-10,binary,real+
+true,,1,1,1,0,0,Charging-Station-11,binary,real+

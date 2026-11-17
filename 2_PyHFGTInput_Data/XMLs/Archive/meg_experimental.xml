@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<LFES name="Chesapeake Bay System" scenario="default" refArchitecture="Land-River System" dataState="raw" version="1.0" dataFormat="default" verboseMode="false" ARhoMethod="default" outputFormat="pkl">
+    <Operand name="water">
+        <OperandNet name="water" status="false">
+            <OperandPlace name="water"/>
+            <OperandTransition name="water" preset="water" postset="water" processLinkName="transform water" processLinkRef=""/>
+        </OperandNet>
+    </Operand>
+    <TransformationResource name="Land-River Segment N42097SW7_1640_1680" type="Land-River Segment" gpsX="0" gpsY="0" major="S" minor="W" flow="7" uniqID="1640" DSID="1680" riverSeg="SW7_1640_1680" tidalWater="N" majMin="SW" region="Chesapeake Bay Watershed" watershed="Susquehanna River Basin" majBas="Susquehanna River Basin" minBas="Susquehanna River, West Branch" riverSimu="Simulated River" riverName="Susquehanna River West Branch" FIPS="42097.0" ST="PA" CBW="Y" FIPS_NHL="N42097" areaAcres="3654.28320399" HGMR="VRC" decisionMaker="" autonomous="true">
+        <TransformationProcess name="accept water" status="true" operand="" output="water" precip="N" meanPrecip="1105"/>
+        <TransportationProcess name="transport" status="true" origin="Land-River Segment N42097SW7_1640_1680" destination="Estuary 1" ref="water" operand="water" output="water"/>
+    </TransformationResource>
+    <TransformationResource name="Land-River Segment N42037SU7_1140_1420" type="Land-River Segment" gpsX="0" gpsY="0" major="S" minor="U" flow="7" uniqID="1140" DSID="1420" riverSeg="SU7_1140_1420" tidalWater="N" majMin="SU" region="Chesapeake Bay Watershed" watershed="Susquehanna River Basin" majBas="Susquehanna River Basin" minBas="Upper Susquehanna River, above confluence with West Branch" riverSimu="Simulated River" riverName="Susquehanna River" FIPS="42037.0" ST="PA" CBW="Y" FIPS_NHL="N42037" areaAcres="2936.2589554" HGMR="VRS" decisionMaker="" autonomous="true">
+        <TransformationProcess name="accept water" status="true" operand="" output="water" precip="N" meanPrecip="1117"/>
+        <TransportationProcess name="transport" status="true" origin="Land-River Segment N42037SU7_1140_1420" destination="Estuary 1" ref="water" operand="water" output="water"/>
+    </TransformationResource>
+    <TransformationResource name="Land-River Segment N51045JU2_7450_7360" type="Land-River Segment" gpsX="0" gpsY="0" major="J" minor="U" flow="2" uniqID="7450" DSID="7360" riverSeg="JU2_7450_7360" tidalWater="N" majMin="JU" region="Chesapeake Bay Watershed" watershed="James River Basin" majBas="James River Basin" minBas="Upper James River, above Maury River confluence" riverSimu="Simulated River" riverName="Potts Creek" FIPS="51045.0" ST="VA" CBW="Y" FIPS_NHL="N51045" areaAcres="16947.5458797" HGMR="VRC" decisionMaker="" autonomous="true">
+        <TransformationProcess name="accept water" status="true" operand="" output="water" precip="N" meanPrecip="1097"/>
+        <TransportationProcess name="transport" status="true" origin="Land-River Segment N51045JU2_7450_7360" destination="Estuary 1" ref="water" operand="water" output="water"/>
+    </TransformationResource>
+    <TransformationResource name="Land-River Segment N42133SL2_2750_2720" type="Land-River Segment" gpsX="0" gpsY="0" major="S" minor="L" flow="2" uniqID="2750" DSID="2720" riverSeg="SL2_2750_2720" tidalWater="N" majMin="SL" region="Chesapeake Bay Watershed" watershed="Susquehanna River Basin" majBas="Susquehanna River Basin" minBas="Lower Susquehanna River below West Branch confluence not including Juniata River" riverSimu="Simulated River" riverName="Muddy Creek" FIPS="42133.0" ST="PA" CBW="Y" FIPS_NHL="N42133" areaAcres="87559.5422556" HGMR="PCR" decisionMaker="" autonomous="true">
+        <TransformationProcess name="accept water" status="true" operand="" output="water" precip="N" meanPrecip="1096"/>
+        <TransportationProcess name="transport" status="true" origin="Land-River Segment N42133SL2_2750_2720" destination="Estuary 1" ref="water" operand="water" output="water"/>
+    </TransformationResource>
+    <TransformationResource name="Land-River Segment N42023SW3_1380_1490" type="Land-River Segment" gpsX="0" gpsY="0" major="S" minor="W" flow="3" uniqID="1380" DSID="1490" riverSeg="SW3_1380_1490" tidalWater="N" majMin="SW" region="Chesapeake Bay Watershed" watershed="Susquehanna River Basin" majBas="Susquehanna River Basin" minBas="Susquehanna River, West Branch" riverSimu="Simulated River" riverName="Sinnemahoning Creek First Fork" FIPS="42023.0" ST="PA" CBW="Y" FIPS_NHL="N42023" areaAcres="15043.0131198" HGMR="APS" decisionMaker="" autonomous="true">
+        <TransformationProcess name="accept water" status="true" operand="" output="water" precip="N" meanPrecip="1119"/>
+        <TransportationProcess name="transport" status="true" origin="Land-River Segment N42023SW3_1380_1490" destination="Estuary 1" ref="water" operand="water" output="water"/>
+    </TransformationResource>
+    <TransformationResource name="Land-River Segment N36107SU1_0390_0560" type="Land-River Segment" gpsX="0" gpsY="0" major="S" minor="U" flow="1" uniqID="390" DSID="560" riverSeg="SU1_0390_0560" tidalWater="N" majMin="SU" region="Chesapeake Bay Watershed" watershed="Susquehanna River Basin" majBas="Susquehanna River Basin" minBas="Upper Susquehanna River, above confluence with West Branch" riverSimu="Simulated River" riverName="Owego Creek West Branch" FIPS="36107.0" ST="NY" CBW="Y" FIPS_NHL="N36107" areaAcres="33549.2133902" HGMR="APS" decisionMaker="" autonomous="true">
+        <TransformationProcess name="accept water" status="true" operand="" output="water" precip="N" meanPrecip="1006"/>
+        <TransportationProcess name="transport" status="true" origin="Land-River Segment N36107SU1_0390_0560" destination="Estuary 1" ref="water" operand="water" output="water"/>
+    </TransformationResource>
+    <TransformationResource name="Land-River Segment N24043PU6_3750_3752" type="Land-River Segment" gpsX="0" gpsY="0" major="P" minor="U" flow="6" uniqID="3750" DSID="3752" riverSeg="PU6_3750_3752" tidalWater="N" majMin="PU" region="Chesapeake Bay Watershed" watershed="Potomac River Basin" majBas="Potomac River Basin" minBas="Upper Potomac River, above Shenandoah confluence" riverSimu="Simulated River" riverName="Potomac River" FIPS="24043.0" ST="MD" CBW="Y" FIPS_NHL="N24043" areaAcres="8563.29886469" HGMR="VRC" decisionMaker="" autonomous="true">
+        <TransformationProcess name="accept water" status="true" operand="" output="water" precip="N" meanPrecip="1014"/>
+        <TransportationProcess name="transport" status="true" origin="Land-River Segment N24043PU6_3750_3752" destination="Estuary 1" ref="water" operand="water" output="water"/>
+    </TransformationResource>
+    <TransformationResource name="Land-River Segment N24003XU2_4270_4650" type="Land-River Segment" gpsX="0" gpsY="0" major="X" minor="U" flow="2" uniqID="4270" DSID="4650" riverSeg="XU2_4270_4650" tidalWater="N" majMin="XU" region="Chesapeake Bay Watershed" watershed="Patuxent River Basin" majBas="Patuxent River Basin" minBas="Patuxent River above Bowie, Maryland" riverSimu="Simulated River" riverName="Little Patuxent River" FIPS="24003.0" ST="MD" CBW="Y" FIPS_NHL="N24003" areaAcres="28202.4937323" HGMR="CPD" decisionMaker="" autonomous="true">
+        <TransformationProcess name="accept water" status="true" operand="" output="water" precip="N" meanPrecip="1087"/>
+        <TransportationProcess name="transport" status="true" origin="Land-River Segment N24003XU2_4270_4650" destination="Estuary 1" ref="water" operand="water" output="water"/>
+    </TransformationResource>
+    <TransformationResource name="Land-River Segment N51071JU1_7630_7490" type="Land-River Segment" gpsX="0" gpsY="0" major="J" minor="U" flow="1" uniqID="7630" DSID="7490" riverSeg="JU1_7630_7490" tidalWater="N" majMin="JU" region="Chesapeake Bay Watershed" watershed="James River Basin" majBas="James River Basin" minBas="Upper James River, above Maury River confluence" riverSimu="Simulated River" riverName="Johns Creek" FIPS="51071.0" ST="VA" CBW="Y" FIPS_NHL="N51071" areaAcres="7585.87248112" HGMR="VRS" decisionMaker="" autonomous="true">
+        <TransformationProcess name="accept water" status="true" operand="" output="water" precip="N" meanPrecip="1034"/>
+        <TransportationProcess name="transport" status="true" origin="Land-River Segment N51071JU1_7630_7490" destination="Estuary 1" ref="water" operand="water" output="water"/>
+    </TransformationResource>
+    <TransformationResource name="Land-River Segment L54071PU4_5050_4310" type="Land-River Segment" gpsX="0" gpsY="0" major="P" minor="U" flow="4" uniqID="5050" DSID="4310" riverSeg="PU4_5050_4310" tidalWater="N" majMin="PU" region="Chesapeake Bay Watershed" watershed="Potomac River Basin" majBas="Potomac River Basin" minBas="Upper Potomac River, above Shenandoah confluence" riverSimu="Simulated River" riverName="Potomac River South Branch" FIPS="54071.0" ST="WV" CBW="Y" FIPS_NHL="L54071" areaAcres="14446.3691342" HGMR="VRS" decisionMaker="" autonomous="true">
+        <TransformationProcess name="accept water" status="true" operand="" output="water" precip="L" meanPrecip="877"/>
+        <TransportationProcess name="transport" status="true" origin="Land-River Segment L54071PU4_5050_4310" destination="Estuary 1" ref="water" operand="water" output="water"/>
+    </TransformationResource>
+    <IndependentBuffer name="Estuary 1" type="Estuary" gpsX="" gpsY="" decisionMaker="" autonomous="true"/>
+</LFES>

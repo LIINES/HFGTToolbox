@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="EPS9-DCOPF" scenario="base" refArchitecture="ElectricPowerSystem" dataState="raw" inputDataFormat="defaultXML" 
+      verboseMode="true" analysisMethod="HFNMCF" outputFileType="json" 
+      optimizer="Gurobi" simHorizon="2" deltaT="1"
+      hasESN_STF1="true" hasESN_STF2="false" hasESN_Duration="false" hasESNEnablingConstraint="false"
+      hasBufferUpperBound="true" hasBufferLowerBound="false" hasBufferInitCond="false" hasBufferFinalCond="false" 
+      hasBufferLinearCost="false" hasBufferQuadCost="false" 
+      hasProcessUpperBoundFlowNeg="true" hasProcessUpperBoundFlowPos="false" hasProcessUpperBoundRamp="false" hasProcessUpperBoundStock="false" 
+      hasProcessLowerBoundFlowNeg="false" hasProcessLowerBoundFlowPos="false" hasProcessLowerBoundRamp="false" hasProcessLowerBoundStock="false" 
+      hasProcessInitCond="false" hasProcessFinalCond="false" 
+      hasProcessLinearCostFlowNeg="true" hasProcessLinearCostFlowPos="false" hasProcessLinearCostStock="false" hasProcessQuadCostFlowNeg="true" 
+      hasProcessQuadCostFlowPos="false" hasProcessQuadCostStock="false" hasProcessRamp="false" hasProcessDuration="false" hasProcessValues="true">
+    <Operand operandName="electricity" operandType="energy" operandNetName="deliver electricity" status="true"
+             hasOperandNet_Duration="false" hasOperandNet_STF1="false" hasOperandNet_STF2="false" hasOperandNetEnablingConstraint="false"
+             hasSyncMatNeg="false" hasSyncMatPos="false" hasPlaceUpperBound="false" hasPlaceLowerBound="false" hasPlaceLinearCost="false" hasPlaceQuadCost="false" hasPlaceFinalConds="false" hasPlaceInitConds="false" hasTransitionLowerBoundFlowNeg="false" hasTransitionLowerBoundFlowPos="false" hasTransitionLowerBoundStock="false" hasTransitionUpperBoundFlowNeg="false" hasTransitionUpperBoundFlowPos="false" hasTransitionUpperBoundStock="false" hasTransitionLinearCostFlowNeg="false" hasTransitionLinearCostFlowPos="false" hasTransitionLinearCostStock="false" hasTransitionQuadCostFlowNeg="false" hasTransitionQuadCostFlowPos="false" hasTransitionQuadCostStock="false" hasTransitionDurationConds="false" hasTransitionFinalConds="false" hasTransitionInitConds="false"/>
+    <TransformationResource transformationResourceName="Generator 1" gpsX="0" gpsY="0" decisionMaker="Scheduler" autonomous="true" varDomain="real+" upperBound="0">
+        <TransformationProcess name="generate electricity" status="true" varDomain="real+" inputOperand="" outputOperand="electricity" quadCostCoeffFlowNeg="0.11" linearCostCoeffFlowNeg="5.0" lowerBoundFlowNeg="10" upperBoundFlowNeg="250" />
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Generator 2" gpsX="0" gpsY="0" decisionMaker="Scheduler" autonomous="true" varDomain="real+" upperBound="0">
+        <TransformationProcess name="generate electricity" status="true" varDomain="real+" inputOperand="" outputOperand="electricity" quadCostCoeffFlowNeg="0.085" linearCostCoeffFlowNeg="1.2" lowerBoundFlowNeg="10" upperBoundFlowNeg="300" />        
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Generator 3" gpsX="0" gpsY="0" decisionMaker="Scheduler" autonomous="true" varDomain="real+" upperBound="0">
+        <TransformationProcess name="generate electricity" status="true" varDomain="real+" inputOperand="" outputOperand="electricity" quadCostCoeffFlowNeg="0.1225" linearCostCoeffFlowNeg="1.0" lowerBoundFlowNeg="10" upperBoundFlowNeg="270" />
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Demand 4" gpsX="0" gpsY="0" decisionMaker="Scheduler" autonomous="true" varDomain="real+" upperBound="0">
+        <TransformationProcess name="consume electricity" status="true" varDomain="real+" inputOperand="electricity" outputOperand="" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" lowerBoundFlowNeg="0" upperBoundFlowNeg="200" value="0"/>
+    </TransformationResource>    
+    <TransformationResource transformationResourceName="Demand 5" gpsX="0" gpsY="0" decisionMaker="Scheduler" autonomous="true" varDomain="real+" upperBound="0">
+        <TransformationProcess name="consume electricity" status="true" varDomain="real+" inputOperand="electricity" outputOperand="" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" lowerBoundFlowNeg="0" upperBoundFlowNeg="200" value="90"/>    
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Demand 6" gpsX="0" gpsY="0" decisionMaker="Scheduler" autonomous="true" varDomain="real+" upperBound="0">
+        <TransformationProcess name="consume electricity" status="true" varDomain="real+" inputOperand="electricity" outputOperand="" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" lowerBoundFlowNeg="0" upperBoundFlowNeg="200" value="0"/>
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Demand 7" gpsX="0" gpsY="0" decisionMaker="Scheduler" autonomous="true" varDomain="real+" upperBound="0">
+        <TransformationProcess name="consume electricity" status="true" varDomain="real+" inputOperand="electricity" outputOperand="" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" lowerBoundFlowNeg="0" upperBoundFlowNeg="200" value="100"/> 
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Demand 8" gpsX="0" gpsY="0" decisionMaker="Scheduler" autonomous="true" varDomain="real+" upperBound="0">
+        <TransformationProcess name="consume electricity" status="true" varDomain="real+" inputOperand="electricity" outputOperand="" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" lowerBoundFlowNeg="0" upperBoundFlowNeg="200" value="0"/>
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Demand 9" gpsX="0" gpsY="0" decisionMaker="Scheduler" autonomous="true" varDomain="real+" upperBound="0">
+        <TransformationProcess name="consume electricity" status="true" varDomain="real+" inputOperand="electricity" outputOperand="" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" lowerBoundFlowNeg="0" upperBoundFlowNeg="200" value="125"/>
+    </TransformationResource>
+    <TransportationResource transportationResourceName="Branch 1" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport electricity" status="true" origin="Generator 1" destination="Demand 4" ref="" inputOperand="electricity" outputOperand="electricity" varDomain="real" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="1000" lowerBoundFlowNeg="-10000"/>
+    </TransportationResource>    
+    <TransportationResource transportationResourceName="Branch 2" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport electricity" status="true" origin="Demand 4" destination="Demand 5" ref="" inputOperand="electricity" outputOperand="electricity" varDomain="real" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="1000" lowerBoundFlowNeg="-10000"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Branch 3" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport electricity" status="true" origin="Demand 5" destination="Demand 6" ref="" inputOperand="electricity" outputOperand="electricity" varDomain="real" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="1000" lowerBoundFlowNeg="-10000"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Branch 4" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport electricity" status="true" origin="Generator 3" destination="Demand 6" ref="" inputOperand="electricity" outputOperand="electricity" varDomain="real" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="1000" lowerBoundFlowNeg="-10000"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Branch 5" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport electricity" status="true" origin="Demand 6" destination="Demand 7" ref="" inputOperand="electricity" outputOperand="electricity" varDomain="real" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="1000" lowerBoundFlowNeg="-10000"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Branch 6" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport electricity" status="true" origin="Demand 7" destination="Demand 8" ref="" inputOperand="electricity" outputOperand="electricity" varDomain="real" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="1000" lowerBoundFlowNeg="-10000"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Branch 7" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport electricity" status="true" origin="Demand 8" destination="Generator 2" ref="" inputOperand="electricity" outputOperand="electricity" varDomain="real" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="1000" lowerBoundFlowNeg="-10000"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Branch 8" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport electricity" status="true" origin="Demand 8" destination="Demand 9" ref="" inputOperand="electricity" outputOperand="electricity" varDomain="real" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="1000" lowerBoundFlowNeg="-10000"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Branch 9" decisionMaker="Scheduler" autonomous="true">
+        <TransportationProcess name="transport electricity" status="true" origin="Demand 9" destination="Demand 4" ref="" inputOperand="electricity" outputOperand="electricity" varDomain="real" quadCostCoeffFlowNeg="0" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="1000" lowerBoundFlowNeg="-10000"/>
+    </TransportationResource>
+</LFES>

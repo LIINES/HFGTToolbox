@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Demand & Supply: attributes for transitions: demand="true" or "false", supply="true" or "false" - when true, there is an accompanying CSV file that contains the time series data. When false: ignored.
+     For this test case's initial debugging: 2 week length with day resolution. Use only 1 or 2 days process length.
+     operand="4.468-water, 1.989-natural gas" output="1-hydrogen, 5.457-co2" 
+     Set "export CO2" process cost of steel mill to $0.25 ($250 / ton CO2) for a realistic and impactful carbon-tax -->
+<LFES name="miniTEN" scenario="coordinated" refArchitecture="Transportation-Electricity-Nexus" dataState="raw" inputDataFormat="defaultXML" verboseMode="true" analysisMethod="HFNMCF" outputFileType="json"
+      optimizer="CPLEX" simHorizon="100" deltaT="1"
+      hasESN_STF1="true" hasESN_STF2="true" hasESN_Duration="true"
+      hasBufferUpperBound="false" hasBufferLowerBound="false" hasBufferInitCond="false" hasBufferFinalCond="false" hasBufferLinearCost="false" hasBufferQuadCost="false"
+      hasProcessUpperBoundFlowNeg="false" hasProcessUpperBoundFlowPos="false" hasProcessUpperBoundStock="false"
+      hasProcessLowerBoundFlowNeg="false" hasProcessLowerBoundFlowPos="false" hasProcessLowerBoundStock="false"
+      hasProcessInitCond="false" hasProcessFinalCond="false" hasProcessDuration="false" hasProcessValues="false"
+      hasProcessLinearCostFlowNeg="false" hasProcessLinearCostFlowPos="false" hasProcessLinearCostStock="false"
+      hasProcessQuadCostFlowNeg="false" hasProcessQuadCostFlowPos="false" hasProcessQuadCostStock="false"
+      hasProcessLowerBoundRamp="false" hasProcessUpperBoundRamp="false">
+   <Operand name="electric current">
+   </Operand>
+   <Operand name="EV">
+   </Operand>
+   <TransformationResource name="1" gpsX="0" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="1" dest="1" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="1" dest="1" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="2" gpsX="1" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="2" dest="2" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="2" dest="2" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="3" gpsX="2" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="3" dest="3" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="3" dest="3" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="4" gpsX="3" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="4" dest="4" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="4" dest="4" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="5" gpsX="4" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="5" dest="5" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="5" dest="5" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="6" gpsX="0" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="6" dest="6" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="6" dest="6" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="7" gpsX="4" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="7" dest="7" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="7" dest="7" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="8" gpsX="0" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="8" dest="8" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="8" dest="8" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="9" gpsX="4" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="9" dest="9" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="9" dest="9" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="10" gpsX="0" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="10" dest="10" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="10" dest="10" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="11" gpsX="4" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="11" dest="11" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="11" dest="11" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="12" gpsX="0" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="12" dest="12" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="12" dest="12" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="13" gpsX="1" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="13" dest="13" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="13" dest="13" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="14" gpsX="2" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="14" dest="14" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="14" dest="14" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="15" gpsX="3" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="15" dest="15" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="15" dest="15" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="16" gpsX="4" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="16" dest="16" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="16" dest="16" ref="wire charge EV home" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="50"/>
+   </TransformationResource>
+   <TransformationResource name="21" gpsX="2" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+      <TransportationProcess name="store" status="true" origin="21" dest="21" ref="park EV" operand="EV" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="1000"/>
+      <TransportationProcess name="store" status="true" origin="21" dest="21" ref="wire charge EV work" operand="EV, electric current" output="EV" duration="0" fixCost="0" processingCost="0" processingCostQ="0" lowerCapacity="0" upperCapacity="10"/>
+   </TransformationResource>
+   <!--road intersection-->
+   <TransformationResource name="17" gpsX="1" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="18" gpsX="2" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="19" gpsX="3" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="20" gpsX="1" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="22" gpsX="3" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="23" gpsX="1" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="24" gpsX="2" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="25" gpsX="3" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <!--generator-->
+   <TransformationResource name="G" gpsX="2" gpsY="-1" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="cheap generate electricity" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="6" processingCostQ="0" lowerCapacity="0" upperCapacity="160"/>
+      <TransformationProcess name="exp generate electricity" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="160"/>
+   </TransformationResource>
+   <TransformationResource name="S1" gpsX="0" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S2" gpsX="1" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S3" gpsX="2" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S4" gpsX="3" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S5" gpsX="4" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S6" gpsX="0" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S7" gpsX="4" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S8" gpsX="0" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S9" gpsX="4" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S10" gpsX="0" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S11" gpsX="4" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S12" gpsX="0" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S13" gpsX="1" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S14" gpsX="2" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S15" gpsX="3" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S16" gpsX="4" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="S21" gpsX="2" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="solar generator" status="true" operand="" output="electric current" duration="0" fixCost="0" processingCost="10" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <!--load-->
+   <TransformationResource name="L1" gpsX="0" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L2" gpsX="1" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L3" gpsX="2" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L4" gpsX="3" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L5" gpsX="4" gpsY="0" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L6" gpsX="0" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L7" gpsX="4" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L8" gpsX="0" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L9" gpsX="4" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L10" gpsX="0" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L11" gpsX="4" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L12" gpsX="0" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L13" gpsX="1" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L14" gpsX="2" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L15" gpsX="3" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L16" gpsX="4" gpsY="4" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+  </TransformationResource>
+   <TransformationResource name="L21" gpsX="2" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L17" gpsX="1" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L18" gpsX="2" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L19" gpsX="3" gpsY="1" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L20" gpsX="1" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L22" gpsX="3" gpsY="2" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L23" gpsX="1" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L24" gpsX="2" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+   <TransformationResource name="L25" gpsX="3" gpsY="3" FinalCondition="0, 0" InitialCondition="0, 0">
+      <TransformationProcess name="consume electricity" status="true" operand="electric current" output="" duration="0" fixCost="0" processingCost="20" processingCostQ="0" lowerCapacity="0" upperCapacity="2000"/>
+   </TransformationResource>
+
+   <!--IndBuffer/-->
+   <!--horizontal/-->
+   <TransportationResource name="1-2">
+      <TransportationProcess name="transport" status="true" origin="1" dest="2" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="2" dest="1" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="2-3">
+      <TransportationProcess name="transport" status="true" origin="2" dest="3" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="3" dest="2" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="3-4">
+      <TransportationProcess name="transport" status="true" origin="3" dest="4" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="4" dest="3" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="4-5">
+      <TransportationProcess name="transport" status="true" origin="4" dest="5" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="5" dest="4" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="6-17">
+      <TransportationProcess name="transport" status="true" origin="6" dest="17" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="17" dest="6" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="17-18">
+      <TransportationProcess name="transport" status="true" origin="17" dest="18" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="18" dest="17" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="18-19">
+      <TransportationProcess name="transport" status="true" origin="18" dest="19" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="19" dest="18" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="19-7">
+      <TransportationProcess name="transport" status="true" origin="19" dest="7" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="7" dest="19" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="8-20">
+      <TransportationProcess name="transport" status="true" origin="8" dest="20" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="20" dest="8" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="Wireless20-21">
+      <TransportationProcess name="transport" status="true" origin="20" dest="21" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+      <TransportationProcess name="transport" status="true" origin="21" dest="20" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+      <TransportationProcess name="transport" status="true" origin="20" dest="21" ref="wireless charge EV" operand="EV, electric current" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+      <TransportationProcess name="transport" status="true" origin="21" dest="20" ref="wireless charge EV" operand="EV, electric current" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+   </TransportationResource>
+   <TransportationResource name="Wireless21-22">
+      <TransportationProcess name="transport" status="true" origin="21" dest="22" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+      <TransportationProcess name="transport" status="true" origin="22" dest="21" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+      <TransportationProcess name="transport" status="true" origin="21" dest="22" ref="wireless charge EV" operand="EV, electric current" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+      <TransportationProcess name="transport" status="true" origin="22" dest="21" ref="wireless charge EV" operand="EV, electric current" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+   </TransportationResource>
+   <TransportationResource name="22-9">
+      <TransportationProcess name="transport" status="true" origin="22" dest="9" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="9" dest="22" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="10-23">
+      <TransportationProcess name="transport" status="true" origin="10" dest="23" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="23" dest="10" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="23-24">
+      <TransportationProcess name="transport" status="true" origin="23" dest="24" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="24" dest="23" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="24-25">
+      <TransportationProcess name="transport" status="true" origin="24" dest="25" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="25" dest="24" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="25-11">
+      <TransportationProcess name="transport" status="true" origin="25" dest="11" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="11" dest="25" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="12-13">
+      <TransportationProcess name="transport" status="true" origin="12" dest="13" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="13" dest="12" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="13-14">
+      <TransportationProcess name="transport" status="true" origin="13" dest="14" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="14" dest="13" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="14-15">
+      <TransportationProcess name="transport" status="true" origin="14" dest="15" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="15" dest="14" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="15-16">
+      <TransportationProcess name="transport" status="true" origin="15" dest="16" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="16" dest="15" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <!--vertical/-->
+   <TransportationResource name="1-6">
+      <TransportationProcess name="transport" status="true" origin="1" dest="6" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="6" dest="1" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="6-8">
+      <TransportationProcess name="transport" status="true" origin="6" dest="8" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="8" dest="6" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="8-10">
+      <TransportationProcess name="transport" status="true" origin="8" dest="10" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="10" dest="8" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="10-12">
+      <TransportationProcess name="transport" status="true" origin="10" dest="12" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="12" dest="10" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="2-17">
+      <TransportationProcess name="transport" status="true" origin="2" dest="17" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="17" dest="2" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="17-20">
+      <TransportationProcess name="transport" status="true" origin="17" dest="20" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="20" dest="17" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="20-23">
+      <TransportationProcess name="transport" status="true" origin="20" dest="23" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="23" dest="20" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="23-13">
+      <TransportationProcess name="transport" status="true" origin="23" dest="13" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="13" dest="23" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="3-18">
+      <TransportationProcess name="transport" status="true" origin="3" dest="18" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="18" dest="3" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="Wireless18-21">
+      <TransportationProcess name="transport" status="true" origin="18" dest="21" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+      <TransportationProcess name="transport" status="true" origin="21" dest="18" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+      <TransportationProcess name="transport" status="true" origin="18" dest="21" ref="wireless charge EV" operand="EV, electric current" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+      <TransportationProcess name="transport" status="true" origin="21" dest="18" ref="wireless charge EV" operand="EV, electric current" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+   </TransportationResource>
+   <TransportationResource name="Wireless21-24">
+      <TransportationProcess name="transport" status="true" origin="21" dest="24" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+      <TransportationProcess name="transport" status="true" origin="24" dest="21" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+      <TransportationProcess name="transport" status="true" origin="21" dest="24" ref="wireless charge EV" operand="EV, electric current" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+      <TransportationProcess name="transport" status="true" origin="24" dest="21" ref="wireless charge EV" operand="EV, electric current" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="4"/>
+   </TransportationResource>
+   <TransportationResource name="24-14">
+      <TransportationProcess name="transport" status="true" origin="24" dest="14" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="14" dest="24" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="4-19">
+      <TransportationProcess name="transport" status="true" origin="4" dest="19" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="19" dest="4" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="19-22">
+      <TransportationProcess name="transport" status="true" origin="19" dest="22" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="22" dest="19" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="22-25">
+      <TransportationProcess name="transport" status="true" origin="22" dest="25" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="25" dest="22" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="25-15">
+      <TransportationProcess name="transport" status="true" origin="25" dest="15" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="15" dest="25" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="5-7">
+      <TransportationProcess name="transport" status="true" origin="5" dest="7" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="7" dest="5" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="7-9">
+      <TransportationProcess name="transport" status="true" origin="7" dest="9" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="9" dest="7" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="9-11">
+      <TransportationProcess name="transport" status="true" origin="9" dest="11" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="11" dest="9" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <TransportationResource name="11-16">
+      <TransportationProcess name="transport" status="true" origin="11" dest="16" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+      <TransportationProcess name="transport" status="true" origin="16" dest="11" ref="discharge EV" operand="EV" output="EV" duration="1" fixCost="0" processingCost="1" processingCostQ="0" lowerCapacity="0" upperCapacity="3"/>
+   </TransportationResource>
+   <!--lead line/-->
+   <TransportationResource name="G-3">
+      <TransportationProcess name="transport" status="true" origin="G" dest="3" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <!--stage 1/-->
+   <TransportationResource name="W3-2">
+      <TransportationProcess name="transport" status="true" origin="3" dest="2" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W3-4">
+      <TransportationProcess name="transport" status="true" origin="3" dest="4" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W3-17">
+      <TransportationProcess name="transport" status="true" origin="3" dest="17" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W3-18">
+      <TransportationProcess name="transport" status="true" origin="3" dest="18" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <!--stage 2/-->
+   <TransportationResource name="W2-1">
+      <TransportationProcess name="transport" status="true" origin="2" dest="1" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W4-5">
+      <TransportationProcess name="transport" status="true" origin="4" dest="5" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W4-19">
+      <TransportationProcess name="transport" status="true" origin="4" dest="19" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W17-20">
+      <TransportationProcess name="transport" status="true" origin="17" dest="20" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W18-21">
+      <TransportationProcess name="transport" status="true" origin="18" dest="21" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <!--stage 3/-->
+   <TransportationResource name="W1-6">
+      <TransportationProcess name="transport" status="true" origin="1" dest="6" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W5-7">
+      <TransportationProcess name="transport" status="true" origin="5" dest="7" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W19-22">
+      <TransportationProcess name="transport" status="true" origin="19" dest="22" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W20-23">
+      <TransportationProcess name="transport" status="true" origin="20" dest="23" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <!--stage 4/-->
+   <TransportationResource name="W6-8">
+      <TransportationProcess name="transport" status="true" origin="6" dest="8" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W7-9">
+      <TransportationProcess name="transport" status="true" origin="7" dest="9" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W22-25">
+      <TransportationProcess name="transport" status="true" origin="22" dest="25" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W23-13">
+      <TransportationProcess name="transport" status="true" origin="23" dest="13" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W23-24">
+      <TransportationProcess name="transport" status="true" origin="23" dest="24" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <!--stage 5/-->
+   <TransportationResource name="W8-10">
+      <TransportationProcess name="transport" status="true" origin="8" dest="10" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W9-11">
+      <TransportationProcess name="transport" status="true" origin="9" dest="11" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W24-14">
+      <TransportationProcess name="transport" status="true" origin="24" dest="14" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W25-15">
+      <TransportationProcess name="transport" status="true" origin="25" dest="15" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <!--stage 6/-->
+   <TransportationResource name="W10-12">
+      <TransportationProcess name="transport" status="true" origin="10" dest="12" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+   <TransportationResource name="W15-16">
+      <TransportationProcess name="transport" status="true" origin="15" dest="16" ref="electricity" operand="electric current" output="electric current" duration="0" fixCost="0" processingCost="0" processingCostQ="0"  lowerCapacity="0" upperCapacity="20000"/>
+   </TransportationResource>
+</LFES>

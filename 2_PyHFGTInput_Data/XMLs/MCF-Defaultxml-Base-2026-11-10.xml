@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="MCFSystem" scenario="base" refArchitecture="MCF" dataState="raw" inputDataFormat="defaultXML" verboseMode="true" analysisMethod="default" 
+      outputFileType="json" optimizer="Gurobi" simHorizon="4" deltaT="1"
+      hasESN_STF1="true" hasESN_STF2="false" hasESN_Duration="false" 
+      hasBufferUpperBound="true" hasBufferLowerBound="false"
+      hasBufferInitCond="true" hasBufferFinalCond="true" 
+      hasBufferLinearCost="false" hasBufferQuadCost="false" 
+      hasProcessUpperBoundFlowNeg="true" hasProcessUpperBoundFlowPos="false" hasProcessUpperBoundStock="false"
+      hasProcessLowerBoundFlowNeg="false" hasProcessLowerBoundFlowPos="false" hasProcessLowerBoundStock="false" 
+      hasProcessInitCond="false" hasProcessFinalCond="false" hasProcessDuration="false" hasProcessValues="false" 
+      hasProcessLinearCostFlowNeg="true" hasProcessLinearCostFlowPos="false" hasProcessLinearCostStock="false"
+      hasProcessQuadCostFlowNeg="false" hasProcessQuadCostFlowPos="false" hasProcessQuadCostStock="false" 
+      hasProcessLowerBoundRamp="false" hasProcessUpperBoundRamp="false">
+    <Operand operandName="Apple" operandType="matter" operandNetName="deliver apple" status="true" 
+             hasOperandNet_Duration="false" hasOperandNet_STF1="false" hasOperandNet_STF2="false" 
+             hasSyncMatNeg="false" hasSyncMatPos="false" 
+             hasPlaceLinearCost="false" hasPlaceQuadCost="false" 
+             hasPlaceUpperBound="false" hasPlaceLowerBound="false" 
+             hasPlaceFinalConds="false" hasPlaceInitConds="false" 
+             hasTransitionLinearCostFlowNeg="false" hasTransitionLinearCostFlowPos="false" hasTransitionLinearCostStock="false" 
+             hasTransitionQuadCostFlowNeg="false" hasTransitionQuadCostFlowPos="false" hasTransitionQuadCostStock="false" 
+             hasTransitionUpperBoundFlowNeg="false" hasTransitionUpperBoundFlowPos="false" hasTransitionUpperBoundStock="false" 
+             hasTransitionLowerBoundFlowNeg="false" hasTransitionLowerBoundFlowPos="false" hasTransitionLowerBoundStock="false" 
+             hasTransitionDurationConds="false" hasTransitionFinalConds="false" hasTransitionInitConds="false"/>
+    <Operand operandName="Orange" operandType="matter" operandNetName="deliver orange" status="true" 
+             hasOperandNet_Duration="false" hasOperandNet_STF1="false" hasOperandNet_STF2="false" 
+             hasSyncMatNeg="false" hasSyncMatPos="false" 
+             hasPlaceLinearCost="false" hasPlaceQuadCost="false" 
+             hasPlaceUpperBound="false" hasPlaceLowerBound="false" 
+             hasPlaceFinalConds="false" hasPlaceInitConds="false" 
+             hasTransitionLinearCostFlowNeg="false" hasTransitionLinearCostFlowPos="false" hasTransitionLinearCostStock="false" 
+             hasTransitionQuadCostFlowNeg="false" hasTransitionQuadCostFlowPos="false" hasTransitionQuadCostStock="false" 
+             hasTransitionUpperBoundFlowNeg="false" hasTransitionUpperBoundFlowPos="false" hasTransitionUpperBoundStock="false" 
+             hasTransitionLowerBoundFlowNeg="false" hasTransitionLowerBoundFlowPos="false" hasTransitionLowerBoundStock="false" 
+             hasTransitionDurationConds="false" hasTransitionFinalConds="false" hasTransitionInitConds="false"/>
+    <Operand operandName="Pear" operandType="matter" operandNetName="deliver pear" status="true" 
+             hasOperandNet_Duration="false" hasOperandNet_STF1="false" hasOperandNet_STF2="false" 
+             hasSyncMatNeg="false" hasSyncMatPos="false" 
+             hasPlaceLinearCost="false" hasPlaceQuadCost="false" 
+             hasPlaceUpperBound="false" hasPlaceLowerBound="false" 
+             hasPlaceFinalConds="false" hasPlaceInitConds="false" 
+             hasTransitionLinearCostFlowNeg="false" hasTransitionLinearCostFlowPos="false" hasTransitionLinearCostStock="false" 
+             hasTransitionQuadCostFlowNeg="false" hasTransitionQuadCostFlowPos="false" hasTransitionQuadCostStock="false" 
+             hasTransitionUpperBoundFlowNeg="false" hasTransitionUpperBoundFlowPos="false" hasTransitionUpperBoundStock="false" 
+             hasTransitionLowerBoundFlowNeg="false" hasTransitionLowerBoundFlowPos="false" hasTransitionLowerBoundStock="false" 
+             hasTransitionDurationConds="false" hasTransitionFinalConds="false" hasTransitionInitConds="false"/>
+    <Operand operandName="Fruit Box" operandType="matter" operandNetName="deliver fruit box" status="true" 
+             hasOperandNet_Duration="false" hasOperandNet_STF1="false" hasOperandNet_STF2="false" 
+             hasSyncMatNeg="false" hasSyncMatPos="false" 
+             hasPlaceLinearCost="false" hasPlaceQuadCost="false" 
+             hasPlaceUpperBound="false" hasPlaceLowerBound="false" 
+             hasPlaceFinalConds="false" hasPlaceInitConds="false" 
+             hasTransitionLinearCostFlowNeg="false" hasTransitionLinearCostFlowPos="false" hasTransitionLinearCostStock="false" 
+             hasTransitionQuadCostFlowNeg="false" hasTransitionQuadCostFlowPos="false" hasTransitionQuadCostStock="false" 
+             hasTransitionUpperBoundFlowNeg="false" hasTransitionUpperBoundFlowPos="false" hasTransitionUpperBoundStock="false" 
+             hasTransitionLowerBoundFlowNeg="false" hasTransitionLowerBoundFlowPos="false" hasTransitionLowerBoundStock="false" 
+             hasTransitionDurationConds="false" hasTransitionFinalConds="false" hasTransitionInitConds="false"/>
+    <TransformationResource transformationResourceName="Source Farm-1" gpsX="0" gpsY="0" decisionMaker="MCF" autonomous="true" 
+    varDomain="real+,real+,real+,real+" upperBound="5,6,7,0;0,0,0,18;0,0,0,0;0,0,0,0" initCond="5,6,7,0" finalCond="0,0,0,0" >
+        <TransformationProcess name="Box the Apple" status="true" 
+                               inputOperand="Apple" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="2" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Box the Orange" status="true" 
+                               inputOperand="Orange" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="3" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Box the Pear" status="true" 
+                               inputOperand="Pear" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="4" upperBoundFlowNeg="10"/>
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Source Farm-2" gpsX="0" gpsY="0" decisionMaker="MCF" autonomous="true" 
+                            varDomain="real+,real+,real+,real+" upperBound="3,4,5,0;0,0,0,12;0,0,0,0;0,0,0,0" initCond="3,4,5,0" finalCond="0,0,0,0" >
+        <TransformationProcess name="Box the Apple" status="true" 
+                               inputOperand="Apple" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="2" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Box the Orange" status="true" 
+                               inputOperand="Orange" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="3" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Box the Pear" status="true" 
+                               inputOperand="Pear" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="4" upperBoundFlowNeg="10"/>
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Sink Market-1" gpsX="0" gpsY="1" decisionMaker="MCF" autonomous="true" 
+                            varDomain="real+,real+,real+,real+" upperBound="0,0,0,0;0,0,0,0;0,0,0,12;3,4,5,0" initCond="0,0,0,0" finalCond="3,4,5,0">
+        <TransformationProcess name="Unbox the Apple" status="true" 
+                               inputOperand="Fruit Box" outputOperand="Apple" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Unbox the Orange" status="true" 
+                               inputOperand="Fruit Box" outputOperand="Orange" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Unbox the Pear" status="true" 
+                               inputOperand="Fruit Box" outputOperand="Pear" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="10"/>
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Sink Market-2" gpsX="0" gpsY="1" decisionMaker="MCF" autonomous="true" 
+                            varDomain="real+,real+,real+,real+" upperBound="0,0,0,0;0,0,0,0;0,0,0,18;5,6,7,0" initCond="0,0,0,0" finalCond="5,6,7,0">
+        <TransformationProcess name="Unbox the Apple" status="true" 
+                               inputOperand="Fruit Box" outputOperand="Apple" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Unbox the Orange" status="true" 
+                               inputOperand="Fruit Box" outputOperand="Orange" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Unbox the Pear" status="true" 
+                               inputOperand="Fruit Box" outputOperand="Pear" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="10"/>
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Transhipment Buffer-1" gpsX="0" gpsY="1" decisionMaker="MCF" autonomous="true" 
+                            varDomain="real+,real+,real+,real+" upperBound="1000,1000,1000,1000;1000,1000,1000,1000;1000,1000,1000,1000;1000,1000,1000,1000" initCond="100,100,100,100" finalCond="100,100,100,100">
+        <TransformationProcess name="Unbox the Apple" status="true" 
+                               inputOperand="Fruit Box" outputOperand="Apple" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Unbox the Orange" status="true" 
+                               inputOperand="Fruit Box" outputOperand="Orange" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Unbox the Pear" status="true" 
+                               inputOperand="Fruit Box" outputOperand="Pear" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Box the Apple" status="true" 
+                               inputOperand="Apple" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="2" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Box the Orange" status="true" 
+                               inputOperand="Orange" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="3" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Box the Pear" status="true" 
+                               inputOperand="Pear" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="4" upperBoundFlowNeg="10"/>
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Transhipment Buffer-2" gpsX="0" gpsY="1" decisionMaker="MCF" autonomous="true" 
+                            varDomain="real+,real+,real+,real+" upperBound="1000,1000,1000,1000;1000,1000,1000,1000;1000,1000,1000,1000;1000,1000,1000,1000" initCond="100,100,100,100" finalCond="100,100,100,100">
+        <TransformationProcess name="Unbox the Apple" status="true" 
+                               inputOperand="Fruit Box" outputOperand="Apple" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Unbox the Orange" status="true" 
+                               inputOperand="Fruit Box" outputOperand="Orange" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Unbox the Pear" status="true" 
+                               inputOperand="Fruit Box" outputOperand="Pear" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Box the Apple" status="true" 
+                               inputOperand="Apple" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="2" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Box the Orange" status="true" 
+                               inputOperand="Orange" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="3" upperBoundFlowNeg="10"/>
+        <TransformationProcess name="Box the Pear" status="true" 
+                               inputOperand="Pear" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="4" upperBoundFlowNeg="10"/>
+    </TransformationResource>    
+    <TransportationResource transportationResourceName="Route-1" decisionMaker="MCF" autonomous="true">
+        <TransportationProcess name="Transport Box" status="true" 
+                               origin="Source Farm-1" destination="Sink Market-2" ref="" 
+                               inputOperand="Fruit Box" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="18"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Route-2" decisionMaker="MCF" autonomous="true">
+        <TransportationProcess name="Transport Box" status="true" 
+                               origin="Source Farm-2" destination="Sink Market-2" ref="" 
+                               inputOperand="Fruit Box" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="18"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Route-3" decisionMaker="MCF" autonomous="true">
+        <TransportationProcess name="Transport Box" status="true" 
+                               origin="Source Farm-1" destination="Transhipment Buffer-1" ref="" 
+                               inputOperand="Fruit Box" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="18"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Route-4" decisionMaker="MCF" autonomous="true">
+        <TransportationProcess name="Transport Box" status="true" 
+                               origin="Source Farm-2" destination="Transhipment Buffer-1" ref="" 
+                               inputOperand="Fruit Box" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="18"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Route-5" decisionMaker="MCF" autonomous="true">
+        <TransportationProcess name="Transport Box" status="true" 
+                               origin="Transhipment Buffer-1" destination="Transhipment Buffer-2" ref="" 
+                               inputOperand="Fruit Box" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="18"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Route-6" decisionMaker="MCF" autonomous="true">
+        <TransportationProcess name="Transport Box" status="true" 
+                               origin="Transhipment Buffer-2" destination="Sink Market-1" ref="" 
+                               inputOperand="Fruit Box" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="18"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Route-7" decisionMaker="MCF" autonomous="true">
+        <TransportationProcess name="Transport Box" status="true" 
+                               origin="Transhipment Buffer-2" destination="Sink Market-2" ref="" 
+                               inputOperand="Fruit Box" outputOperand="Fruit Box" 
+                               varDomain="real+" linearCostCoeffFlowNeg="0" upperBoundFlowNeg="18"/>
+    </TransportationResource>    
+</LFES>

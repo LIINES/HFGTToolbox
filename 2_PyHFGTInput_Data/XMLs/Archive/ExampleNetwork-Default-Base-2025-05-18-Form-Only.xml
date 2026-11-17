@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="ExampleNetwork" scenario="base" refArchitecture="Smart City" dataState="raw" inputDataFormat="default" version="4.0" verboseMode="false" analysisMethod="default" outputFileType="hdf5">
+    <Operand operandName="electricity" operandType="energy"/>
+    <Operand operandName="potable water" operandType="matter"/>
+    <Operand operandName="EV" operandType="matter"/>
+    <TransformationResource transformationResourceName="Water Treatment Facility" gpsX="0" gpsY="1" decisionMaker="Water Utility" autonomous="true"/>
+    <TransformationResource transformationResourceName="Solar PV" gpsX="0" gpsY="0" decisionMaker="Electric Power Utility" autonomous="true"/>
+    <TransformationResource transformationResourceName="House" gpsX="1" gpsY="1" decisionMaker="End User" autonomous="true"/>
+    <IndependentBuffer independentBufferName="Work Location" gpsX="1" gpsY="0" decisionMaker="End User" autonomous="true"/>
+    <TransportationResource transportationResourceName="Water Pipeline" decisionMaker="Water Utility" autonomous="true"/>
+    <TransportationResource transportationResourceName="Power Line 1" decisionMaker="Electric Power Utility" autonomous="true"/>
+    <TransportationResource transportationResourceName="Power Line 2" decisionMaker="Electric Power Utility" autonomous="true"/>
+    <TransportationResource transportationResourceName="Road" decisionMaker="End User" autonomous="true"/>
+    <DecisionMaker name="Water Utility" status="true" peerRecipient="Water Utility, Electric Power Utility,End User"/>
+    <DecisionMaker name="Electric Power Utility" status="true" peerRecipient="Electric Power Utility, Water Utility, End User"/>
+    <DecisionMaker name="End User" status="true" peerRecipient= "End User, Water Utility,Electric Power Utility"/>
+</LFES>

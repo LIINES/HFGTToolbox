@@ -1,9 +1,11 @@
-src
-===
+src_python
+==========
 
 .. toctree::
    :maxdepth: 4
 
-   config
-   python_hfgt_toolbox
-   tests
+   hfgt_toolbox
+   runGIS2SysML
+   runGISDirectory2SysML
+   runHFGTStructuralToolbox
+   runHFGTToolbox

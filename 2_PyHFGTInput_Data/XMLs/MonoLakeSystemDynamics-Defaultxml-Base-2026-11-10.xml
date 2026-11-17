@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="MonoLakeSystemDynamics" scenario="base" refArchitecture="Mono Lake" dataState="raw" inputDataFormat="defaultXML" verboseMode="true" analysisMethod="default"
+      outputFileType="json">
+
+    <Operand operandName="water" operandType="matter" operandNetName="deliver water" status="true">
+    </Operand>
+    <TransformationResource transformationResourceName="Mono Lake" decisionMaker="" gpsX="0" gpsY="0" autonomous="true">
+        <TransformationProcess name="accept precipitated water" status="true" inputOperand="water" inputOperandWeight="1" outputOperand="water" outputOperandWeight="1"/>
+        <TransformationProcess name="accept water from Flow Past Diversion Point" status="true" inputOperand="water" inputOperandWeight="1" outputOperand="water" outputOperandWeight="1"/>
+        <TransformationProcess name="evaporate water" status="true" inputOperand="water" inputOperandWeight="1" outputOperand="water" outputOperandWeight="1"/>
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Mono Aquifer" decisionMaker="" gpsX="1" gpsY="0" autonomous="true">    
+        <TransformationProcess name="withdraw water" status="true" inputOperand="water" inputOperandWeight="1" outputOperand="water" outputOperandWeight="1"/>
+    </TransformationResource>  
+    <TransportationResource transportationResourceName="Percolator" decisionMaker="" autonomous="true">
+        <TransportationProcess name="transport" status="true" origin="Mono Lake" destination="Mono Aquifer" ref="water" inputOperand="water" inputOperandWeight="1" outputOperand="water" outputOperandWeight="1"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Groundwater Discharger" decisionMaker="" autonomous="true">
+        <TransportationProcess name="transport" status="true" origin="Mono Aquifer" destination="Mono Lake" ref="water" inputOperand="water" inputOperandWeight="1" outputOperand="water" outputOperandWeight="1"/>
+    </TransportationResource>
+</LFES>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="Starling Manufacturing System I" scenario="default" refArchitecture="Manufacturing System" dataState="raw" version="4.0"
+      dataFormat="default" verboseMode="false" ARhoMethod="default" analyzeSoS="false" outputFormat="json">
+    <Operand name="wooden component">
+        <OperandNet name="red small" status="true">
+            <OperandPlace name="raw material" type="internal"/>
+            <OperandPlace name="tab added" type="internal"/>
+            <OperandPlace name="slot added" type="internal"/>
+            <OperandPlace name="hole added" type="internal"/>
+            <OperandPlace name="laminated" type="internal"/>
+            <OperandPlace name="final product" type="internal"/>
+            <OperandTransition name="receive raw material" preset="" postset="raw material"
+                               processLinkName="inject" processLinkRef=""/>
+            <OperandTransition name="maintain raw material" preset="raw material" postset="raw material"
+                               processLinkName="transport" processLinkRef="small radial"/>
+            <OperandTransition name="add tab" preset="raw material" postset="tab added"
+                               processLinkName="lathe tab" processLinkRef=""/>
+            <OperandTransition name="maintain tab" preset="tab added" postset="tab added"
+                               processLinkName="transport" processLinkRef="small radial"/>
+            <OperandTransition name="add slot" preset="tab added" postset="slot added"
+                               processLinkName="lathe slot" processLinkRef=""/>
+            <OperandTransition name="maintain slot" preset="slot added" postset="slot added"
+                               processLinkName="transport" processLinkRef="small radial"/>
+            <OperandTransition name="add hole" preset="slot added" postset="hole added"
+                               processLinkName="mill hole" processLinkRef=""/>
+            <OperandTransition name="maintain hole" preset="hole added" postset="hole added"
+                               processLinkName="transport" processLinkRef="small radial"/>
+            <OperandTransition name="laminate" preset="hole added" postset="laminated"
+                               processLinkName="laminate" processLinkRef=""/>
+            <OperandTransition name="maintain lamination" preset="laminated" postset="laminated"
+                               processLinkName="transport" processLinkRef="small radial"/>
+            <OperandTransition name="paint" preset="laminated" postset="final product"
+                               processLinkName="paint red" processLinkRef=""/>
+            <OperandTransition name="maintain final product" preset="final product" postset="final product"
+                               processLinkName="transport" processLinkRef="small radial"/>
+            <OperandTransition name="eject" preset="final product" postset=""
+                               processLinkName="eject" processLinkRef=""/>
+        </OperandNet>
+    </Operand>
+
+    <TransformationResource name="machining station 1" gpsX="1" gpsY="0" decisionMaker="line-wide controller" autonomous="true">
+        <TransformationProcess name="lathe tab" status="true" operand="wooden component" output="wooden component"/>
+        <TransformationProcess name="lathe slot" status="true" operand="wooden component" output="wooden component"/>
+        <TransformationProcess name="mill hole" status="true" operand="wooden component" output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="machining station 1" destination="machining station 1" ref="small radial"
+                               operand="wooden component" output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="machining station 1" destination="machining station 1" ref="big radial"
+                               operand="wooden component" output="wooden component"/>
+    </TransformationResource>
+
+    <TransformationResource name="lamination station 1" gpsX="2" gpsY="0" decisionMaker="line-wide controller" autonomous="true">
+        <TransformationProcess name="laminate" status="true" operand="wooden component" output="wooden component"/>
+        <TransportationProcess name="store laminated" status="true" origin="lamination station 1" destination="lamination station 1" ref="small radial"
+                               operand="wooden component" output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="lamination station 1" destination="lamination station 1" ref="big radial"
+                               operand="wooden component" output="wooden component"/>
+    </TransformationResource>
+
+    <TransformationResource name="painting station 1" gpsX="3" gpsY="0" decisionMaker="line-wide controller" autonomous="true">
+        <TransformationProcess name="paint red" status="true" operand="wooden component" output="wooden component"/>
+        <TransformationProcess name="paint yellow" status="true" operand="wooden component" output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="painting station 1" destination="painting station 1" ref="axial"
+                               operand="wooden component" output="wooden component"/>
+    </TransformationResource>
+
+    <TransformationResource name="input buffer" gpsX="0" gpsY="0" decisionMaker="line-wide controller" autonomous="true">
+        <TransformationProcess name="inject" status="true" operand="wooden component" output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="input buffer" destination="input buffer" ref="axial"
+                               operand="wooden component" output="wooden component"/>
+    </TransformationResource>
+
+    <TransformationResource name="output buffer" gpsX="5" gpsY="0" decisionMaker="line-wide controller" autonomous="true">
+        <TransformationProcess name="eject" status="true" operand="wooden component" output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="output buffer" destination="output buffer" ref="axial"
+                               operand="wooden component" output="wooden component"/>
+    </TransformationResource>
+   
+    <TransportationResource name="shuttle a" decisionMaker="line-wide controller" autonomous="true">
+        <TransportationProcess name="transport" status="true" origin="machining station 1"
+                               destination="lamination station 1" ref="small radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="lamination station 1"
+                               destination="painting station 1" ref="small radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="painting station 1"
+                               destination="output buffer" ref="small radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="input buffer"
+                               destination="machining station 1" ref="small radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="output buffer"
+                               destination="machining station 1" ref="small radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="output buffer"
+                               destination="input buffer" ref="small radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="machining station 1"
+                               destination="lamination station 1" ref="big radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="lamination station 1"
+                               destination="painting station 1" ref="big radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport painted" status="true" origin="painting station 1"
+                               destination="output buffer" ref="big radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="input buffer"
+                               destination="machining station 1" ref="big radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="output buffer"
+                               destination="machining station 1" ref="big radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="output buffer"
+                               destination="input buffer" ref="big radial" operand="wooden component"
+                               output="wooden component"/>
+    </TransportationResource>
+
+    <TransportationResource name="shuttle b" decisionMaker="line-wide controller" autonomous="true">
+        <TransportationProcess name="transport" status="true" origin="machining station 1"
+                               destination="lamination station 1" ref="small radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="lamination station 1"
+                               destination="painting station 1" ref="small radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="painting station 1"
+                               destination="output buffer" ref="small radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="input buffer"
+                               destination="machining station 1" ref="small radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="output buffer"
+                               destination="machining station 1" ref="small radial" operand="wooden component"
+                               output="wooden component"/>
+        <TransportationProcess name="transport" status="true" origin="output buffer"
+                               destination="input buffer" ref="small radial" operand="wooden component"
+                               output="wooden component"/>
+    </TransportationResource>
+
+    <DecisionMaker name="line-wide controller" status="true" peerRecipient="line-wide controller"/>
+</LFES>

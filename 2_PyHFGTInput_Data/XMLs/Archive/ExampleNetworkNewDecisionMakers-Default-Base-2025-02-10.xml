@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="ExampleNetwork" scenario="base" refArchitecture="Smart City" dataState="raw" inputDataFormat="default" version="4.0" verboseMode="false" analyzeSoS="false" outputFileType="csv">
+    <Operand operandName="electricity" operandType="energy">
+        <OperandNet operandNetName="deliver electricity" status="true">
+            <OperandPlace name="electric power" type="internal"/>
+            <OperandTransition name="generate electric power" preset="" postset="electric power" processLinkName="generate electric power" processLinkRef=""/>
+            <OperandTransition name="continuing electric power" preset="electric power" postset="electric power" processLinkName="transport electricity" processLinkRef="hold 132kV"/>
+            <OperandTransition name="treat water" preset="electric power" postset="" processLinkName="treat water" processLinkRef=""/>
+            <OperandTransition name="consume water" preset="electric power" postset="" processLinkName="consume water" processLinkRef=""/> 
+            <OperandTransition name="charge EV" preset="electric power" postset="" processLinkName="store EV" processLinkRef="charge EV"/>
+        </OperandNet>
+    </Operand>
+    <Operand operandName="potable water" operandType="matter">
+        <OperandNet operandNetName="deliver potable Water" status="true">
+            <OperandPlace name="potable water" type="internal"/>
+            <OperandTransition name="treat water" preset="" postset="potable water" processLinkName="treat water" processLinkRef=""/>
+            <OperandTransition name="continuing water" preset="potable water" postset="potable water" processLinkName="transport potable water" processLinkRef="hold potable water"/>
+            <OperandTransition name="consume water" preset="potable water" postset="" processLinkName="consume water" processLinkRef=""/>
+        </OperandNet>
+    </Operand>
+    <Operand operandName="EV" operandType="matter">
+        <OperandNet operandNetName="deliver EV" status="true">
+            <OperandPlace name="state of charge" type="internal"/>
+            <OperandTransition name="charge battery" preset="" postset="state of charge" processLinkName="store EV" processLinkRef="charge EV"/>
+            <OperandTransition name="continuing battery" preset="state of charge" postset="state of charge" processLinkName="store EV" processLinkRef="park EV"/>
+            <OperandTransition name="discharge battery" preset="state of charge" postset=""  processLinkName="transport EV" processLinkRef="discharge EV"/>
+        </OperandNet>
+    </Operand>
+
+    <Operand operandName="info" operandType="info">
+        <OperandNet operandNetName="info" status="true">
+            <OperandPlace name="decision made" type="internal"/>
+            <OperandTransition name="make decision 1" preset="decision made" postset="decision made" processLinkName="make decision 1" processLinkRef=""/>
+            <OperandTransition name="make decision 2" preset="decision made" postset="decision made" processLinkName="make decision 2" processLinkRef=""/>
+            <OperandTransition name="make decision 3" preset="decision made" postset="decision made" processLinkName="make decision 3" processLinkRef=""/>
+            
+        </OperandNet>
+        
+    </Operand>
+
+    <TransformationResource transformationResourceName="Water Treatment Facility" gpsX="0" gpsY="1" decisionMaker="water utility decision maker" autonomous="false">
+        <TransformationProcess name="treat water" status="true" inputOperand="electricity" inputOperandWeight="1" outputOperand="potable water" outputOperandWeight="1"/>
+    </TransformationResource>
+    <TransformationResource transformationResourceName="Solar PV" gpsX="0" gpsY="0" decisionMaker="electric power utility decision maker" autonomous="false">
+        <TransformationProcess name="generate electric power" status="true" inputOperand="" inputOperandWeight="" outputOperand="electricity" outputOperandWeight="1"/>
+    </TransformationResource>
+    <TransformationResource transformationResourceName="House" gpsX="1" gpsY="1" decisionMaker="end user decision maker" autonomous="false">
+        <TransformationProcess name="consume water" status="true" inputOperand="electricity,potable water" inputOperandWeight="1,1" outputOperand="" outputOperandWeight=""/>
+        <TransportationProcess name="store EV" status="true" origin="House" destination="House" ref="park EV" inputOperand="EV" inputOperandWeight="1" outputOperand="EV" outputOperandWeight="1"/>
+        <TransportationProcess name="store EV" status="true" origin="House" destination="House" ref="charge EV" inputOperand="EV, electricity" inputOperandWeight="1,1" outputOperand="EV" outputOperandWeight="1"/>
+    </TransformationResource>
+
+    <TransformationResource transformationResourceName="water utility decision maker" gpsX="10" gpsY="10" decisionMaker="" peerRecipient="water utility decision maker,electric power utility decision maker,end user decision maker" autonomous="true">
+        <TransformationProcess name="make decision 1" status="true" inputOperand="info" inputOperandWeight="" outputOperand="info" outputOperandWeight="1"/>
+    </TransformationResource>
+    <TransformationResource transformationResourceName="electric power utility decision maker" gpsX="0" gpsY="0" decisionMaker="" peerRecipient="electric power utility decision maker,water utility decision maker,end user decision maker" autonomous="true">
+        <TransformationProcess name="make decision 2" status="true" inputOperand="info" inputOperandWeight="" outputOperand="info" outputOperandWeight="1"/>
+    </TransformationResource>
+    <TransformationResource transformationResourceName="end user decision maker" gpsX="10" gpsY="10" decisionMaker="" peerRecipient="end user decision maker,electric power utility decision maker,water utility decision maker" autonomous="true">
+        <TransformationProcess name="make decision 3" status="true" inputOperand="info" inputOperandWeight="" outputOperand="info" outputOperandWeight="1"/>
+    </TransformationResource>
+
+    <IndependentBuffer independentBufferName="Work Location" gpsX="1" gpsY="0" decisionMaker="end user decision maker" autonomous="false">
+        <TransportationProcess name="store EV" status="true" origin="Work Location" destination="Work Location" ref="park EV" inputOperand="EV" inputOperandWeight="1" outputOperand="EV" outputOperandWeight="1"/>
+    </IndependentBuffer>
+    <TransportationResource transportationResourceName="Water Pipeline" decisionMaker="water utility decision maker" autonomous="false">
+        <TransportationProcess name="transport potable water" status="true" origin="Water Treatment Facility" destination="House" ref="hold potable water" inputOperand="potable water" inputOperandWeight="1" outputOperand="potable water" outputOperandWeight="1"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Power Line 1" decisionMaker="electric power utility decision maker" autonomous="false">
+        <TransportationProcess name="transport electricity" status="true" origin="Solar PV" destination="Water Treatment Facility" ref="hold 132kV" inputOperand="electricity" inputOperandWeight="1" outputOperand="electricity" outputOperandWeight="1"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Power Line 2" decisionMaker="electric power utility decision maker" autonomous="false">
+        <TransportationProcess name="transport electricity" status="true" origin="Solar PV" destination="House" ref="hold 132kV" inputOperand="electricity" inputOperandWeight="1" outputOperand="electricity" outputOperandWeight="1"/>
+    </TransportationResource>
+    <TransportationResource transportationResourceName="Road" decisionMaker="end user decision maker" autonomous="false">
+        <TransportationProcess name="transport EV" status="true" origin="Work Location" destination="House" ref="discharge EV" inputOperand="EV" inputOperandWeight="1" outputOperand="EV" outputOperandWeight="1"/>
+        <TransportationProcess name="transport EV" status="true" origin="House" destination="Work Location" ref="discharge EV" inputOperand="EV" inputOperandWeight="1" outputOperand="EV" outputOperandWeight="1"/>
+    </TransportationResource>
+    
+</LFES>

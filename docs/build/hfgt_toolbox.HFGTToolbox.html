@@ -1,0 +1,1814 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hfgt_toolbox.HFGTToolbox module &mdash; HFGTToolbox  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="hfgt_toolbox.logging module" href="hfgt_toolbox.logging.html" />
+    <link rel="prev" title="hfgt_toolbox.cli.main module" href="hfgt_toolbox.cli.main.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            HFGTToolbox
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src_python</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="hfgt_toolbox.html">hfgt_toolbox package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="hfgt_toolbox.html#subpackages">Subpackages</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="hfgt_toolbox.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">hfgt_toolbox.HFGTToolbox module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hfgt_toolbox.logging.html">hfgt_toolbox.logging module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="runGIS2SysML.html">runGIS2SysML module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runGISDirectory2SysML.html">runGISDirectory2SysML module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runHFGTStructuralToolbox.html">runHFGTStructuralToolbox module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runHFGTToolbox.html">runHFGTToolbox module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">HFGTToolbox</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">src_python</a></li>
+          <li class="breadcrumb-item"><a href="hfgt_toolbox.html">hfgt_toolbox package</a></li>
+      <li class="breadcrumb-item active">hfgt_toolbox.HFGTToolbox module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/hfgt_toolbox.HFGTToolbox.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-hfgt_toolbox.HFGTToolbox">
+<span id="hfgt-toolbox-hfgttoolbox-module"></span><h1>hfgt_toolbox.HFGTToolbox module<a class="headerlink" href="#module-hfgt_toolbox.HFGTToolbox" title="Link to this heading"></a></h1>
+<p>Copyright (c) 2018-2025 Engineering Systems Analytics LLC
+&#64;author: Amro M. Farid
+&#64;version: 4.6.0.e10
+&#64;Note:  Version 4.0 is a major release constituting a full rewrite of the entire code base.
+&#64;Acknowledgement:  Thanks goes to Dr. Amro M. Farid, Dr. Wester C. H. Schoonenberg, and Dr. Dakota Thompson as the principal</p>
+<blockquote>
+<div><p>authors of Versions 1, 2, 3 respectively.</p>
+</div></blockquote>
+<p>&#64;Modified: 01/02/2026
+&#64; Provided under the Creative Commons 4.0 License
+Developed with Python 3.11.9</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.AnalysisMethod">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">AnalysisMethod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.AnalysisMethod" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.AnalysisMethod.ANALYZESOS">
+<span class="sig-name descname"><span class="pre">ANALYZESOS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SoSResilience'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.AnalysisMethod.ANALYZESOS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.AnalysisMethod.DEFAULT">
+<span class="sig-name descname"><span class="pre">DEFAULT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'default'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.AnalysisMethod.DEFAULT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.AnalysisMethod.HFNCMCF">
+<span class="sig-name descname"><span class="pre">HFNCMCF</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HFNMCF'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.AnalysisMethod.HFNCMCF" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Analytics">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">Analytics</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Analytics" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.GenericClass" title="hfgt_toolbox.HFGTToolbox.GenericClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericClass</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Buffer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">Buffer</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Buffer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.PhysicalResource" title="hfgt_toolbox.HFGTToolbox.PhysicalResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalResource</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.CSV2SysMLDict">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">CSV2SysMLDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFilePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">className</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxColumnName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxRows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.CSV2SysMLDict" title="Link to this definition"></a></dt>
+<dd><p>Given a .csv filepath as input, process it into a SysML
+file via df2SysMLDict and save the file to outputFilePath.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputFilePath</strong> (<em>str</em>) – The path of the input CSV file.</p></li>
+<li><p><strong>outputFilePath</strong> (<em>str</em>) – The path to save the sysml file to.</p></li>
+<li><p><strong>className</strong> (<em>str</em>) – The name that should be assigned to each instance
+in the model (e.g. “Substation”, “Power Line”, etc).</p></li>
+<li><p><strong>idxColumnName</strong> (<em>str</em>) – The name of the index column, which uniquely
+identifies each row.</p></li>
+<li><p><strong>maxRows</strong> (<em>Optional</em><em>, </em><em>int</em>) – The maximum number of rows to process.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A SysML-compliant dictionary representing the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.DataState">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">DataState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.DataState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.DataState.BEHAVIORAL">
+<span class="sig-name descname"><span class="pre">BEHAVIORAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Behavioral-Simulation'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.DataState.BEHAVIORAL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.DataState.RAW">
+<span class="sig-name descname"><span class="pre">RAW</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'raw'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.DataState.RAW" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.DataState.STRUCTURAL">
+<span class="sig-name descname"><span class="pre">STRUCTURAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'structural'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.DataState.STRUCTURAL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.DecisionMaker">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">DecisionMaker</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.DecisionMaker" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.Resource" title="hfgt_toolbox.HFGTToolbox.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.DecisionMaker.calcDecisionMakerAdjacency">
+<span class="sig-name descname"><span class="pre">calcDecisionMakerAdjacency</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.DecisionMaker.calcDecisionMakerAdjacency" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.DecisionMaker.calcDecisionMakers">
+<span class="sig-name descname"><span class="pre">calcDecisionMakers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.DecisionMaker.calcDecisionMakers" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.DecisionMaker.extractSysMLDecisionMakers">
+<span class="sig-name descname"><span class="pre">extractSysMLDecisionMakers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.DecisionMaker.extractSysMLDecisionMakers" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.DecisionMaker.setupDecisionMakers">
+<span class="sig-name descname"><span class="pre">setupDecisionMakers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myRoot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.DecisionMaker.setupDecisionMakers" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.EngSysNetPlace">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">EngSysNetPlace</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.EngSysNetPlace" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.PetriNetPlace" title="hfgt_toolbox.HFGTToolbox.PetriNetPlace"><code class="xref py py-class docutils literal notranslate"><span class="pre">PetriNetPlace</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.EngSysNetTransition">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">EngSysNetTransition</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.EngSysNetTransition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.PetriNetTransition" title="hfgt_toolbox.HFGTToolbox.PetriNetTransition"><code class="xref py py-class docutils literal notranslate"><span class="pre">PetriNetTransition</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.GIS2SysMLFile">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">GIS2SysMLFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFilePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputFilePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">className</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxColumnName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.GIS2SysMLFile" title="Link to this definition"></a></dt>
+<dd><p>Given a filepath as input, process it into a SysML
+file via the relevant function and save the file to outputFilePath.
+The input file must be either a .csv or a .shp file, otherwise
+an error will be raised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputFilePath</strong> (<em>str</em>) – The path of the input file.</p></li>
+<li><p><strong>outputFilePath</strong> (<em>str</em>) – The path to save the sysml file to.</p></li>
+<li><p><strong>className</strong> (<em>str</em>) – The name that should be assigned to each instance
+in the model (e.g. “Substation”, “Power Line”, etc).</p></li>
+<li><p><strong>idxColumnName</strong> (<em>str</em>) – The name of the index column, which uniquely
+identifies each row.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the filetype is not supported.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if function completed successfully.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.GISDirectory2SysMLDict">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">GISDirectory2SysMLDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputDirectoryPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">className</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxColumnName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxRows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.GISDirectory2SysMLDict" title="Link to this definition"></a></dt>
+<dd><p>Given a directory as input, process all GIS-type files into a SysML-
+compliant Dictionary via the relevant function.
+The GIS files in the directory must be either .csv or .shp files to be processed.
+Any non .csv or .shp files will be skipped.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputDirectoryPath</strong> (<em>str</em>) – The path of the input directory.</p></li>
+<li><p><strong>className</strong> (<em>str</em>) – The name that should be assigned to each instance
+in the model (e.g. “Substation”, “Power Line”, etc).</p></li>
+<li><p><strong>idxColumnName</strong> (<em>str</em>) – The name of the index column, which uniquely
+identifies each row. Note that each GIS file will need to use the
+same column name as an identifier.</p></li>
+<li><p><strong>maxRows</strong> (<em>int</em><em>, </em><em>Optional</em>) – The maximum number of rows to process for each
+dataset. If None, process all rows.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The LFES package representing the SysML model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.GISDirectory2SysMLDictAuto">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">GISDirectory2SysMLDictAuto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputDirectoryPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxRows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxFilesPerDirectory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.GISDirectory2SysMLDictAuto" title="Link to this definition"></a></dt>
+<dd><p>Given a directory as input, process all GIS-type files into a SysML-
+compliant Dictionary via the relevant function.
+The GIS files in the directory must be either .csv or .shp files to be processed.
+Any non .csv or .shp files will be skipped.</p>
+<p>For each GIS file, if it is accompanied by a .yml file,
+whose filename is exactly the same as the file to which it refers
+(e.g. “data1.csv” is sitting alongside a .yml file called “data1.csv.yml”),
+it will be processed according to the instructions in that .yml file.
+If present, the .yml file must contain two keys:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>class_name: The name of the class, e.g. “PowerPlant”.</p></li>
+<li><p>idx_column_name: The name of the column that uniquely identifies each row,
+e.g. “name”.</p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt>It can also contain:</dt><dd><ul class="simple">
+<li><p>max_rows: The maximum number of rows to process. If this key is not present,
+the value from maxRows (the argument to this function) will be used instead.</p></li>
+</ul>
+</dd>
+</dl>
+<p>If a GIS file is not accompanied by a .yml file, it will be processed
+as if its class_name is “Object”, and each object will be assigned an
+increasing id (“Object1”, “Object2”, etc). In this way, the .yml files are not
+required - they just improve the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputDirectoryPath</strong> (<em>str</em>) – The path of the input directory.</p></li>
+<li><p><strong>maxRows</strong> (<em>int</em><em>, </em><em>Optional</em>) – The maximum number of rows to process for each
+dataset. If max_rows is present in a dataset’s corresponding .yml file,
+this value will be overridden.</p></li>
+<li><p><strong>maxFilesPerDirectory</strong> (<em>int</em><em>, </em><em>Optional</em>) – The maximum number of files to process
+in each directory. (useful when there may be directories containing 1000s
+of CSV files that you don’t need to include in the model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The LFES package representing the SysML model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.GISDirectory2SysMLFile">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">GISDirectory2SysMLFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputDirectoryPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputFilePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">className</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxColumnName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.GISDirectory2SysMLFile" title="Link to this definition"></a></dt>
+<dd><p>Given a directory as input, process all GIS-type files into a SysML
+file via the relevant function and save the file to outputFilePath.
+The GIS files in the directory must be either .csv or .shp files to be processed.
+Any non .csv or .shp files will be skipped.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputDirectoryPath</strong> (<em>str</em>) – The path of the input directory.</p></li>
+<li><p><strong>outputFilePath</strong> (<em>str</em>) – The path to save the sysml file to.</p></li>
+<li><p><strong>className</strong> (<em>str</em>) – The name that should be assigned to each instance
+in the model (e.g. “Substation”, “Power Line”, etc).</p></li>
+<li><p><strong>idxColumnName</strong> (<em>str</em>) – The name of the index column, which uniquely
+identifies each row. Note that each GIS file will need to use the
+same column name as an identifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if function completed successfully.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.GenericClass">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">GenericClass</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.GenericClass" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.GenericClass.appendInputDataAttributes">
+<span class="sig-name descname"><span class="pre">appendInputDataAttributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myRequiredKeys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.GenericClass.appendInputDataAttributes" title="Link to this definition"></a></dt>
+<dd><p>This function inserts values from a dictionary to an object if the object has a variable with the same name
+as that of a key in the dictionary.  The function provides extensive error-checking functionality on both myObj
+and myDict.  The actual appending happens with one append inside a FOR loop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>self</strong> – object being filled in</p></li>
+<li><p><strong>myDict</strong> – dictionary with desired value</p></li>
+<li><p><strong>myRequiredKeys</strong> (default: <code class="docutils literal notranslate"><span class="pre">set()</span></code>) – an optional list of keys that must be in the dictionary</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.GenericClass.fillAttributesWithNones">
+<span class="sig-name descname"><span class="pre">fillAttributesWithNones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myDictKeys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.GenericClass.fillAttributesWithNones" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.GenericClass.insertAttributeDataFromDict">
+<span class="sig-name descname"><span class="pre">insertAttributeDataFromDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'append'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.GenericClass.insertAttributeDataFromDict" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.GenericClass.validateAttributeData">
+<span class="sig-name descname"><span class="pre">validateAttributeData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.GenericClass.validateAttributeData" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.GenericClass.varDomain">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">varDomain</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.GenericClass.varDomain" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.HoldingProcess">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">HoldingProcess</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.HoldingProcess" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.SystemProcess" title="hfgt_toolbox.HFGTToolbox.SystemProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">SystemProcess</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.HoldingProcess.populateHoldingProcess">
+<span class="sig-name descname"><span class="pre">populateHoldingProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myTransportProcesses</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.HoldingProcess.populateHoldingProcess" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.IndependentBuffer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">IndependentBuffer</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.IndependentBuffer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.Buffer" title="hfgt_toolbox.HFGTToolbox.Buffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Buffer</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.InputDataFormat">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">InputDataFormat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.InputDataFormat" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.InputDataFormat.CAPABILITYXML">
+<span class="sig-name descname"><span class="pre">CAPABILITYXML</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'capabilityXML'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.InputDataFormat.CAPABILITYXML" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.InputDataFormat.DEFAULTXML">
+<span class="sig-name descname"><span class="pre">DEFAULTXML</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'defaultXML'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.InputDataFormat.DEFAULTXML" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.InputDataFormat.SYSML">
+<span class="sig-name descname"><span class="pre">SYSML</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'sysml'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.InputDataFormat.SYSML" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">LFES</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.GenericClass" title="hfgt_toolbox.HFGTToolbox.GenericClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericClass</span></code></a></p>
+<p>Represents all the components in the HFGT toolbox LFES structure</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.analysisMethod">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">analysisMethod</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.analysisMethod" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcDecisionMakerAgencyMatrix">
+<span class="sig-name descname"><span class="pre">calcDecisionMakerAgencyMatrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcDecisionMakerAgencyMatrix" title="Link to this definition"></a></dt>
+<dd><p>This method calculates the Decision Maker Agency Matrix in the myLFES object as part of the produceFinalLFES() method.</p>
+<p>Upon completion, this LFES will be an instantiated Large Flexible Engineering System object ready to
+compute HFGT mathematical models.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcEngSysNetFiringVectors">
+<span class="sig-name descname"><span class="pre">calcEngSysNetFiringVectors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcEngSysNetFiringVectors" title="Link to this definition"></a></dt>
+<dd><p>This function calculates the Engineering System Net Firiving vectors from the system concept myLFES.AS.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcEngineeringSystemNet">
+<span class="sig-name descname"><span class="pre">calcEngineeringSystemNet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcEngineeringSystemNet" title="Link to this definition"></a></dt>
+<dd><p>This function calculates the engineering system net</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcEngineeringSystemNetPlaces">
+<span class="sig-name descname"><span class="pre">calcEngineeringSystemNetPlaces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcEngineeringSystemNetPlaces" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcEngineeringSystemNetTransitions">
+<span class="sig-name descname"><span class="pre">calcEngineeringSystemNetTransitions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcEngineeringSystemNetTransitions" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcHeterofunctionalAdjacencyMatrix">
+<span class="sig-name descname"><span class="pre">calcHeterofunctionalAdjacencyMatrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcHeterofunctionalAdjacencyMatrix" title="Link to this definition"></a></dt>
+<dd><p>This function computes the projected and un-projected forms of the
+negative hetero-functional incidence tensor as well as the 4th order tensor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcHeterofunctionalIncidenceTensor">
+<span class="sig-name descname"><span class="pre">calcHeterofunctionalIncidenceTensor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcHeterofunctionalIncidenceTensor" title="Link to this definition"></a></dt>
+<dd><p>This function calculates the positive and negative hetero-functional incidence tensors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcHeterofunctionalIncidenceTensorNeg">
+<span class="sig-name descname"><span class="pre">calcHeterofunctionalIncidenceTensorNeg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcHeterofunctionalIncidenceTensorNeg" title="Link to this definition"></a></dt>
+<dd><p>This function computes the projected and un-projected forms of the
+negative hetero-functional incidence tensor as well as the 4th order tensor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcHeterofunctionalIncidenceTensorPos">
+<span class="sig-name descname"><span class="pre">calcHeterofunctionalIncidenceTensorPos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcHeterofunctionalIncidenceTensorPos" title="Link to this definition"></a></dt>
+<dd><p>This function computes the projected and un-projected forms of the
+negative hetero-functional incidence tensor as well as the 4th order tensor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcOperandNetFeasibility">
+<span class="sig-name descname"><span class="pre">calcOperandNetFeasibility</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcOperandNetFeasibility" title="Link to this definition"></a></dt>
+<dd><p>This function calculates the service feasibility matrix. It uses the DOFs to find
+the services performed by the DOFs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcSystemAdjacencyMatrix">
+<span class="sig-name descname"><span class="pre">calcSystemAdjacencyMatrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcSystemAdjacencyMatrix" title="Link to this definition"></a></dt>
+<dd><p>This function calculates the system adjacency matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcSystemConcept">
+<span class="sig-name descname"><span class="pre">calcSystemConcept</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcSystemConcept" title="Link to this definition"></a></dt>
+<dd><p>This function calculates System Knowledge base JS, System Constraints Matrix KS, and System Concept AS.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcTransformationSystemConcept">
+<span class="sig-name descname"><span class="pre">calcTransformationSystemConcept</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcTransformationSystemConcept" title="Link to this definition"></a></dt>
+<dd><p>The function calculates the Transformation Knowledge Base JM, Constraints Matrix KM,  and Transformation Concept AM.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcTransportationSystemConcept">
+<span class="sig-name descname"><span class="pre">calcTransportationSystemConcept</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcTransportationSystemConcept" title="Link to this definition"></a></dt>
+<dd><p>This function calculates Transportation Knowledge Base JH, Constraints Matrix KH,
+and Transportation Concept AH.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.calcTransportationSystemConceptTensors">
+<span class="sig-name descname"><span class="pre">calcTransportationSystemConceptTensors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.calcTransportationSystemConceptTensors" title="Link to this definition"></a></dt>
+<dd><p>This function calculates Transportation Knowledge Base, Constraints, and Concept Tensors.
+It also calculates the refined transportation knowledge base, constraints, and concept tensors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.convertLFES2SysMLDict">
+<span class="sig-name descname"><span class="pre">convertLFES2SysMLDict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.convertLFES2SysMLDict" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.dataState">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">dataState</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.dataState" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.extractSysMLDefs">
+<span class="sig-name descname"><span class="pre">extractSysMLDefs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mySysMLDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.extractSysMLDefs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.extractSysMLParts">
+<span class="sig-name descname"><span class="pre">extractSysMLParts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mySysMLDict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.extractSysMLParts" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.extractSysMLViews">
+<span class="sig-name descname"><span class="pre">extractSysMLViews</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mySysMLDict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.extractSysMLViews" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.getConfigAnalysisMethod">
+<span class="sig-name descname"><span class="pre">getConfigAnalysisMethod</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.getConfigAnalysisMethod" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.initializeSystemConceptMatrices">
+<span class="sig-name descname"><span class="pre">initializeSystemConceptMatrices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.initializeSystemConceptMatrices" title="Link to this definition"></a></dt>
+<dd><p>This function initializes the knowledge bases and constraints matrices to empty
+sparse matrices of type COO (coordinate) format.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.initializeSystemConceptTensors">
+<span class="sig-name descname"><span class="pre">initializeSystemConceptTensors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.initializeSystemConceptTensors" title="Link to this definition"></a></dt>
+<dd><p>This function initializes the knowledge bases and constraints tensors to
+sparse tensors of type COO.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.inputDataFormat">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">inputDataFormat</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.inputDataFormat" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.joinResources">
+<span class="sig-name descname"><span class="pre">joinResources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">opt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.joinResources" title="Link to this definition"></a></dt>
+<dd><p>This method sets up, and collates the buffers in the myLFES object as part of the produceFinalLFES() method.</p>
+<p>Upon completion, this LFES will be an instantiated Large Flexible Engineering System object ready
+to compute HFGT mathematical models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>opt</strong> – An array of options.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.outputFileType">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">outputFileType</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.outputFileType" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.packSetCapability">
+<span class="sig-name descname"><span class="pre">packSetCapability</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.packSetCapability" title="Link to this definition"></a></dt>
+<dd><p>This function identifies all of the system capabilities.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.packSetSystemProcess">
+<span class="sig-name descname"><span class="pre">packSetSystemProcess</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.packSetSystemProcess" title="Link to this definition"></a></dt>
+<dd><p>This function computes the set of all possible REFINED transportation processes in the system.
+This set of processes includes storage at a certain buffer element and transportation from one buffer
+element to all other buffer elements present in the system.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.populateInputData">
+<span class="sig-name descname"><span class="pre">populateInputData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.populateInputData" title="Link to this definition"></a></dt>
+<dd><p>This function populates this LFES’s attributes with data loaded from
+either an XML or SysML file. The data is loaded from this LFES’s inputFilePath,
+validated, and then used to populate the myKeys attribute.</p>
+<p>After the data is loaded, the standardizeInputFilePath() function is called.
+This builds a standardized filename, based on several of this LFES’ attributes
+e.g. scenario, runCode, etc. During this step, if the inputFilePath does not follow
+this standard naming convention, the input file is copied into an
+Archive/ folder and the input file is renamed to the standardized name.
+inputFilePath is then adjusted to this standardised name.</p>
+<p>Several globals are set during the execution of this function, based on the
+corresponding entries in the input data file:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>analysisMethod</p></li>
+<li><p>inputDataFormat</p></li>
+</ul>
+</div></blockquote>
+<p>These are stored as globals in order to avoid needing to pass them around to
+many other functions.</p>
+<p>The logging level is set to DEBUG from here onwards if verboseMode = True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If any errors arise, for example an unexpected file type, LFES name
+    containing whitespace characters, etc. A ValueError is also raised if the
+    input data does not contain any operands.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.populateSysMLData">
+<span class="sig-name descname"><span class="pre">populateSysMLData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.populateSysMLData" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.populateXMLDataCapability">
+<span class="sig-name descname"><span class="pre">populateXMLDataCapability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmlTree</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.populateXMLDataCapability" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.populateXMLDataDefault">
+<span class="sig-name descname"><span class="pre">populateXMLDataDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmlTree</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.populateXMLDataDefault" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.processSysMLItems">
+<span class="sig-name descname"><span class="pre">processSysMLItems</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.processSysMLItems" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.processSysMLParts">
+<span class="sig-name descname"><span class="pre">processSysMLParts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.processSysMLParts" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.produceFinalLFES">
+<span class="sig-name descname"><span class="pre">produceFinalLFES</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.produceFinalLFES" title="Link to this definition"></a></dt>
+<dd><p>This method acts upon the myLFES instance produced by populateXMLData() and computes the HFGT mathematical
+models.</p>
+<p>Upon completion, this LFES will be complete, containing HFGT mathematical models</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>myLFES</strong> – Instantiated myLFES object with HFGT meta-elements already set-up</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.projectEngSysNetFiringVectors">
+<span class="sig-name descname"><span class="pre">projectEngSysNetFiringVectors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.projectEngSysNetFiringVectors" title="Link to this definition"></a></dt>
+<dd><p>This function projects the Engineering System Net Firiving vectors from the system concept myLFES.AS.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.setupIndependentBuffers">
+<span class="sig-name descname"><span class="pre">setupIndependentBuffers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myRoot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.setupIndependentBuffers" title="Link to this definition"></a></dt>
+<dd><p>This method sets up the independent buffers in the myLFES object as part of the populateXMLData() method.</p>
+<p>Upon completion, this LFES will be an instantiated Large Flexible Engineering System object ready
+to compute HFGT mathematical models</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>myRoot</strong> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – An element tree object that contains the input XML file data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.setupSysMLOperand">
+<span class="sig-name descname"><span class="pre">setupSysMLOperand</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.setupSysMLOperand" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.setupTransformationResources">
+<span class="sig-name descname"><span class="pre">setupTransformationResources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myRoot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.setupTransformationResources" title="Link to this definition"></a></dt>
+<dd><p>This method sets up the transformation resources in the myLFES object as part of the populateXMLData() method.</p>
+<p>Upon completion, this LFES will be an instantiated Large Flexible Engineering System object
+ready to compute HFGT mathematical models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>myRoot</strong> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – An element tree object that contains the input XML file data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.setupTransportationResources">
+<span class="sig-name descname"><span class="pre">setupTransportationResources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myRoot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.setupTransportationResources" title="Link to this definition"></a></dt>
+<dd><p>This method sets up the transportation resources in the myLFES object as part of the populateXMLData() method.</p>
+<p>Upon completion, this LFES will be an instantiated Large Flexible Engineering System object ready
+to compute HFGT mathematical models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>myRoot</strong> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – An element tree object that contains the input XML file data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.stackSystemConcepts">
+<span class="sig-name descname"><span class="pre">stackSystemConcepts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.stackSystemConcepts" title="Link to this definition"></a></dt>
+<dd><p>This function identifies all of the system capabilities.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.LFES.standardizeInputFilePath">
+<span class="sig-name descname"><span class="pre">standardizeInputFilePath</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.LFES.standardizeInputFilePath" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Operand">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">Operand</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Operand" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.PetriNet" title="hfgt_toolbox.HFGTToolbox.PetriNet"><code class="xref py py-class docutils literal notranslate"><span class="pre">PetriNet</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Operand.calcOperand">
+<span class="sig-name descname"><span class="pre">calcOperand</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Operand.calcOperand" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Operand.calcOperandPlace">
+<span class="sig-name descname"><span class="pre">calcOperandPlace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Operand.calcOperandPlace" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Operand.calcOperandTransition">
+<span class="sig-name descname"><span class="pre">calcOperandTransition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Operand.calcOperandTransition" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Operand.calcSoSService">
+<span class="sig-name descname"><span class="pre">calcSoSService</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Operand.calcSoSService" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Operand.calcSystemOperandSyncMatrix">
+<span class="sig-name descname"><span class="pre">calcSystemOperandSyncMatrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Operand.calcSystemOperandSyncMatrix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Operand.collectAllOperands">
+<span class="sig-name descname"><span class="pre">collectAllOperands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Operand.collectAllOperands" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Operand.consolidateOperandNet">
+<span class="sig-name descname"><span class="pre">consolidateOperandNet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Operand.consolidateOperandNet" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Operand.extractSysMLOperands">
+<span class="sig-name descname"><span class="pre">extractSysMLOperands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Operand.extractSysMLOperands" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Operand.operandType">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">operandType</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Operand.operandType" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Operand.setupOperand">
+<span class="sig-name descname"><span class="pre">setupOperand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myRoot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Operand.setupOperand" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Operand.setupOperandNet">
+<span class="sig-name descname"><span class="pre">setupOperandNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myRoot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Operand.setupOperandNet" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>This function copies the attributes of myProcesses associated with a resource from the intermediary</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>opt</strong> – “M”,“C”, or “H” for transformation process, control process,
+or transportation process respectively</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandNet">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">OperandNet</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandNet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.GenericClass" title="hfgt_toolbox.HFGTToolbox.GenericClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericClass</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandPlace">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">OperandPlace</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandPlace" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.PetriNetPlace" title="hfgt_toolbox.HFGTToolbox.PetriNetPlace"><code class="xref py py-class docutils literal notranslate"><span class="pre">PetriNetPlace</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandPlace.extractSysMLOperandPlace">
+<span class="sig-name descname"><span class="pre">extractSysMLOperandPlace</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandPlace.extractSysMLOperandPlace" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandPlace.placeType">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">placeType</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandPlace.placeType" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandTransition">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">OperandTransition</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandTransition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.PetriNetTransition" title="hfgt_toolbox.HFGTToolbox.PetriNetTransition"><code class="xref py py-class docutils literal notranslate"><span class="pre">PetriNetTransition</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandTransition.extractSysMLOperandTransition">
+<span class="sig-name descname"><span class="pre">extractSysMLOperandTransition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandTransition.extractSysMLOperandTransition" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandTransition.validateTransitionWeights">
+<span class="sig-name descname"><span class="pre">validateTransitionWeights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transitionKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transitionWeightKey</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandTransition.validateTransitionWeights" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandType">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">OperandType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandType" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandType.ENERGY">
+<span class="sig-name descname"><span class="pre">ENERGY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'energy'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandType.ENERGY" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandType.INFORMATION">
+<span class="sig-name descname"><span class="pre">INFORMATION</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'information'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandType.INFORMATION" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandType.LIFE">
+<span class="sig-name descname"><span class="pre">LIFE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'life'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandType.LIFE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandType.MATTER">
+<span class="sig-name descname"><span class="pre">MATTER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'matter'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandType.MATTER" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandType.MONEY">
+<span class="sig-name descname"><span class="pre">MONEY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'money'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandType.MONEY" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OperandType.PEOPLE">
+<span class="sig-name descname"><span class="pre">PEOPLE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'people'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OperandType.PEOPLE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OutputFileType">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">OutputFileType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OutputFileType" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OutputFileType.JSON">
+<span class="sig-name descname"><span class="pre">JSON</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'json'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OutputFileType.JSON" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.OutputFileType.SYSML">
+<span class="sig-name descname"><span class="pre">SYSML</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'sysml'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.OutputFileType.SYSML" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.PetriNet">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">PetriNet</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.PetriNet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.GenericClass" title="hfgt_toolbox.HFGTToolbox.GenericClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericClass</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.PetriNetPlace">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">PetriNetPlace</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.PetriNetPlace" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.GenericClass" title="hfgt_toolbox.HFGTToolbox.GenericClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericClass</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.PetriNetTransition">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">PetriNetTransition</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.PetriNetTransition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.GenericClass" title="hfgt_toolbox.HFGTToolbox.GenericClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericClass</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.PhysicalResource">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">PhysicalResource</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.PhysicalResource" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.Resource" title="hfgt_toolbox.HFGTToolbox.Resource"><code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.PhysicalResource.calcResource">
+<span class="sig-name descname"><span class="pre">calcResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">configAnalysisMethod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myTransportProcess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myTransformProcess</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.PhysicalResource.calcResource" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.PlaceType">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">PlaceType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.PlaceType" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.PlaceType.INTERNAL">
+<span class="sig-name descname"><span class="pre">INTERNAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'internal'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.PlaceType.INTERNAL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.PlaceType.MUSTPRODUCE">
+<span class="sig-name descname"><span class="pre">MUSTPRODUCE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'must</span> <span class="pre">produce'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.PlaceType.MUSTPRODUCE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.PlaceType.SINK">
+<span class="sig-name descname"><span class="pre">SINK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'sink'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.PlaceType.SINK" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.PlaceType.SOURCE">
+<span class="sig-name descname"><span class="pre">SOURCE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'source'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.PlaceType.SOURCE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.RequiredKeys">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">RequiredKeys</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.RequiredKeys" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.GenericClass" title="hfgt_toolbox.HFGTToolbox.GenericClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericClass</span></code></a></p>
+<p>A class representing the required keys for
+different scenarios (default, Systems of Systems Resilience,
+Heterofunctional Network Minimum Cost Flow). Each is represented as a list, and
+updated via parent instances as needed. These RequiredKeys are used for the
+purpose of validating the input data for a particular scenario.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.RequiredKeys.default">
+<span class="sig-name descname"><span class="pre">default</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.RequiredKeys.default" title="Link to this definition"></a></dt>
+<dd><p>The required keys for the default problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.RequiredKeys.SoSResilience">
+<span class="sig-name descname"><span class="pre">SoSResilience</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.RequiredKeys.SoSResilience" title="Link to this definition"></a></dt>
+<dd><p>The required keys for the Systems of Systems resilience problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.RequiredKeys.HFNMCF">
+<span class="sig-name descname"><span class="pre">HFNMCF</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.RequiredKeys.HFNMCF" title="Link to this definition"></a></dt>
+<dd><p>The required keys for the Heterofunctional Network Minimum Cost Flow problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Resource">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">Resource</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Resource" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.GenericClass" title="hfgt_toolbox.HFGTToolbox.GenericClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericClass</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Resource.extractSysMLResources">
+<span class="sig-name descname"><span class="pre">extractSysMLResources</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Resource.extractSysMLResources" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Shapefile2SysMLDict">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">Shapefile2SysMLDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFilePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">className</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxColumnName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxRows</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Shapefile2SysMLDict" title="Link to this definition"></a></dt>
+<dd><p>Given a .shp filepath as input, process it into a SysML
+file via df2SysMLDict and save the file to outputFilePath.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputFilePath</strong> (<em>str</em>) – The path of the input .shp file.</p></li>
+<li><p><strong>outputFilePath</strong> (<em>str</em>) – The path to save the sysml file to.</p></li>
+<li><p><strong>className</strong> (<em>str</em>) – The name that should be assigned to each instance
+in the model (e.g. “Substation”, “Power Line”, etc).</p></li>
+<li><p><strong>idxColumnName</strong> (<em>str</em>) – The name of the index column, which uniquely
+identifies each row.</p></li>
+<li><p><strong>maxRows</strong> (<em>int</em><em>, </em><em>Optional</em>) – The maximum number of rows to process.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A SysML-compliant dictionary representing the model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.SparseMAT">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">SparseMAT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myInput</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.SparseMAT" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.SystemConcept">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">SystemConcept</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.SystemConcept" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.GenericClass" title="hfgt_toolbox.HFGTToolbox.GenericClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericClass</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.SystemConcept.calcProcessCapabilityIncidence">
+<span class="sig-name descname"><span class="pre">calcProcessCapabilityIncidence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numProcesses</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.SystemConcept.calcProcessCapabilityIncidence" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.SystemConcept.calcProjectionOperator">
+<span class="sig-name descname"><span class="pre">calcProjectionOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">analysisMethod</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.SystemConcept.calcProjectionOperator" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.SystemConcept.calcResourceCapabilityIncidence">
+<span class="sig-name descname"><span class="pre">calcResourceCapabilityIncidence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numResources</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.SystemConcept.calcResourceCapabilityIncidence" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.SystemProcess">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">SystemProcess</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.SystemProcess" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.GenericClass" title="hfgt_toolbox.HFGTToolbox.GenericClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericClass</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.SystemProcess.extractSysMLProcess">
+<span class="sig-name descname"><span class="pre">extractSysMLProcess</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.SystemProcess.extractSysMLProcess" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.SystemProcess.insertProcessData">
+<span class="sig-name descname"><span class="pre">insertProcessData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myProcess</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.SystemProcess.insertProcessData" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.SystemProcess.packProcessSet">
+<span class="sig-name descname"><span class="pre">packProcessSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myOperands</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.SystemProcess.packProcessSet" title="Link to this definition"></a></dt>
+<dd><p>This function packs a set of processes with numpy unique.
+It also calculates the number of these processes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.SystemProcess.validateProcess">
+<span class="sig-name descname"><span class="pre">validateProcess</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.SystemProcess.validateProcess" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.SystemProcess.validateProcessWeights">
+<span class="sig-name descname"><span class="pre">validateProcessWeights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operandKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operandWeightKey</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.SystemProcess.validateProcessWeights" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.TimeKeeper">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">TimeKeeper</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.TimeKeeper" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.GenericClass" title="hfgt_toolbox.HFGTToolbox.GenericClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericClass</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.TransformProcess">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">TransformProcess</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.TransformProcess" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.SystemProcess" title="hfgt_toolbox.HFGTToolbox.SystemProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">SystemProcess</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.TransformProcess.backPopulateTransformProcess">
+<span class="sig-name descname"><span class="pre">backPopulateTransformProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myTransformProcessDB</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.TransformProcess.backPopulateTransformProcess" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.TransformProcess.populateTransformProcess">
+<span class="sig-name descname"><span class="pre">populateTransformProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myTransformProcessList</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.TransformProcess.populateTransformProcess" title="Link to this definition"></a></dt>
+<dd><p>This function populates the data attributes of an instance of the TransformProcess class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>myTransformProcessList</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>myTransformProcess</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.TransformationResource">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">TransformationResource</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.TransformationResource" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.Buffer" title="hfgt_toolbox.HFGTToolbox.Buffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Buffer</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.TransportProcess">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">TransportProcess</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.TransportProcess" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.SystemProcess" title="hfgt_toolbox.HFGTToolbox.SystemProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">SystemProcess</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.TransportProcess.backPopulateTransportProcess">
+<span class="sig-name descname"><span class="pre">backPopulateTransportProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myTransportProcessDB</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.TransportProcess.backPopulateTransportProcess" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.TransportProcess.calcIdxTransportProcess">
+<span class="sig-name descname"><span class="pre">calcIdxTransportProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numBuffers</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.TransportProcess.calcIdxTransportProcess" title="Link to this definition"></a></dt>
+<dd><p>This function calculates the transportation process index.  By convention, the destination index increments faster
+than the origin index increments, so it is the first argument of calcVectorizedIdx().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idxOrigin</strong> – origin index</p></li>
+<li><p><strong>idxDestination</strong> – destination index</p></li>
+<li><p><strong>numBuffers</strong> – number of buffers</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.TransportProcess.calcIdxTransportProcessRef">
+<span class="sig-name descname"><span class="pre">calcIdxTransportProcessRef</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.TransportProcess.calcIdxTransportProcessRef" title="Link to this definition"></a></dt>
+<dd><p>This function calculates the refined transportation process index. By convention, the transportation process index
+increments faster than the holding process index, so it is the first argument of calcVectorizedIdx().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idxTransport</strong> – index of process within the set of transportation processes</p></li>
+<li><p><strong>idxHolding</strong> – holding process index</p></li>
+<li><p><strong>numTransportProcess</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>refined transportation process index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.TransportProcess.packSetTransportProcess">
+<span class="sig-name descname"><span class="pre">packSetTransportProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myHoldingProcess</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.TransportProcess.packSetTransportProcess" title="Link to this definition"></a></dt>
+<dd><p>This function computes the set of all possible REFINED transportation processes in the system.
+This set of processes includes storage at a certain buffer element and transportation from one buffer
+element to all other buffer elements present in the system.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.TransportProcess.populateTransportProcess">
+<span class="sig-name descname"><span class="pre">populateTransportProcess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myBuffer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myHoldingProcess</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.TransportProcess.populateTransportProcess" title="Link to this definition"></a></dt>
+<dd><p>This function populates the data attributes of an instance of the TransportProcess class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>myBuffer</strong></p></li>
+<li><p><strong>myHoldingProcess</strong></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.TransportProcess.reviseTransportationProcessData">
+<span class="sig-name descname"><span class="pre">reviseTransportationProcessData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.TransportProcess.reviseTransportationProcessData" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.TransportationResource">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">TransportationResource</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.TransportationResource" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.PhysicalResource" title="hfgt_toolbox.HFGTToolbox.PhysicalResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">PhysicalResource</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.Validator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">Validator</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.Validator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.GenericClass" title="hfgt_toolbox.HFGTToolbox.GenericClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericClass</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.VarDomain">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">VarDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.VarDomain" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.VarDomain.BINARY">
+<span class="sig-name descname"><span class="pre">BINARY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'binary'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.VarDomain.BINARY" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.VarDomain.INTEGER">
+<span class="sig-name descname"><span class="pre">INTEGER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'integer'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.VarDomain.INTEGER" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.VarDomain.INTEGER_POSITIVE">
+<span class="sig-name descname"><span class="pre">INTEGER_POSITIVE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'integer+'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.VarDomain.INTEGER_POSITIVE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.VarDomain.NONE">
+<span class="sig-name descname"><span class="pre">NONE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.VarDomain.NONE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.VarDomain.REAL">
+<span class="sig-name descname"><span class="pre">REAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'real'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.VarDomain.REAL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.VarDomain.REAL_POSITIVE">
+<span class="sig-name descname"><span class="pre">REAL_POSITIVE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'real+'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.VarDomain.REAL_POSITIVE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.VarDomain.ZERO">
+<span class="sig-name descname"><span class="pre">ZERO</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'zero'</span></span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.VarDomain.ZERO" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.appendProcessCapabilities">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">appendProcessCapabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sparseMat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myProcesses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxShift</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.appendProcessCapabilities" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.appendSysMLElement">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">appendSysMLElement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mySysMLDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mySysMLString</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.appendSysMLElement" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.boolify">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">boolify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myString</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.boolify" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Given a string, return that string as a boolean:</dt><dd><ul class="simple">
+<li><p>“true” and “True” will be returned as True</p></li>
+<li><p>“false” and “False” will be returned as False</p></li>
+<li><p>Any other value will raise a ValueError.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>myString</strong> (<em>str</em>) – The string to convert to a boolean.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the string cannot be converted to a boolean.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The boolean form of the string.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.calcIncidenceMatrix">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">calcIncidenceMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rowList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myWeights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.calcIncidenceMatrix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.calcIndexBinA">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">calcIndexBinA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">listB</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.calcIndexBinA" title="Link to this definition"></a></dt>
+<dd><p>Given listA and ListB, idxListB is a list as long as list B that provides the index in list A of each element in List B.
+This is the same as [listA.index(x) for x in listB].  The hash map implementation is much faster …</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.calcVectorizedIdx">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">calcVectorizedIdx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idxRow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxCol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numRows</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.calcVectorizedIdx" title="Link to this definition"></a></dt>
+<dd><p>Given indices i in idxRow and indices j in idxCol, compute the associated index when the associated matrix has been
+vectorized one column on top of the other.  Naturally, idxRow increments faster than idxCol.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.calcXiy1minus">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">calcXiy1minus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myLFES</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.calcXiy1minus" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.calcXiy2plus">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">calcXiy2plus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myLFES</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.calcXiy2plus" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.cleanNonesFromListofDicts">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">cleanNonesFromListofDicts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myListOfDicts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.cleanNonesFromListofDicts" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.cleanSysMLString">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">cleanSysMLString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mySysMLString</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.cleanSysMLString" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.configureLFESOutputPaths">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">configureLFESOutputPaths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myLFES</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputDirectory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">juliaOutputDirectory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.configureLFESOutputPaths" title="Link to this definition"></a></dt>
+<dd><p>Configure the output locations of the given LFES, based on outputDirectory
+and juliaOutputDirectory.
+Sets myLFES.outputDirectory, myLFES.outputFilePath, and myLFES.juliaOutputFilePath.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>myLFES</strong> (<a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.LFES" title="hfgt_toolbox.HFGTToolbox.LFES"><em>LFES</em></a>) – The LFES instance.</p></li>
+<li><p><strong>outputDirectory</strong> (<em>str</em>) – The path of the output directory.</p></li>
+<li><p><strong>juliaOutputDirectory</strong> (<em>str</em>) – The path of the Julia output directory.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>The LFES after it has been updated. Technically it is not necessary to return it,</dt><dd><p>but this way the function is consistent with importInputData().</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.LFES" title="hfgt_toolbox.HFGTToolbox.LFES">LFES</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.convertCSV2SysML">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">convertCSV2SysML</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFilePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">className</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxColUID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.convertCSV2SysML" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.createObject">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">createObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">className</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.createObject" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.debugEquivObjs">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">debugEquivObjs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myString</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.debugEquivObjs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.debugEquivTextFiles">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">debugEquivTextFiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filePath1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filePath2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.debugEquivTextFiles" title="Link to this definition"></a></dt>
+<dd><p>Compare two text files (filePath1 and filePath2).
+Return True if they are equivalent, and False if not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filePath1</strong> (<em>_type_</em>) – _description_</p></li>
+<li><p><strong>filePath2</strong> (<em>_type_</em>) – _description_</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A boolean representing whether the files are equivalent,</dt><dd><p>and a list of differences (if any).</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool, List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.df2SysMLDict">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">df2SysMLDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myClass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxColumnName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.df2SysMLDict" title="Link to this definition"></a></dt>
+<dd><p>Given a Pandas DataFrame, and the name that should be assigned
+to each instance (e.g. “Substation”, “Power Plant”, etc), and the
+name of the column that uniquely identifies each row, convert the
+DataFrame into a SysML-compliant dictionary.</p>
+<p>Note: Originally idxColumnName was ‘idxColumn’ (the index of the
+column which is the identifier), but I (MS) changed this to
+idxColumnName as I felt it made more sense and was easier to use
+(no need to figure out the index of the id column, and no issue if
+the id column is a different column index when calling this function
+across multiple files such as via GISDirectory2SysMLFile).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The input Pandas DataFrame.</p></li>
+<li><p><strong>myClass</strong> (<em>str</em>) – The name that should be assigned to each instance.
+If None, each instance will have the class “Object”.</p></li>
+<li><p><strong>idxColumnName</strong> (<em>str</em>) – The name of the column that uniquely identifies
+each row, which will appear as the name of each item in the SysML
+dictionary. If None, the id will be generated as Object1, Object2
+and so on.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A SysML-compliant dictionary representing the DataFrame.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.dictify">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">dictify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myInput</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'serialize'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.dictify" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.exportSysMLDefs">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">exportSysMLDefs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputSysML</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.exportSysMLDefs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.exportSysMLFile">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">exportSysMLFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myLFES</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputFilePath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.exportSysMLFile" title="Link to this definition"></a></dt>
+<dd><p>Export the given LFES to the given outputFilePath as SysML text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>myLFES</strong> (<em>dict</em>) – The dictionary containing the data to export to
+a .sysml file.</p></li>
+<li><p><strong>outputFilePath</strong> (<em>str</em>) – The path in which to write the SysML data to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if function completed successfully.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.exportSysMLInstances">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">exportSysMLInstances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputSysML</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.exportSysMLInstances" title="Link to this definition"></a></dt>
+<dd><p>Export any instances (part, item, action) that exist within outputData.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>outputData</strong> (<em>dict</em>) – The dictionary containing the data to export to
+a .sysml file.</p></li>
+<li><p><strong>myKey</strong> (<em>str</em>) – The key from outputData to process.</p></li>
+<li><p><strong>outputSysML</strong> (<em>str</em>) – The current output string representing the SysML model.</p></li>
+<li><p><strong>depth</strong> (<em>int</em><em>, </em><em>optional</em>) – The depth (number of tabs) in which to write to
+outputSysML. Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if function completed successfully.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.exportSysMLKey">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">exportSysMLKey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myKey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputSysML</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.exportSysMLKey" title="Link to this definition"></a></dt>
+<dd><p>Export the data corresponding to a particular key in outputData
+to the outputSysML file.
+It is handled differently depending on whether it is a package,
+definition (view, part def, item def, action def, metadata def, enum def) or a part,
+item, action, or metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>outputData</strong> (<em>dict</em>) – The dictionary containing the data to export to
+a .sysml file.</p></li>
+<li><p><strong>myKey</strong> (<em>str</em>) – The key from outputData to process.</p></li>
+<li><p><strong>outputSysML</strong> (<em>str</em>) – The current output string representing the SysML model.</p></li>
+<li><p><strong>depth</strong> (<em>int</em><em>, </em><em>optional</em>) – The depth (number of tabs) in which to write to
+outputSysML. Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if function completed successfully.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.getElVec">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">getElVec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.getElVec" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.getVariableName">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">getVariableName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.getVariableName" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.importInputData">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">importInputData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFilePath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.importInputData" title="Link to this definition"></a></dt>
+<dd><p>The function creates an LFES instance and populates it by reading
+the data stored within the specified inputFilePath. The LFES instance
+is returned.</p>
+<p>Note that the inputFilePath must be either an XML or a SysML file, i.e.
+its suffix must be either ‘.xml’ or ‘.sysml’. If it is not,
+populateInputData will raise an error.</p>
+<p>The constructor of the LFES class instantiates many of its attributes. Several
+attributes are then initialised by both populateInputData and by this function.
+This function specifically sets the following attributes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>inputFilePath is set to the inputFilePath argument passed to this function.</p></li>
+<li><p>outputFileName is automatically set based on the name of the LFES, the inputDataFormat,
+scenario, and runCode (which is a YYYY-MM-DD string based on the git commit date).</p></li>
+<li><p>outputFilePath is by joining LFES’s outputDirectory with outputFileName above.
+Note that the directory is hardcoded, and is initialised by the constructor of
+the LFES class.</p></li>
+<li><p>juliaOutputFilePath is overwritten so that it is joined with outputFileName above.
+Prior to being overwritten by this function, juliaOutputFilePath is a hardcoded
+directory path (similarly set by the LFES class’ constructor).</p></li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputFilePath</strong> (<em>pl.Path</em>) – The file path to import data from.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FileNotFoundError</strong> – If the specified inputFilePath does not exist.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An LFES data structure with completed analytical calculations.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#hfgt_toolbox.HFGTToolbox.LFES" title="hfgt_toolbox.HFGTToolbox.LFES">LFES</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.importSysMLFile">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">importSysMLFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sysMLfile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.importSysMLFile" title="Link to this definition"></a></dt>
+<dd><p>This function reads an SysML file and outputs a dictionary containing the SysML Data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sysMLfile</strong> – Input SysML file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary with all SysML Data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mySysMLDict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.importXMLData">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">importXMLData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmlfile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.importXMLData" title="Link to this definition"></a></dt>
+<dd><p>This function reads an XML file and outputs a Tuple with three elements.
+The first element is the tree, the second one is the root, the third is the tags.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>xmlfile</strong> – Input XML file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>myLFES object details
+root : Intermediary structure to feed myLFES object
+tags : myLFES meta-elements</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tree</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.isSimpleList">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">isSimpleList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myInput</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.isSimpleList" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.ivecMat">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">ivecMat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">AVector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myDims</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.ivecMat" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.listify">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">listify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myInput</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.listify" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.loadMyData">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">loadMyData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFilePath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.loadMyData" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.lowerCaseFirstLetter">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">lowerCaseFirstLetter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myString</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.lowerCaseFirstLetter" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.matricize">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">matricize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ATensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxRow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxCol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.matricize" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.mineProcessData">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">mineProcessData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tempDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myProcesses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxResource</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.mineProcessData" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.objectify">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">objectify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myInput</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.objectify" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.parseSysMLString">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">parseSysMLString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mySysMLString</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mySysMLDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.parseSysMLString" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.permute">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">permute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ATensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myDims</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.permute" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.projectVecSystemConcept">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">projectVecSystemConcept</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">AVector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mySystemConcept</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.projectVecSystemConcept" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.reshapeMAT">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">reshapeMAT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ATensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">myDims</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.reshapeMAT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.resolvePsiCapabilityIndex">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">resolvePsiCapabilityIndex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idxPsi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">systemConcept</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.resolvePsiCapabilityIndex" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.runHFGTAnalysis">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">runHFGTAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFilePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputDirectory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'3_PyHFGT_Output_Data/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">juliaOutputDirectory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'4_JuliaHFGT_Output_Data/'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.runHFGTAnalysis" title="Link to this definition"></a></dt>
+<dd><p>Runs HFGT analysis using the provided input file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputFilePath</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – path to input data file.</p></li>
+<li><p><strong>outputDirectory</strong> (<em>optional</em><em>, </em><em>str</em>) – The output directory to output to.</p></li>
+<li><p><strong>juliaOutputDirectory</strong> (<em>optional</em><em>, </em><em>str</em>) – The julia output directory.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>LFES data structure with completed analytical calculations</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>myLFES</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.runHFGTStructuralAnalysis">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">runHFGTStructuralAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputFilePath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputDirectory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'3_PyHFGT_Output_Data/'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">juliaOutputDirectory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'4_JuliaHFGT_Output_Data/'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.runHFGTStructuralAnalysis" title="Link to this definition"></a></dt>
+<dd><p>Runs HFGT analysis using the provided input file path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputFilePath</strong> (<em>str</em>) – path to input data file.</p></li>
+<li><p><strong>outputDirectory</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>, default: <code class="docutils literal notranslate"><span class="pre">'3_PyHFGT_Output_Data/'</span></code>)</p></li>
+<li><p><strong>juliaOutputDirectory</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>, default: <code class="docutils literal notranslate"><span class="pre">'4_JuliaHFGT_Output_Data/'</span></code>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>LFES data structure with completed analytical calculations</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>myLFES</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.saveMatrixToCSV">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">saveMatrixToCSV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputDirectory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputFileSuffix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.saveMatrixToCSV" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.saveMyData">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">saveMyData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputData</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.saveMyData" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.sortDictionaryKeys">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">sortDictionaryKeys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myInput</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.sortDictionaryKeys" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.sortSparseMatrix">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">sortSparseMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.sortSparseMatrix" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.stripUnderscores">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">stripUnderscores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">myList</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.stripUnderscores" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.tensorize">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">tensorize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">AMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tensorSize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxRow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idxCol</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.tensorize" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.tileSparseMatrix">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">tileSparseMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'row'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.tileSparseMatrix" title="Link to this definition"></a></dt>
+<dd><p>Tile a sparse matrix A along rows and columns.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.validateSysMLData">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">validateSysMLData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tempDict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.validateSysMLData" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hfgt_toolbox.HFGTToolbox.vecMAT">
+<span class="sig-prename descclassname"><span class="pre">hfgt_toolbox.HFGTToolbox.</span></span><span class="sig-name descname"><span class="pre">vecMAT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">AMatrix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#hfgt_toolbox.HFGTToolbox.vecMAT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hfgt_toolbox.cli.main.html" class="btn btn-neutral float-left" title="hfgt_toolbox.cli.main module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hfgt_toolbox.logging.html" class="btn btn-neutral float-right" title="hfgt_toolbox.logging module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Prof Amro Farid.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

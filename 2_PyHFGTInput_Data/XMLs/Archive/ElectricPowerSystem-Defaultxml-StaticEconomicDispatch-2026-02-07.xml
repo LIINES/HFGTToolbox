@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="ElectricPowerSystem" scenario="StaticEconomicDispatch" refArchitecture="CopperPlate" dataState="raw" inputDataFormat="defaultXML"
+      verboseMode="true" analysisMethod="HFNMCF" outputFileType="json" optimizer="CPLEX" simHorizon="25" deltaT="1"
+      hasESN_STF1="true" hasESN_STF2="false" hasESN_Duration="false" 
+      hasBufferUpperBound="false" hasBufferLowerBound = "false" hasBufferInitCond="false" hasBufferFinalCond="false"
+      hasBufferLinearCost="false" hasBufferQuadCost="false"
+      hasProcessUpperBoundFlowNeg="true" hasProcessUpperBoundFlowPos="false" hasProcessUpperBoundRamp="false" hasProcessUpperBoundStock="false"
+      hasProcessLowerBoundFlowNeg="false" hasProcessLowerBoundFlowPos="false" hasProcessLowerBoundRamp="false" hasProcessLowerBoundStock="false"
+      hasProcessInitCond="false" hasProcessFinalCond="false"
+      hasProcessLinearCostFlowNeg="true" hasProcessLinearCostFlowPos="false" hasProcessLinearCostStock="false"
+      hasProcessQuadCostFlowNeg="false" hasProcessQuadCostFlowPos="false" hasProcessQuadCostStock="false"
+      hasProcessRamp="false" hasProcessDuration="false" hasProcessValues="true">
+    <Operand operandName="electricity" operandType="energy" operandNetName="deliver electricity" status="true" 
+             hasOperandNet_Duration="false" hasOperandNet_STF1="false" hasOperandNet_STF2="false" 
+             hasSyncMatNeg="false" hasSyncMatPos="false" hasPlaceUpperBound="false" hasPlaceLowerBound="false"
+             hasPlaceLinearCost="false" hasPlaceQuadCost="false"
+             hasPlaceFinalConds="false" hasPlaceInitConds="false"
+             hasTransitionLowerBoundFlowNeg="false" hasTransitionLowerBoundFlowPos="false" hasTransitionLowerBoundStock="false"
+             hasTransitionUpperBoundFlowNeg="false" hasTransitionUpperBoundFlowPos="false" hasTransitionUpperBoundStock="false"
+             hasTransitionLinearCostFlowNeg="false" hasTransitionLinearCostFlowPos="false" hasTransitionLinearCostStock="false"
+             hasTransitionQuadCostFlowNeg="false" hasTransitionQuadCostFlowPos="false" hasTransitionQuadCostStock="false"
+             hasTransitionDurationConds="false" hasTransitionFinalConds="false" hasTransitionInitConds="false"/>
+    <TransformationResource transformationResourceName="ElectricPowerSystem" gpsX="0" gpsY="0" decisionMaker="Scheduler" autonomous="true" varDomain="real+">
+        <TransformationProcess name="generate electricity from nuclear energy" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="electricity" outputOperandWeight="1" 
+                               quadCostCoeff="" linearCostCoeffFlowNeg="14.6" fixedCostCoeff="0"
+                               lowerBound="650" upperBoundFlowNeg="1000" lowerBoundRamp="0" upperBoundRamp="0"/>
+        <TransformationProcess name="generate electricity from coal 1" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="electricity" outputOperandWeight="1" 
+                               quadCostCoeff="" linearCostCoeffFlowNeg="15.21" fixedCostCoeff="1.18"
+                               lowerBound="100" upperBoundFlowNeg="500" lowerBoundRamp="-70" upperBoundRamp="70"/>
+        <TransformationProcess name="generate electricity from coal 2" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="electricity" outputOperandWeight="1" 
+                               quadCostCoeff="" linearCostCoeffFlowNeg="16.52" fixedCostCoeff="1.2"
+                               lowerBound="100" upperBoundFlowNeg="500" lowerBoundRamp="-70" upperBoundRamp="70"/>
+        <TransformationProcess name="generate electricity from by CCGT1" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="electricity" outputOperandWeight="1"
+                               quadCostCoeff="" linearCostCoeffFlowNeg="62.692" fixedCostCoeff="8.84"
+                               lowerBound="50" upperBoundFlowNeg="400" lowerBoundRamp="-140" upperBoundRamp="140"/>
+        <TransformationProcess name="generate electricity from by CCGT2" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="electricity" outputOperandWeight="1" 
+                               quadCostCoeff="" linearCostCoeffFlowNeg="63.797" fixedCostCoeff="8.84"
+                               lowerBound="50" upperBoundFlowNeg="400" lowerBoundRamp="-140" upperBoundRamp="140"/>
+        <TransformationProcess name="generate electricity from by CCGT3" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="electricity" outputOperandWeight="1" 
+                               quadCostCoeff="" linearCostCoeffFlowNeg="64.018" fixedCostCoeff="8.84"
+                               lowerBound="50" upperBoundFlowNeg="400" lowerBoundRamp="-140" upperBoundRamp="140"/>
+        <TransformationProcess name="generate electricity from by CCGT4" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="electricity" outputOperandWeight="1" 
+                               quadCostCoeff="" linearCostCoeffFlowNeg="65.344" fixedCostCoeff="8.84"
+                               lowerBound="50" upperBoundFlowNeg="400" lowerBoundRamp="-150" upperBoundRamp="140"/>
+        <TransformationProcess name="generate electricity from by CCGT5" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="electricity" outputOperandWeight="1"
+                               quadCostCoeff="" linearCostCoeffFlowNeg="66.228" fixedCostCoeff="8.84"
+                               lowerBound="50" upperBoundFlowNeg="400" lowerBoundRamp="-140" upperBoundRamp="140"/>
+        <TransformationProcess name="generate electricity from by GT1" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="electricity" outputOperandWeight="1" 
+                               quadCostCoeff="" linearCostCoeffFlowNeg="84.56" fixedCostCoeff="8.84"
+                               lowerBound="50" upperBoundFlowNeg="350" lowerBoundRamp="-210" upperBoundRamp="210"/>
+        <TransformationProcess name="generate electricity from by GT2" status="true" varDomain="real+" duration=""
+                               inputOperand="" inputOperandWeight="" outputOperand="electricity" outputOperandWeight="1" 
+                               quadCostCoeff="" linearCostCoeffFlowNeg="86.002" fixedCostCoeff="8.84"
+                               lowerBound="50" upperBoundFlowNeg="450" lowerBoundRamp="-210" upperBoundRamp="210"/>
+        <TransformationProcess name="Consume electricity" status="true" varDomain="real+" duration=""
+                               inputOperand="electricity" inputOperandWeight="1" outputOperand="" outputOperandWeight=""
+                               quadCostCoeff="" linearCostCoeffFlowNeg="0" fixedCostCoeff=""
+                               lowerBound="" upperBoundFlowNeg="" lowerBoundRamp="" upperBoundRamp="" value="2456,2232,2012,1742,1532,1881,2130,2384,2796,3044,3156,3669,3488,2864,2592,2656,2726,3322,3869,4287,4589,4043,3535,3078"/>
+    </TransformationResource>
+</LFES>
