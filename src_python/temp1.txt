@@ -1,0 +1,87 @@
+def plotLineGraphTimeSeriesMatrix(A, myLabels=None, rows_per_button = 10):
+    """
+    Plots a line time series matrix as a Plotly figure with dropdown and range slider.
+    Shows a user specified (10 default) time series at a time, with a dropdown menu to select which 10 rows.
+
+    Parameters
+    ----------
+    A : array-like, shape (n_rows, n_cols)
+        Matrix of time series to plot.
+    myLabels : list of str, optional
+        Labels for each row in the legend. If None, defaults to "Row i".
+    """
+    A = np.asarray(A)
+    n_rows, n_cols = A.shape
+    t = np.arange(n_cols)
+
+    # Default labels if none provided
+    if myLabels is None:
+        myLabels = [f"Row {i}" for i in range(n_rows)]
+    elif len(myLabels) != n_rows:
+        raise ValueError("Length of myLabels must match number of rows in A.")
+
+      # show 10 time series at a time
+    fig = plotlyGO.Figure()
+
+    # Add all traces, but only first 10 visible initially
+    for i in range(n_rows):
+        fig.add_trace(
+            plotlyGO.Scatter(
+                x=t,
+                y=A[i],
+                mode="lines",
+                name=myLabels[i],
+                visible=(i < rows_per_button)
+            )
+        )
+
+    # Create dropdown buttons for each set of 10 rows
+    buttons = []
+    for start in range(0, n_rows, rows_per_button):
+        end = min(start + rows_per_button, n_rows)
+        visible = [False] * n_rows
+        for i in range(start, end):
+            visible[i] = True
+        buttons.append(
+            dict(
+                label=f"Rows {start}-{end-1}",
+                method="update",
+                args=[
+                    {"visible": visible},
+                    {"title": f"Rows {start} to {end-1}"}
+                ]
+            )
+        )
+
+    fig.update_layout(
+        title="Line Graph Time Series Matrix Viewer",
+        autosize=True,
+        height=800,
+        xaxis=dict(
+            title="Time",
+            rangeslider=dict(visible=True),
+            type="linear"
+        ),
+        yaxis=dict(title="Value"),
+        updatemenus=[
+            dict(
+                buttons=buttons,
+                direction="down",
+                showactive=True,
+                x=0,
+                xanchor="left",
+                y=1.07,
+                yanchor="top"
+            )
+        ],
+        legend=dict(
+            x=1.02,
+            y=1,
+            xanchor="left",
+            yanchor="top",
+            orientation="v"
+        ),
+        margin=dict(l=70, r=160, t=100, b=70)
+    )
+
+    fig.show(config={"responsive": True})

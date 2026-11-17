@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LFES name="EIO" scenario="base" refArchitecture="Economic System" dataState="raw" inputDataFormat="defaultXML" version="4.0" verboseMode="false" analysisMethod="default"
+      outputDataFormat="Mini" outputFileType="json" simHorizon="2" deltaT="1">
+    <Operand operandName="Water" operandType="matter" operandNetName="deliver water" status="true">
+    </Operand>
+    <Operand operandName="Capital" operandType="matter" operandNetName="deliver capital" status="true">
+    </Operand>
+    <Operand operandName="Agricultural product" operandType="matter" operandNetName="deliver ag product" status="true">
+    </Operand>
+    <Operand operandName="Manufactured product" operandType="matter" operandNetName="deliver man product" status="true">
+    </Operand>
+    <Operand operandName="Construction product" operandType="matter" operandNetName="deliver cons product" status="true">
+    </Operand>
+    <TransformationResource transformationResourceName="The economy" gpsX="0" gpsY="0" decisionMaker="" autonomous="true">
+        <TransformationProcess name="produces manufactured products" status="true" inputOperand="Manufactured product,Construction product,Agricultural product,Capital,Water" inputOperandWeight="0.35,0.25,0.2,2.1,1.2" outputOperand="Manufactured product" outputOperandWeight="1"/>
+        <TransformationProcess name="produces construction products with conventional technology" status="true" inputOperand="Manufactured product,Construction product,Agricultural product,Capital,Water" inputOperandWeight="0.15,0.22,0.26,3.2,2.2" outputOperand="Construction product" outputOperandWeight="1"/>
+        <TransformationProcess name="produces construction products with modern technology" status="true" inputOperand="Manufactured product,Construction product,Agricultural product,Capital,Water" inputOperandWeight="0.23,0.16,0.3,1.9,1.3" outputOperand="Construction product" outputOperandWeight="1"/>
+        <TransformationProcess name="produces agricultural products with labor-based technology" status="true" inputOperand="Manufactured product,Construction product,Agricultural product,Capital,Water" inputOperandWeight="0.26,0.22,0.31,1.2,1.3" outputOperand="Agricultural product" outputOperandWeight="1"/>
+        <TransformationProcess name="produces agricultural products with hybrid technology" status="true" inputOperand="Manufactured product,Construction product,Agricultural product,Capital,Water" inputOperandWeight="0.28,0.21,0.33,0.8,1.1" outputOperand="Agricultural product" outputOperandWeight="1"/>
+        <TransformationProcess name="produces agricultural products with automated technology" status="true" inputOperand="Manufactured product,Construction product,Agricultural product,Capital,Water" inputOperandWeight="0.24,0.25,0.3,1.4,1.1" outputOperand="Agricultural product" outputOperandWeight="1"/>
+    </TransformationResource>
+</LFES>

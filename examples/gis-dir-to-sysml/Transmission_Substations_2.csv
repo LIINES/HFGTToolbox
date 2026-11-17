@@ -1,0 +1,20 @@
+objectid,name,class,voltage,address
+1,Substation 1,Zone,275,Willetton Western Australia
+2,Substation 2,Zone,275,Dalkeith Western Australia
+3,Substation 3,Zone,132,Peppermint Grove Western Australia
+4,Substation 4,Zone,132,Lesmurdie Western Australia
+5,Substation 5,Zone,132,Tintenbar New South Wales
+6,Substation 6,Zone,132,Paechtown South Australia
+7,Substation 7,Zone,132,Monaltrie New South Wales
+8,Substation 8,Zone,132,Lynwood New South Wales
+9,Substation 9,Zone,132,Lake Munmorah New South Wales
+10,Substation 10,Zone,132,Lake Munmorah New South Wales
+11,Substation 11,Switchyard,132,Kuitpo South Australia
+12,Substation 12,Switchyard,66,Gurrundah New South Wales
+13,Substation 13,Substation,66,Goonellabah New South Wales
+14,Substation 14,Substation,66,Ewingsdale New South Wales
+15,Substation 15,Substation,66,Byron Bay New South Wales
+16,Substation 16,Substation,66,Ballina New South Wales
+17,Substation 17,Substation,66,Balhannah South Australia
+18,Substation 18,Substation,66,Argenton New South Wales
+19,Substation 19,Substation,66,Argenton New South Wales

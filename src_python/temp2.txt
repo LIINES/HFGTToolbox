@@ -1,0 +1,81 @@
+def plotStackedMatrix(A, max_rows_shown=20):
+    A = np.asarray(A)
+    n_rows, n_cols = A.shape
+    t = np.arange(n_cols)
+
+    fig = plotlyGO.Figure()
+
+    # Add stacked bar traces
+    for i in range(n_rows):
+        fig.add_trace(
+            plotlyGO.Bar(
+                x=t,
+                y=A[i],
+                name=f"Row {i}",
+                visible=(i < max_rows_shown)
+            )
+        )
+
+    # Create dropdown buttons
+    buttons = []
+
+    for start in range(0, n_rows, max_rows_shown):
+        end = min(start + max_rows_shown, n_rows)
+
+        visible = [False] * n_rows
+        for i in range(start, end):
+            visible[i] = True
+
+        buttons.append(
+            dict(
+                label=f"Rows {start}-{end - 1}",
+                method="update",
+                args=[
+                    {"visible": visible},
+                    {"title": f"Stacked Time Series: Rows {start}-{end - 1}"}
+                ]
+            )
+        )
+
+    fig.update_layout(
+        title="Stacked Time Series Matrix",
+
+        # allow notebook to control width
+        autosize=True,
+        height=800,  # approx 9:16 for typical notebook width
+
+        barmode="relative",
+
+        xaxis=dict(
+            title="Time",
+            rangeslider=dict(visible=True),  # range slider
+            type="linear"
+        ),
+
+        yaxis=dict(title="Value"),
+
+        # dropdown above top-left
+        updatemenus=[
+            dict(
+                buttons=buttons,
+                direction="down",
+                showactive=True,
+                x=0,
+                xanchor="left",
+                y=1.07,
+                yanchor="top"
+            )
+        ],
+
+        # legend just right of plot
+        legend=dict(
+            x=1.02,
+            y=1,
+            xanchor="left",
+            yanchor="top",
+            orientation="v"
+        ),
+
+        margin=dict(l=70, r=160, t=100, b=70)
+    )
+    fig.show(config={"responsive": True})

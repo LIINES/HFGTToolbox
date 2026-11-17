@@ -1,85 +1,193 @@
-# Hetero-Functional Graph Theory
-The Hetero-Functional Graph Theory (HFGT) is a rigorous modeling platform that can model the structure and function of highly interconnected
-and heterogeneous engineering systems seen in systems-of-systems. A detailed explaination of the theory and the underlying mathematics can be found in the book [A Hetero-functional Graph Theory for Modeling Interdependent Smart City Infrastructure](https://www.springer.com/gp/book/9783319993003). This toolbox facilitates the instantiation of the seven mathematical models of the HFGT from a single XML input file.
+# Python-HFGT-Toolbox (Python Heterofunctional Graph Theory Toolbox)
 
-A paper that serves as a user guide on how to use this toolbox has currently been submitted to Scientific Reports and is currently under review. If and when accepted, it shall be uploaded to this repository for further clarity. 
+## Requirements and installation
 
-The toolbox contains two principal modules: XML2LFES() and raw2FullLFES() that are executed in sequence. In brief, the XML2LFES() module serves to import the input XML file and create the myLFES data structure in a “raw"
-structure. Then, the raw2Full() module makes the HFGT calculations necessary to convert the myLFES data structure to the “full" state.
+Before proceeding, ensure you have Python 3.11.9 (or newer) installed.
 
-<img src="Images/HFGTToolbox_overview.png">
+### Installing via a terminal window
 
-The input XML file - "Example_Network.xml" provided in this repository depicts a simplistic 4-Node Smart City Network. The topology of this example network and some of the associated graphs of the HFGT mathematical models are presented below. An input XML file for any engineering system can be generated along the same lines and the engineering system's HFGT models can be computed using this toolbox.
+To install and run the toolbox via a terminal window, open up a terminal window in the root directory of this repository. Then, install `uv`, which manages the Python dependencies of this repository:
 
-<img src="Images/Example_Network_Graphs.png">
+    pip install uv
 
+You can also see [here](https://docs.astral.sh/uv/getting-started/installation/) for an alternative method of installing `uv`. 
 
-# Python Hetero-Functional Graph Toolbox
-This recently developed Hetero-functional Graph Theory Toolbox facilitates the computation of HFGT mathematical models including the hetero-functional adjacency matrix, hetero-functional incidence tensors and the associated knowledge basis.  It is written in the programming language python version 3.9 and when handling large computation is ported to the language Julia. It is openly available on GitHub with sample input files for straightforward re-use.
+Once you have installed `uv` as above, you can install this package via the following:
 
+    uv sync
 
-## Installation
+### Installing within Pycharm/VSCode
 
-To install this package into an existing virtual environment with python 3.9 follow the steps below inside your Terminal or Command Window.  We Recommend using Anaconda to provide a virtual environment to set up the toolbox in.
+The process of installing and running the Toolbox within an IDE (e.g. Pycharm or VSCode) is fairly similar to the above. You'll need to open this folder within your IDE, then open a terminal window. To do this:
 
-1) run:
-	```
-        cd <System path to Toolbox>/HFGTToolbox-master/Python-HFGT-Toolbox
-       pip install poetry
-       poetry add pyproject.toml
-       poetry install
-	```
-2) Install Julia into existing environment's path:
-	- Install Julia into your current working environment (https://julialang.org/downloads/). 
-	- Once Julia is installed, install the following packages to your Julia using the following commands from the Julia shell:
-	```
-	using Pkg
-	Pkg.add("CSV")
-	Pkg.add("DataFrames")
-	```
-3) To test that everything is set up correctly try running the following two lines:
-```
-python src/python_hfgt_toolbox/PyHFGTToolbox_Analysis.py "data/XMLs/Example_Network.xml" 0
-python src/python_hfgt_toolbox/PyHFGTToolbox_Analysis.py "data/XMLs/Example_Network_DOFs_Idx.xml" 3
-```
+- In **VSCode**, in the top-left menu go to `File -> Open Folder` and select the folder containing this repository (`python-hfgt-toolbox`). Open a new terminal window (if one is not already open) via `View -> Terminal`.
+- In **Pycharm**, in the top-left menu go to `Open`, then select the folder containing this repository. Open a new terminal window via `View -> Tool Windows -> Terminal`.
 
-4) To run the toolbox in your terminal window and retain access to the overarching LFES object that contains the HFG in a python environment within the  terminal run the line:
-```
-python -i src/python_hfgt_toolbox/PyHFGTToolbox_Analysis.py "data/XMLs/Example_Network.xml" 0
+Once your terminal window is open, you can follow the "Installing via a terminal window" commands above. All of the subsequent commands outlined in the following sections can be run within the terminal window inside the IDE.
+
+### Additional requirements for Minimum Cost Flow problems
+
+For the full functionality of the toolbox, namely to be able to process minimum cost flow problems (i.e. input files where `analysisMethod` = `HFNMCF`), you will also need to install:
+
+ - Julia. See [here](https://docs.julialang.org/en/v1/manual/installation/).
+ - IBM CPLEX. See [here](https://www.ibm.com/docs/en/icos/22.1.2?topic=cplex-installing).
+ - Gurobi. See [here](https://support.gurobi.com/hc/en-us/articles/4534161999889-How-do-I-install-Gurobi-Optimizer).
+
+Note that both CPLEX and Gurobi require licenses to use. They are optional dependencies - if they are not installed, you will still be able to use the `HiGHS` solver.
+
+**Instantiating the Julia package**
+
+Prior to running any `HFNMCF`-related toolbox analyses, you will need to instantiate the `HFNMCFTools` package to install all of the non-optional dependencies. To do this, open up the `src_julia` folder in a terminal window and run:
+
+```julia
+julia --project=HFNMCFTools -e "using Pkg; Pkg.instantiate()"
 ```
 
+**IBM CPLEX**
 
-## Usage
-The HFGT toolbox repository contains the following directories:
-1) XML2LFES:
-	The XML2LFES repository has the following subfolders:
-	
-	a) XML2LFES_classes:
-		Sets up the LFES class structure
-	
-	b) XML2LFES_functions:
-		Functions that help read the XML file and convert it to the LFES class structure.
+To install the Julia library for CPLEX, install it into your *global* Julia environment via:
 
-2)raw2FullLFES:
-	The raw2Full repository has the following subfolders:
-	
-    a) raw2FullLFES_functions:
-		Functions that perform the HFGT analysis.
+```julia
+julia -e "using Pkg; Pkg.add(\"CPLEX\")"
+```
 
-The PyHFGTToolbox_Analysis.inpyb file shows how to use the toolbox. Additionally, the toolbox repository contains four sample input XML files:
+**Gurobi**
 
-I) Example_Network.xml - The example network from Chapter 4 of the HFGT book.
+To install the Julia library for Gurobi, install it into your *global* Julia environment via:
 
-II) Example_Network_DOFs_Idx.xml - The example network from Chapter 4 of the HFGT book in the DOF index based format for running the Julia verboseMode (3).
+```julia
+julia -e "using Pkg; Pkg.add(\"Gurobi\")"
+```
 
-III) AMES_NY_Elec_NG_Oil_Coal.xml - The AMES HFGT compliant XML of the American Multimodal Energy System's region of NY.
+If you need to install a specific version of `Gurobi` to match your local Gurobi license file, you can install a specific version of `Gurobi_jll` (e.g. `11.0.3`) via the following:
 
-IV) AMES_NY_Elec_NG_Oil_Coal.xml - The AMES HFGT compliant XML of the American Multimodal Energy System's region of NY in the DOF index based format to running the Julia verboseMode(3).
+```julia
+julia -e 'using Pkg; Pkg.add(name="Gurobi_jll", version="11.0.3")'
+```
 
-NOTE : The assignment of values to parameters in the LFES class structure happens within the functions in XML2LFES and raw2FullLFES.
+## Repository structure
 
-Also NOTE : This version of the toolbox is a work in progress. 
-********************************************************************************
-********************************************************************************
-The service feasibility matrices might still be incorrect as in the book. Need to upgrade to V-10 trimetrica to test and might need to change the usage of the map function in the service matrices to regex.
-********************************************************************************
+```
+python-hfgt-toolbox/
+├── 1_Cleaned_Raw_Data            # Raw data directory
+├── 2_PyHFGTInput_Data            # Default Input data directory
+├── 3_PyHFGT_Output_Data          # Default Python output directory
+├── 4_JuliaHFGT_Output_Data       # Default Julia output directory
+├── docs/
+│   ├── build/                    # The built HTML documentation files
+│   ├── source/                   # The source used to build the documentation
+│   └── README.md                 # Readme explaining documentation and process
+├── examples/
+│   ├── gis-dir-to-sysml/         # Example GIS directory to SysML dataset(s)
+│   ├── gis-to-sysml/             # Example GIS to SysML dataset(s)
+│   ├── hfgt-analysis/            # Example HFGT analysis dataset(s)
+│   └── hfgt-structural-analysis/ # Example HFGT structural analysis dataset(s)
+├── images/
+├── license/
+├── logs/                         # Logging output will be saved here
+├── src_julia/                    # Julia code
+├── src_python/hfgt-toolbox/
+│   ├── cli/                      # Command Line Interface code
+│   ├── HFGTToolbox.py            # Main Python file
+│   └── logging.py                # Helper functions related to logging
+└── tests/
+    ├── resources/                # Data used within the tests
+    ├── conftest.py               # Pytest fixtures
+    ├── test_hfgt_toolbox.py      # Main test file
+    └── utils.py                  # Test helpers/utility functions
+```
+
+## Running the toolbox
+
+You can interact with the toolbox via `uv`. A list of available commands can be seen by running:
+
+    uv run toolbox --help
+
+More detail on these commands below.
+
+### HFGT Analysis
+
+You can run the Heterofunctional Graph Theory analysis by running `uv run toolbox hfgt-analysis <input_file>`. To see a full explanation, run:
+
+    uv run toolbox hfgt-analysis --help
+
+By default, the data will be exported to `data/3_PyHFGT_Output_Data` (for the data produced via the Python code) and `data/4_JuliaHFGT_Output_Data` (for the data produced via the Julia code). There are optional `output_directory` and `julia_output_directory` arguments that allow you to overwrite these.
+
+#### Simple example
+
+Here is an example of running a HFGT analysis:
+
+    uv run toolbox hfgt-analysis \
+        examples/hfgt-analysis/ExampleNetwork-Defaultxml-Base-2026-03-12.xml \
+        examples/hfgt-analysis/output_python
+
+Note - we have not overridden the `julia_output_directory` here (i.e. no need for a third argument) as this example is not a `HFNMCF` problem, and thus will not produce Julia output.
+
+#### Example using Julia optimisation
+
+Here is another example, this time with a `HFNMCF` analysis method. You will need to have instantiated the Julia package as described above prior to running it. It uses the `HiGHS` solver. To run it:
+
+    uv run toolbox hfgt-analysis \
+        examples/hfgt-analysis/ExampleNetworkNoOperandNetsHFNMCF-Defaultxml-Base-2026-03-12.xml \
+        examples/hfgt-analysis/output_python \
+        examples/hfgt-analysis/output_julia
+
+⚠️ Note that the filenames used in these examples may differ from what is written here when you run these examples. If you get an error about the filename being incorrect, you'll need to have a look in the `examples/` folder and adjust the command to the actual filename. The reason for this is that the toolbox automatically archives files (i.e. moves them into an adjacent `Archive` folder), and then renames them, where the last 10 characters do not match the date of the most recent git commit. This goes for the HFGT Structural Analysis below as well.
+
+### HFGT Structural Analysis
+
+Running the HFGT Structural Analysis is similar to the above. To see a full explanation, run:
+
+    uv run toolbox hfgt-structural-analysis --help
+    
+Here is an example of running a HFGT structural analysis:
+
+    uv run toolbox hfgt-structural-analysis \
+        examples/hfgt-structural-analysis/NEAC-freight-Defaultxml-Base-2026-03-12.xml \
+        examples/hfgt-structural-analysis/output_python
+
+### GIS to SysML
+
+The toolbox can also convert GIS-based data (`.csv` or `.shp`) into a SysML-v2 compliant text file. For more information on how to run this command, type:
+
+    uv run toolbox gis-to-sysml --help
+
+For example, the following will convert the small example substations CSV dataset into a SysML file:
+
+    uv run toolbox gis-to-sysml examples/gis-to-sysml/Transmission_Substations.csv examples/gis-to-sysml/model.sysml "name" "Substation"
+
+### GIS Directory to SysML
+
+You can also convert a directory of GIS files (`.csv` or `.shp`) into a single SysML file using the toolbox. For more information on how to run this command, type:
+
+    uv run toolbox gis-dir-to-sysml --help 
+    
+Here is an example:
+
+    uv run toolbox gis-dir-to-sysml examples/gis-dir-to-sysml examples/gis-dir-to-sysml/model.sysml "name" "Substation"
+
+This will process all three `.csv` files in the directory and produce `model.sysml`.
+
+## Logs
+
+Logs created during the execution of the program are saved to `logs/`. These capture all levels of logging output, regardless of whether `verboseMode` is set to `true` in your input file.
+
+## Running the tests
+
+To run the Pytest suite:
+
+    uv run pytest
+
+To run with a coverage report (HTML report written to `/htmlcov/index.html`):
+
+    uv run pytest --cov=hfgt_toolbox --cov-report=term-missing --cov-report=html
+
+## Generating the documentation
+
+To build the Sphinx documentation, first generate the API documentation via `sphinx-apidoc`:
+
+    uv run sphinx-apidoc --module-first -f -o docs/source src_python --force --separate
+
+Then build the documentation:
+
+    uv run sphinx-build -b html docs/source docs/build

@@ -1,0 +1,20 @@
+objectid,name,class,voltage,address,extra_column
+1,Substation 1,Substation,132,Argenton New South Wales,1
+2,Substation 2,Zone,275,Argenton New South Wales,2
+3,Substation 3,Substation,66,Balhannah South Australia,3
+4,Substation 4,Substation,132,Ballina New South Wales,4
+5,Substation 5,Switchyard,66,Byron Bay New South Wales,5
+6,Substation 6,Zone,132,Claremont Western Australia,6
+7,Substation 7,Zone,66,Ewingsdale New South Wales,6
+8,Substation 8,Substation,66,Goonellabah New South Wales,5
+9,Substation 9,Substation,66,Gurrundah New South Wales,6
+10,Substation 10,Substation,275,Kalamunda Western Australia,3
+11,Substation 11,Switchyard,132,Kuitpo South Australia,7
+12,Substation 12,Zone,132,Lake Munmorah New South Wales,4
+13,Substation 13,Zone,66,Lake Munmorah New South Wales,8
+14,Substation 14,Zone,132,Lynwood New South Wales,3
+15,Substation 15,Switchyard,275,Monaltrie New South Wales,2
+16,Substation 16,Switchyard,275,Paechtown South Australia,4
+17,Substation 17,Zone,66,Perth Western Australia,6
+18,Substation 18,Zone,132,Tintenbar New South Wales,8
+19,Substation 19,Zone,132,Victoria Park Western Australia,1

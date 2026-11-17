@@ -1,0 +1,68 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+# Run with `poetry run pre-commit run --all-files`
+repos:
+
+  # Autopep8 is a Python code formatter.
+  - repo: https://github.com/pre-commit/mirrors-autopep8
+    rev: v1.5.7
+    hooks:
+      - id: autopep8
+
+  # Automatically remove and organise unused imports
+  - repo: https://github.com/myint/autoflake
+    rev: v1.4
+    hooks:
+      - id: autoflake
+        args:
+          - --in-place
+          - --ignore-init-module-imports
+          - --remove-all-unused-imports
+          - --expand-star-imports
+
+  # isort organises python imports
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.4.2
+    hooks:
+      - id: isort
+
+  # Flake8 is a python linter.  It warns of non-PEP8 style compliance.
+  - repo: https://github.com/pycqa/flake8
+    rev: 3.9.2
+    hooks:
+      - id: flake8
+        entry: pflake8
+        additional_dependencies: [ pyproject-flake8 ]
+
+  # Mypy is a type checker.
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.950
+    hooks:
+      - id: mypy
+        files: src
+        exclude: src/tests
+        additional_dependencies: [ types-all ]
+        args: ['--show-error-codes']
+
+  # A few basic checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+#      - id: trailing-whitespace
+#      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+        args: ['--maxkb=2048']
+      - id: mixed-line-ending
+      - id: detect-private-key
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: name-tests-test
+        args: ['--pytest-test-first']
+
+  # Checks for bad licenses in dependencies
+  - repo: https://github.com/dhatim/python-license-check
+    rev: 0.7.1
+    hooks:
+      - id: liccheck
